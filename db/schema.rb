@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_07_185903) do
+ActiveRecord::Schema.define(version: 2018_10_08_221522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,22 @@ ActiveRecord::Schema.define(version: 2018_10_07_185903) do
     t.string "status", limit: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "firstname", limit: 45, null: false
+    t.string "lastname", limit: 45, null: false
+    t.string "email", limit: 40
+    t.bigint "cui", null: false
+    t.binary "has_certificate"
+    t.binary "is_enrolled"
+    t.integer "course_codes", default: [], array: true
+    t.string "status", limit: 1, null: false
+    t.text "description"
+    t.bigint "clasification_id_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["clasification_id_id"], name: "index_students_on_clasification_id_id"
   end
 
 end
