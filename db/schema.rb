@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_08_221522) do
+ActiveRecord::Schema.define(version: 2018_10_09_145534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 2018_10_08_221522) do
     t.date "finish_date"
     t.text "description"
     t.string "status", limit: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "semesters", force: :cascade do |t|
+    t.integer "is_even", null: false
+    t.date "start_date", null: false
+    t.date "finish_date"
+    t.integer "status", null: false
+    t.string "description", limit: 50
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
