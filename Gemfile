@@ -60,6 +60,11 @@ gem 'bootstrap', '~> 4.1.3'
 # Jquery
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
+# Pdf Reader
+gem 'pdf-reader'
+
+# Spreadsheet
+gem 'spreadsheet'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
