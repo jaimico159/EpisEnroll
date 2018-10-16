@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_16_045623) do
+ActiveRecord::Schema.define(version: 2018_10_16_144857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,25 @@ ActiveRecord::Schema.define(version: 2018_10_16_045623) do
     t.text "backup"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "first_name", limit: 45, default: "", null: false
+    t.string "last_name", limit: 45, default: "", null: false
+    t.integer "cui", null: false
+    t.boolean "authorized", default: true, null: false
+    t.boolean "certificate_uploaded", default: false, null: false
+    t.boolean "enrolled", default: false, null: false
+    t.integer "course_codes", default: [], null: false, array: true
+    t.text "description", default: ""
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["cui"], name: "index_students_on_cui", unique: true
+    t.index ["email"], name: "index_students_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end
 
 end
