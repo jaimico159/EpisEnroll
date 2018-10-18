@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_18_194129) do
+ActiveRecord::Schema.define(version: 2018_10_18_204534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2018_10_18_194129) do
     t.string "status", default: "A", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "enrollment_header_id"
+    t.index ["enrollment_header_id"], name: "index_enrollment_details_on_enrollment_header_id"
   end
 
   create_table "enrollment_headers", force: :cascade do |t|
@@ -141,6 +143,7 @@ ActiveRecord::Schema.define(version: 2018_10_18_194129) do
     t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "enrollment_details", "enrollment_headers"
   add_foreign_key "enrollment_headers", "semesters"
   add_foreign_key "enrollment_headers", "students"
   add_foreign_key "laboratories", "courses"
