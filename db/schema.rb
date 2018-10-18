@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_16_144857) do
+ActiveRecord::Schema.define(version: 2018_10_18_160730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,9 +50,12 @@ ActiveRecord::Schema.define(version: 2018_10_16_144857) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.bigint "clasification_id"
+    t.index ["clasification_id"], name: "index_students_on_clasification_id"
     t.index ["cui"], name: "index_students_on_cui", unique: true
     t.index ["email"], name: "index_students_on_email", unique: true
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "students", "clasifications"
 end
