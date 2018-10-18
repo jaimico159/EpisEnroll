@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_18_191039) do
+ActiveRecord::Schema.define(version: 2018_10_18_191500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,7 +60,9 @@ ActiveRecord::Schema.define(version: 2018_10_18_191039) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "semester_id"
+    t.bigint "student_id"
     t.index ["semester_id"], name: "index_enrollment_headers_on_semester_id"
+    t.index ["student_id"], name: "index_enrollment_headers_on_student_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -133,6 +135,7 @@ ActiveRecord::Schema.define(version: 2018_10_18_191039) do
   end
 
   add_foreign_key "enrollment_headers", "semesters"
+  add_foreign_key "enrollment_headers", "students"
   add_foreign_key "laboratories", "courses"
   add_foreign_key "laboratories", "groups"
   add_foreign_key "laboratories", "teachers"
