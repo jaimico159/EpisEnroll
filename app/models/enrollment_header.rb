@@ -1,0 +1,2 @@
+class EnrollmentHeader < ApplicationRecord
+end
