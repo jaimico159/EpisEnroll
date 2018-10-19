@@ -1,6 +1,7 @@
 class Student < ApplicationRecord
 
   belongs_to :clasification
+  has_one :enrollment_header
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
