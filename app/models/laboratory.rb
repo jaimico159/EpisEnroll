@@ -3,4 +3,6 @@ class Laboratory < ApplicationRecord
   belongs_to :course
   belongs_to :group
   belongs_to :teacher
+  has_many :enrollment_details, :class_name => 'EnrollmentDetail', :foreign_key => [:course_id, :group_id]
+  enum status: { inactive: 0, active: 1}
 end

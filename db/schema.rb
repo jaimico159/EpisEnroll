@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_18_204534) do
+ActiveRecord::Schema.define(version: 2018_10_19_042159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2018_10_18_204534) do
     t.string "last_name", limit: 45, default: "", null: false
     t.integer "admin_role", limit: 2, default: 3, null: false
     t.text "description", default: ""
-    t.string "status", default: "A", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -28,6 +27,7 @@ ActiveRecord::Schema.define(version: 2018_10_18_204534) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", limit: 2, default: 1
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -38,59 +38,63 @@ ActiveRecord::Schema.define(version: 2018_10_18_204534) do
     t.date "start_date"
     t.date "finish_date"
     t.text "description"
-    t.string "status", limit: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", limit: 2, default: 1
   end
 
   create_table "courses", force: :cascade do |t|
     t.string "name", limit: 100, default: "", null: false
     t.bigint "code", null: false
     t.boolean "has_laboratory", default: false, null: false
-    t.string "status", default: "A", null: false
     t.text "description", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", limit: 2, default: 1
   end
 
   create_table "enrollment_details", force: :cascade do |t|
     t.text "description", default: ""
-    t.string "status", default: "A", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "enrollment_header_id"
+    t.bigint "course_id"
+    t.bigint "group_id"
+    t.integer "status", limit: 2, default: 1
+    t.index ["course_id"], name: "index_enrollment_details_on_course_id"
     t.index ["enrollment_header_id"], name: "index_enrollment_details_on_enrollment_header_id"
+    t.index ["group_id"], name: "index_enrollment_details_on_group_id"
   end
 
   create_table "enrollment_headers", force: :cascade do |t|
     t.integer "laboratory_counter", limit: 2, default: 0, null: false
     t.text "description", default: ""
-    t.string "status", default: "A", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "semester_id"
     t.bigint "student_id"
+    t.integer "status", limit: 2, default: 1
     t.index ["semester_id"], name: "index_enrollment_headers_on_semester_id"
     t.index ["student_id"], name: "index_enrollment_headers_on_student_id"
   end
 
   create_table "groups", force: :cascade do |t|
     t.string "name", limit: 1, default: "", null: false
-    t.string "status", default: "A", null: false
     t.text "description", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", limit: 2, default: 1
   end
 
   create_table "laboratories", id: false, force: :cascade do |t|
     t.integer "quota", limit: 2, default: 25, null: false
     t.text "description", default: ""
-    t.string "status", default: "A", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "course_id"
     t.bigint "group_id"
     t.bigint "teacher_id"
+    t.integer "status", limit: 2, default: 1
     t.index ["course_id"], name: "index_laboratories_on_course_id"
     t.index ["group_id"], name: "index_laboratories_on_group_id"
     t.index ["teacher_id"], name: "index_laboratories_on_teacher_id"
@@ -100,10 +104,10 @@ ActiveRecord::Schema.define(version: 2018_10_18_204534) do
     t.boolean "is_even", null: false
     t.date "start_date", null: false
     t.date "finish_date"
-    t.string "status", limit: 1, null: false
     t.text "backup"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", limit: 2, default: 1
   end
 
   create_table "students", force: :cascade do |t|
@@ -121,6 +125,7 @@ ActiveRecord::Schema.define(version: 2018_10_18_204534) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.bigint "clasification_id"
+    t.integer "status", limit: 2, default: 0
     t.index ["clasification_id"], name: "index_students_on_clasification_id"
     t.index ["cui"], name: "index_students_on_cui", unique: true
     t.index ["email"], name: "index_students_on_email", unique: true
@@ -131,7 +136,6 @@ ActiveRecord::Schema.define(version: 2018_10_18_204534) do
     t.string "first_name", limit: 45, default: "", null: false
     t.string "last_name", limit: 45, default: "", null: false
     t.text "description", default: ""
-    t.string "status", default: "A", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -139,11 +143,14 @@ ActiveRecord::Schema.define(version: 2018_10_18_204534) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", limit: 2, default: 1
     t.index ["email"], name: "index_teachers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "enrollment_details", "courses"
   add_foreign_key "enrollment_details", "enrollment_headers"
+  add_foreign_key "enrollment_details", "groups"
   add_foreign_key "enrollment_headers", "semesters"
   add_foreign_key "enrollment_headers", "students"
   add_foreign_key "laboratories", "courses"
