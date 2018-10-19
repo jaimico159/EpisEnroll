@@ -4,5 +4,6 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  enum user_role: { admin: 0, director: 1, secretary: 2, administrative: 3 }
+  enum admin_role: { admin: 0, director: 1, secretary: 2, administrative: 3 }
+  enum status: { inactive: 0, active: 1}
 end
