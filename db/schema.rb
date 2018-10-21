@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_19_042159) do
+ActiveRecord::Schema.define(version: 2018_10_21_052751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,10 @@ ActiveRecord::Schema.define(version: 2018_10_19_042159) do
     t.datetime "remember_created_at"
     t.bigint "clasification_id"
     t.integer "status", limit: 2, default: 0
+    t.string "provider"
+    t.string "uid"
+    t.string "oauth_token"
+    t.string "oauth_expires_at"
     t.index ["clasification_id"], name: "index_students_on_clasification_id"
     t.index ["cui"], name: "index_students_on_cui", unique: true
     t.index ["email"], name: "index_students_on_email", unique: true
