@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   devise_for :teachers
   devise_for :students
 
-  get 'auth/:provider/callback', to: 'sessions#create'
+  resources :students
+
+  get 'auth/:provider/callback', to: 'sessions#google_oauth2'
   get 'auth/failure', to: redirect('/')
-  get 'signout', to: 'sessions#destroy', as: 'signout'
 
   resources :sessions, only: [:create, :destroy]
   root to: "home#show"
