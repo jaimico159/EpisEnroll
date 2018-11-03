@@ -28,7 +28,7 @@ class TeacherController < ApplicationController
     	@teacher = Teacher.find(params[:id])
  	end
 
-  	def student_params
+  	def teacher_params
     	params.fetch(:teacher, {}).permit(:first_name, :last_name, :email, :description, :status)
   	end
 end
