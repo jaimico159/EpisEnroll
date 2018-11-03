@@ -15,8 +15,8 @@ Clasifications.create(value: 4, name: "Cachimbos", start_date: Date.today, finis
 
 Groups.delete_all
 
-Clasifications.create(name: "A", description: "", status: :active)
-Clasifications.create(name: "B", description: "", status: :active)
-Clasifications.create(name: "C", description: "", status: :active)
-Clasifications.create(name: "D", description: "", status: :active)
-Clasifications.create(name: "E", description: "", status: :active)
+Groups.create(name: "A", description: "", status: :active)
+Groups.create(name: "B", description: "", status: :active)
+Groups.create(name: "C", description: "", status: :active)
+Groups.create(name: "D", description: "", status: :active)
+Groups.create(name: "E", description: "", status: :active)
