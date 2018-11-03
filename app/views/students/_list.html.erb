@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">CUI</th>
+      <th scope="col">Name</th>
+      <th scope="col">Clasification</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% students.each do |student| %>
+      <tr>
+        <th scope="row"><%= student.cui %></th>
+        <td><%= student.full_name %></td>
+        <td><%= student.clasification.value %></td>
+        <td>Show  Edit  Delete</td>
+      </tr>    
+    <% end %>
+  </tbody>
+</table>
