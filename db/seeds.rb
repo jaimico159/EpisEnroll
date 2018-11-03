@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Clasifications.delete_all
+
+Clasifications.create(value: 1, name: "Primer tercio", start_date: Date.today, finish_date: Date.today + 5, description: "", status: :active)
+Clasifications.create(value: 2, name: "Segundo tercio", start_date: Date.today, finish_date: Date.today + 5, description: "", status: :active)
+Clasifications.create(value: 3, name: "Tercio tercio", start_date: Date.today, finish_date: Date.today + 5, description: "", status: :active)
+Clasifications.create(value: 4, name: "Cachimbos", start_date: Date.today, finish_date: Date.today + 5, description: "", status: :active)
