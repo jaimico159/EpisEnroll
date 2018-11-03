@@ -12,4 +12,8 @@ class Student < ApplicationRecord
   #devise :database_authenticatable, :registerable,
   #       :recoverable, :rememberable, :validatable
   enum status: { inactive: 0, active: 1}
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
