@@ -52,6 +52,6 @@ class LaboratoriesController < ApplicationController
   end
 
   def laboratory_params
-    params.fetch(:laboratory, {}).permit(:first_name, :last_name, :email, :primary_phone)
+    params.fetch(:laboratory, {}).permit(:quota)
   end
 end
