@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">semestre</th>
+      <th scope="col">inicio</th>
+      <th scope="col">fin</th>
+      <th scope="col">Description</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% semesters.each do |semester| %>
+      <tr>
+        <th scope="row"><%= (semester.is_even ? "impar": "par") %></th>
+        <td><%= semester.start_date %></td>
+        <td><%= semester.finish_date %></td>
+        <td><%= semester.backup %></td>
+        <td>Show  Edit  Delete</td>
+      </tr>    
+    <% end %>
+  </tbody>
+</table>

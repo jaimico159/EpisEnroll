@@ -1,0 +1,33 @@
+<%= form_with(model: semester, local: true) do |form| %>
+	<% if semester.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(semester.errors.count, "error") %> contacts error:</h2>
+      <ul>
+      <% semester.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <div class="field">
+			<%= form.label :Numero_de_semestre_par_0_o_impar_1 %>
+			<%= form.check_box :is_even %>
+		</div>
+		<div class="">
+			<%= form.label :fecha_inicio_dd_mm_aaaa %>
+			<%= form.date_field :start_date %>
+		</div>
+		<div class="field">
+			<%= form.label :fecha_cierre_dd_mm_aaaa %>
+			<%= form.date_field :finish_date %>
+  	</div>
+		<div class="field">
+			<%= form.label :descripcion %>
+			<%= form.text_field :backup %>
+		</div>
+
+    <%= form.submit :class => 'btn btn-primary' %>
+  </div>
+<% end %>
