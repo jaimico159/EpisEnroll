@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Code</th>
+      <th scope="col">Name</th>
+      <th scope="col">Laboratory</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% courses.each do |course| %>
+      <tr>
+        <th scope="row"><%= course.code %></th>
+        <td><%= course.name %></td>
+        <td><%= course.has_laboratory %></td>
+        <td>Show  Edit  Delete</td>
+      </tr>    
+    <% end %>
+  </tbody>
+</table> 
