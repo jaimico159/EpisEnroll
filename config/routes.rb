@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :students
 
   # Importante para usar las rutas de rails debes crear los siguiente: resources :'tumodelo'
+  resources :admins
   resources :students
 
   get 'auth/:provider/callback', to: 'sessions#google_oauth2'
