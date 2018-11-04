@@ -8,15 +8,15 @@
 
 Clasification.delete_all
 
-Clasification.create(value: 1, name: "Primer tercio", start_date: Date.today, finish_date: Date.today + 5, description: "", status: "1")
-Clasification.create(value: 2, name: "Segundo tercio", start_date: Date.today, finish_date: Date.today + 5, description: "", status: "1")
-Clasification.create(value: 3, name: "Tercio tercio", start_date: Date.today, finish_date: Date.today + 5, description: "", status: "1")
-Clasification.create(value: 4, name: "Cachimbos", start_date: Date.today, finish_date: Date.today + 5, description: "", status: "1")
+Clasification.create(value: 1, name: "Primer tercio", start_date: Date.today, finish_date: Date.today + 5, description: "", status: :active)
+Clasification.create(value: 2, name: "Segundo tercio", start_date: Date.today, finish_date: Date.today + 5, description: "", status: :active)
+Clasification.create(value: 3, name: "Tercio tercio", start_date: Date.today, finish_date: Date.today + 5, description: "", status: :active)
+Clasification.create(value: 4, name: "Cachimbos", start_date: Date.today, finish_date: Date.today + 5, description: "", status: :active)
 
 Group.delete_all
 
-Group.create(name: "A", description: "", status: "1")
-Group.create(name: "B", description: "", status: "1")
-Group.create(name: "C", description: "", status: "1")
-Group.create(name: "D", description: "", status: "1")
-Group.create(name: "E", description: "", status: "1")
+Group.create(name: "A", description: "", status: :active)
+Group.create(name: "B", description: "", status: :active)
+Group.create(name: "C", description: "", status: :active)
+Group.create(name: "D", description: "", status: :active)
+Group.create(name: "E", description: "", status: :active)
