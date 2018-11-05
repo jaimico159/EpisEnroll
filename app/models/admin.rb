@@ -5,4 +5,8 @@ class Admin < ApplicationRecord
 
   enum admin_role: { admin: 0, director: 1, secretary: 2, administrative: 3 }
   enum status: { inactive: 0, active: 1}
+  
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
