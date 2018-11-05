@@ -4,4 +4,8 @@ class Teacher < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable
   enum status: { inactive: 0, active: 1}
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # Importante para usar las rutas de rails debes crear los siguiente: resources :'tumodelo'
   resources :admins
   resources :students
+  resources :teachers
   resources :semesters
   resources :courses
 

@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Status</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% teachers.each do |teacher| %>
+      <tr>
+        <td><%= teacher.full_name %></td>
+        <td><%= teacher.email %></td>
+        <td><%= teacher.status %></td>
+        <td>Show  Edit  Delete</td>
+      </tr>    
+    <% end %>
+  </tbody>
+</table>
