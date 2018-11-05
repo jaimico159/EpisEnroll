@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_student!
+  before_action :authenticate_admin!
   before_action :set_course, only: %i[show edit update destroy]
 
   def index
@@ -7,15 +7,15 @@ class CoursesController < ApplicationController
   end
 
   def new
-    @course = course.new
+    @course = Course.new
   end
 
   def create
-    @course = course.new(course_params)
+    @course = Course.new(course_params)
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: 'course was succesfully created' }
+        format.html { redirect_to @course, notice: 'Course was succesfully created' }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
@@ -27,7 +27,7 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: 'course was successfully updated.' }
+        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
         format.html { render :edit }
@@ -39,7 +39,7 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to course_url, notice: 'course was successfully destroyed.' }
+      format.html { redirect_to course_url, notice: 'Course was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -52,6 +52,6 @@ class CoursesController < ApplicationController
   end
 
   def course_params
-    params.fetch(:course, {}).permit(:quota)
+    params.fetch(:course, {}).permit(:name, :code, :has_laboratory, :description)
   end
 end

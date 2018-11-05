@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_admin!
   before_action :set_admin, only: %i[show edit update destroy]
 
   def index
@@ -8,6 +8,12 @@ class AdminsController < ApplicationController
 
   def new
     @admin = Admin.new
+  end
+
+  def show
+  end
+
+  def edit
   end
 
   def create
@@ -52,6 +58,6 @@ class AdminsController < ApplicationController
   end
 
   def admin_params
-    params.fetch(:admin, {}).permit(:first_name, :last_name, :email, :primary_phone)
+    params.fetch(:admin, {}).permit(:first_name, :last_name, :email)
   end
 end
