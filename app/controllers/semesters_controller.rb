@@ -3,11 +3,17 @@ class SemestersController < ApplicationController
   before_action :set_semester, only: %i[show edit update destroy]
 
   def index
-    @Semesters = Semester.all
+    @semesters = Semester.all
   end
 
   def new
     @semester = Semester.new
+  end
+  
+  def show
+  end
+
+  def edit
   end
 
   def create
@@ -52,6 +58,6 @@ class SemestersController < ApplicationController
   end
 
   def semester_params
-    params.fetch(:semester, {}).permit(:quota)
+    params.fetch(:semester, {}).permit(:is_even, :start_date, :finish_date, :backup)
   end
 end
