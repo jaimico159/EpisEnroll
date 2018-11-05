@@ -8,12 +8,11 @@
     </tr>
   </thead>
   <tbody>
-    <% students.each do |student| %>
+    <% teachers.each do |teacher| %>
       <tr>
-        <th scope="row"><%= student.cui %></th>
-        <td><%= student.full_name %></td>
-        <td><%= student.email %></td>
-        <td><%= student.status %></td>
+        <td><%= teacher.full_name %></td>
+        <td><%= teacher.email %></td>
+        <td><%= teacher.status %></td>
         <td>Show  Edit  Delete</td>
       </tr>    
     <% end %>
