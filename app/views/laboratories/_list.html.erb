@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">quota</th>
+      <th scope="col">description</th>
+      <th scope="col">course</th>
+      <th scope="col">group</th>
+      <th scope="col">teacher</th>
+      <th scope="col">options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% laboratories.each do |laboratory| %>
+      <tr>
+        <td><%= laboratory.quota %></td>
+        <td><%= laboratory.description %></td>
+        <td><%= laboratory.course.name %></td>
+        <td><%= laboratory.group.name %></td>
+        <td><%= laboratory.teacher.full_name %></td>
+        <td>Show  Edit  Delete</td>
+      </tr>    
+    <% end %>
+  </tbody>
+</table>

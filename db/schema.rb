@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_21_052751) do
+ActiveRecord::Schema.define(version: 2018_11_06_150113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,13 +86,13 @@ ActiveRecord::Schema.define(version: 2018_10_21_052751) do
     t.integer "status", limit: 2, default: 1
   end
 
-  create_table "laboratories", id: false, force: :cascade do |t|
+  create_table "laboratories", primary_key: ["course_id", "group_id"], force: :cascade do |t|
     t.integer "quota", limit: 2, default: 25, null: false
     t.text "description", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "course_id"
-    t.bigint "group_id"
+    t.bigint "course_id", null: false
+    t.bigint "group_id", null: false
     t.bigint "teacher_id"
     t.integer "status", limit: 2, default: 1
     t.index ["course_id"], name: "index_laboratories_on_course_id"
