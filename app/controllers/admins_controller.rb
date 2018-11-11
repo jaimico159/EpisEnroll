@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-	before_action :authenticate_admin!
+	#before_action :authenticate_admin!
   before_action :set_admin, only: %i[show edit update destroy]
 
   def index
@@ -15,6 +15,8 @@ class AdminsController < ApplicationController
 
   def edit
   end
+
+  
 
   def create
     @admin = Admin.new(admin_params)
@@ -50,6 +52,27 @@ class AdminsController < ApplicationController
     end
   end
 
+  def secretaries
+    #@prospects = Admin.where(prospect: true)
+    @admins = Admin.where(admin_role: :secretary)
+    render template: 'admins/secretary_views/secretaries.html.erb'
+  end
+
+  def show_secretary
+    set_admin
+    render template: 'admins/secretary_views/show_secretary.html.erb'
+  end
+
+  def edit_secretary
+    set_admin
+    render template: 'admins/secretary_views/edit_secretary.html.erb'
+  end
+
+  def new_secretary
+    @admins = Admin.new
+    render template: 'admins/secretary_views/new_secretary.html.erb'
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -60,4 +83,6 @@ class AdminsController < ApplicationController
   def admin_params
     params.fetch(:admin, {}).permit(:first_name, :last_name, :email)
   end
+  
+
 end
