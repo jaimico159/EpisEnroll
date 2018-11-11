@@ -4,12 +4,17 @@ Rails.application.routes.draw do
   devise_for :students
   
   # Importante para usar las rutas de rails debes crear los siguiente: resources :'tumodelo'
+  get '/admins/admin_views' => 'admins#admin_views'
+  get '/admins/admin_views/new' => 'admins#new_admin'
+  get '/admins/admin_views/:id' => 'admins#show_admin'
+  get '/admins/admin_views/:id/edit' => 'admins#edit_admin'
   resources :admins
   resources :students
   resources :teachers
   resources :semesters
   resources :courses
   resources :laboratories
+
 
   get 'auth/:provider/callback', to: 'sessions#google_oauth2'
   get 'auth/failure', to: redirect('/')
