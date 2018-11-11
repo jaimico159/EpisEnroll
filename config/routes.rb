@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   devise_for :teachers
   devise_for :students
   
+  
   get '/admins/secretaries' => 'admins#secretaries'
-  get '/admins/new_secretary' => 'admins#new_secretary'
+  get '/admins/secretaries/new' => 'admins#new_secretary'
   get '/admins/secretaries/:id' => 'admins#show_secretary'
   get '/admins/secretaries/:id/edit' => 'admins#edit_secretary'
   

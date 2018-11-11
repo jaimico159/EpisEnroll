@@ -16,8 +16,6 @@ class AdminsController < ApplicationController
   def edit
   end
 
-  
-
   def create
     @admin = Admin.new(admin_params)
 
@@ -69,7 +67,8 @@ class AdminsController < ApplicationController
   end
 
   def new_secretary
-    @admins = Admin.new
+    @admin = Admin.new
+    @admin.admin_role = :secretary
     render template: 'admins/secretary_views/new_secretary.html.erb'
   end
 
@@ -81,7 +80,7 @@ class AdminsController < ApplicationController
   end
 
   def admin_params
-    params.fetch(:admin, {}).permit(:first_name, :last_name, :email)
+    params.fetch(:admin, {}).permit(:first_name, :last_name, :email, :admin_role)
   end
   
 
