@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   get '/admins/admin_views/new' => 'admins#new_admin'
   get '/admins/admin_views/:id' => 'admins#show_admin'
   get '/admins/admin_views/:id/edit' => 'admins#edit_admin'
+
+  get '/admins/administrative_views' => 'admins#administrative_views'
+  get '/admins/administrative_views/new' => 'admins#new_administrative'
+  get '/admins/administrative_views/:id' => 'admins#show_administrative'
+  get '/admins/administrative_views/:id/edit' => 'admins#edit_administrative'
+
   resources :admins
   resources :students
   resources :teachers

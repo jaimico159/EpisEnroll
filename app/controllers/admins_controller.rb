@@ -11,6 +11,11 @@ class AdminsController < ApplicationController
     render template: 'admins/admin_views/admins.html.erb'
   end
 
+  def administrative_views
+    @admins = Admin.where(admin_role: 3)
+    render template: 'admins/administrative_views/administratives.html.erb'
+  end
+
   def new
     @admin = Admin.new
   end
@@ -18,6 +23,11 @@ class AdminsController < ApplicationController
   def new_admin
     @admin = Admin.new
     render template: 'admins/admin_views/new_admin.html.erb'
+  end
+
+  def new_administrative
+    @admin = Admin.new
+    render template: 'admins/administrative_views/new_administrative.html.erb'
   end
 
   def show
@@ -28,6 +38,13 @@ class AdminsController < ApplicationController
     render template: 'admins/admin_views/show_admin.html.erb'
   end
 
+  def show_administrative
+    
+      set_admin
+      render template: 'admins/administrative_views/show_administrative.html.erb'
+    
+  end
+
   def edit
     
   end
@@ -36,6 +53,11 @@ class AdminsController < ApplicationController
   def edit_admin
     set_admin
     render template: 'admins/admin_views/edit_admin.html.erb'
+  end
+
+  def edit_administrative
+    set_admin
+    render template: 'admins/administrative_views/edit_administrative.html.erb'
   end
 
   def create
