@@ -1,0 +1,29 @@
+<%= form_with(model: [:admins, director], url: director.new_record? ? admins_directors_path : admins_director_path, local: true) do |form| %>
+	
+	<% if director.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(director.errors.count, "error") %> contacts error:</h2>
+      <ul>
+      <% director.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+		<div class="field">
+			<%= form.label :first_name %>
+			<%= form.text_field :first_name %>
+		</div>
+		<div class="field">
+			<%= form.label :last_name %>
+			<%= form.text_field :last_name %>
+  	</div>
+		<div class="field">
+			<%= form.label :email %>
+			<%= form.text_field :email %>
+		</div>
+    <%= form.submit :class => 'btn btn-primary' %>
+  </div>
+<% end %>

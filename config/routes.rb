@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :admins do
     resources :secretaries
+    resources :directors
   end
   devise_for :admins
   devise_for :teachers
