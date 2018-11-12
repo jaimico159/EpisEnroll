@@ -50,28 +50,6 @@ class AdminsController < ApplicationController
     end
   end
 
-  def secretaries
-    #@prospects = Admin.where(prospect: true)
-    @admins = Admin.where(admin_role: :secretary)
-    render template: 'admins/secretary_views/secretaries.html.erb'
-  end
-
-  def show_secretary
-    set_admin
-    render template: 'admins/secretary_views/show_secretary.html.erb'
-  end
-
-  def edit_secretary
-    set_admin
-    render template: 'admins/secretary_views/edit_secretary.html.erb'
-  end
-
-  def new_secretary
-    @admin = Admin.new
-    @admin.admin_role = :secretary
-    render template: 'admins/secretary_views/new_secretary.html.erb'
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -80,7 +58,7 @@ class AdminsController < ApplicationController
   end
 
   def admin_params
-    params.fetch(:admin, {}).permit(:first_name, :last_name, :email, :admin_role)
+    params.fetch(:admin, {}).permit(:first_name, :last_name, :email)
   end
   
 

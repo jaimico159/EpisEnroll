@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admins do
+    resources :secretaries
+  end
   devise_for :admins
   devise_for :teachers
   devise_for :students
-  
-  
-  get '/admins/secretaries' => 'admins#secretaries'
-  get '/admins/secretaries/new' => 'admins#new_secretary'
-  get '/admins/secretaries/:id' => 'admins#show_secretary'
-  get '/admins/secretaries/:id/edit' => 'admins#edit_secretary'
   
 
   # Importante para usar las rutas de rails debes crear los siguiente: resources :'tumodelo'
