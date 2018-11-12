@@ -1,9 +1,4 @@
 class SessionsController < ApplicationController
-  def create
-
-    student = Student.from_omniauth(request.env["omniauth.auth"])
-    puts user.email
-  end
 
   def google_oauth2
     
@@ -23,18 +18,22 @@ class SessionsController < ApplicationController
 
     if user.nil?
       session['devise.google_data'] = request.env['omniauth.auth'].except(:extra) # Removing extra as it can overflow some session stores
-      redirect_to root, alert: "User not found"
+      redirect_to root_path, alert: "User not found"
       return
     end
 
-    puts "PONIENDO LA INFO"
-    puts "<<<<< #{info.email} <<<< email"
-    puts "<<< #{info.email.eql?('jaimehuarsayarivera@gmail.com')} <<<"
-
-    if info.email.ends_with?('unsa.edu.pe') || info.email.eql?('jaimehuarsayarivera@gmail.com')
-      puts "<<<<< #{info.email} <<<< email"
+    if user.email.ends_with?('unsa.edu.pe') || user.email.eql?('jaimehuarsayarivera@gmail.com')
       flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', kind: 'Google'
-      sign_in_and_redirect user, event: :authentication
+      if user.is_a?(Student)
+        sign_in user, event: :authentication
+        redirect_to students_home_path
+      elsif user.is_a?(Teacher)
+        sign_in user, event: :authentication
+        redirect_to teachers_home_path
+      elsif user.is_a?(Admin)
+        sign_in user, event: :authentication
+        redirect_to admins_home_path
+      end
     else
       session['devise.google_data'] = request.env['omniauth.auth'].except(:extra) # Removing extra as it can overflow some session stores
       flash[:notice] = "You must be a EPIS member to do that."
