@@ -25,7 +25,7 @@ class Admins::SecretariesController < ApplicationController
         format.html { redirect_to admins_secretaries_path(@secretary), notice: 'secretary was succesfully created' }
         format.json { render :show, status: :created, location: admins_secretaries_path(@secretary) }
       else
-        format.html { render :new }
+        format.html { render admins_secretaries_path }
         format.json { render json: @secretary.errors, status: :unprocessable_entity }
       end
     end
@@ -35,9 +35,9 @@ class Admins::SecretariesController < ApplicationController
     respond_to do |format|
       if @secretary.update(admin_params)
         format.html { redirect_to admins_secretaries_path(@secretary), notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: admins_secretaries_path(@secretary) }
+        format.json { render admins_secretaries_path, status: :ok, location: admins_secretaries_path(@secretary) }
       else
-        format.html { render :edit }
+        format.html { render edit_admins_secretaries_path}
         format.json { render json: @secretary.errors, status: :unprocessable_entity }
       end
     end
@@ -46,7 +46,7 @@ class Admins::SecretariesController < ApplicationController
   def destroy
     @secretary.destroy
     respond_to do |format|
-      format.html { redirect_to admin_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to admins_secretaries_path(@secretary), notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,5 +1,5 @@
-<%= form_with(model: [:admins, secretary], url: admins_secretaries_path, local: true) do |form| %>
-
+<%= form_with(model: [:admins, secretary], url: secretary.new_record? ? admins_secretaries_path : admins_secretary_path, local: true) do |form| %>
+	
 	<% if secretary.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(secretary.errors.count, "error") %> contacts error:</h2>
