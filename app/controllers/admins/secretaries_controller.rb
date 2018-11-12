@@ -22,8 +22,8 @@ class Admins::SecretariesController < ApplicationController
 
     respond_to do |format|
       if @secretary.save
-        format.html { redirect_to @secretary, notice: 'secretary was succesfully created' }
-        format.json { render :show, status: :created, location: @secretary }
+        format.html { redirect_to admins_secretaries_path(@secretary), notice: 'secretary was succesfully created' }
+        format.json { render :show, status: :created, location: admins_secretaries_path(@secretary) }
       else
         format.html { render :new }
         format.json { render json: @secretary.errors, status: :unprocessable_entity }
@@ -34,8 +34,8 @@ class Admins::SecretariesController < ApplicationController
   def update
     respond_to do |format|
       if @secretary.update(admin_params)
-        format.html { redirect_to @secretary, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @secretary }
+        format.html { redirect_to admins_secretaries_path(@secretary), notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: admins_secretaries_path(@secretary) }
       else
         format.html { render :edit }
         format.json { render json: @secretary.errors, status: :unprocessable_entity }
