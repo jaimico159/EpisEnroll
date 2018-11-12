@@ -1,4 +1,4 @@
-<%= form_with(model: admin, local: true) do |form| %>
+<%= form_with(model: [:admins, admin], local: true) do |form| %>
 	<% if admin.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(admin.errors.count, "error") %> contacts error:</h2>
@@ -23,11 +23,7 @@
 			<%= form.label :email %>
 			<%= form.text_field :email %>
 		</div>
-		<div class="field">
-			<%= form.label :admin_role %>
-			<%= form.select :admin_role, ['admin', 'director', 'secretary', 'administrative']%>
-			
-		</div>
+		
     <%= form.submit :class => 'btn btn-primary' %>
   </div>
 <% end %>

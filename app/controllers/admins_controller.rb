@@ -1,41 +1,19 @@
 class AdminsController < ApplicationController
 	before_action :authenticate_admin!
   before_action :set_admin, only: %i[show edit update destroy]
-
+  
   def index
     @admins = Admin.all
-  end
-
-  def admin_views
-    @admins = Admin.all
-    render template: 'admins/admin_views/admins.html.erb'
   end
 
   def new
     @admin = Admin.new
   end
 
-  def new_admin
-    @admin = Admin.new
-    render template: 'admins/admin_views/new_admin.html.erb'
-  end
-
   def show
   end
 
-  def show_admin
-    set_admin
-    render template: 'admins/admin_views/show_admin.html.erb'
-  end
-
   def edit
-    
-  end
-
-
-  def edit_admin
-    set_admin
-    render template: 'admins/admin_views/edit_admin.html.erb'
   end
 
   def create
