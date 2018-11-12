@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   devise_for :teachers
   devise_for :students
   
+  namespace :admins do
+    resources :admins
+  end
   get 'students/home', to: 'students#home'
-
 
   # Importante para usar las rutas de rails debes crear los siguiente: resources :'tumodelo'
   resources :admins
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
   resources :semesters
   resources :courses
   resources :laboratories
+  
 
   
   get 'auth/:provider/callback', to: 'sessions#google_oauth2'

@@ -1,7 +1,7 @@
 class AdminsController < ApplicationController
 	before_action :authenticate_admin!
   before_action :set_admin, only: %i[show edit update destroy]
-
+  
   def index
     @admins = Admin.all
   end
@@ -22,7 +22,7 @@ class AdminsController < ApplicationController
     respond_to do |format|
       if @admin.save
         format.html { redirect_to @admin, notice: 'Admin was succesfully created' }
-        format.json { render :show, status: :created, location: @admin }
+        format.json { render :@admin.show, status: :created, location: @admin }
       else
         format.html { render :new }
         format.json { render json: @admin.errors, status: :unprocessable_entity }
@@ -58,6 +58,6 @@ class AdminsController < ApplicationController
   end
 
   def admin_params
-    params.fetch(:admin, {}).permit(:first_name, :last_name, :email)
+    params.fetch(:admin, {}).permit(:first_name, :last_name, :email, :admin_role)
   end
 end
