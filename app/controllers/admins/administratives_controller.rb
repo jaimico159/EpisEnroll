@@ -1,6 +1,6 @@
 class Admins::AdministrativesController < ApplicationController
   #before_action :authenticate_admin!
-  before_action :set_administratives, only: %i[show edit update destroy]
+  before_action :set_administrative, only: %i[show edit update destroy]
 
   def index
     @administratives = Admin.where(admin_role: "administrative")
@@ -22,10 +22,10 @@ class Admins::AdministrativesController < ApplicationController
 
     respond_to do |format|
       if @administrative.save
-        format.html { redirect_to [:admins, @administrative], notice: 'Administrative was succesfully created' }
-        format.json { render :show, status: :created, location: [:admins, @administrative] }
+        format.html { redirect_to admins_administrative_path(@administrative), notice: 'Administrative was succesfully created' }
+        format.json { render :show, status: :created, location: admins_administrative_path(@administrative) }
       else
-        format.html { render [:admins, :new] }
+        format.html { render admins_administrative_path }
         format.json { render json: @administrative.errors, status: :unprocessable_entity }
       end
     end
@@ -34,10 +34,10 @@ class Admins::AdministrativesController < ApplicationController
   def update
     respond_to do |format|
       if @administrative.update(administrative_params)
-        format.html { redirect_to [:admins, @administrative ], notice: 'Administrative was successfully updated.' }
-        format.json { render [:admins, :show], status: :ok, location: [:admins, @administrative] }
+        format.html { redirect_to admins_administrative_path(@administrative), notice: 'Administrative was successfully updated.' }
+        format.json { render admins_administrative_path, status: :ok, location: admins_administrative_path(@administrative) }
       else
-        format.html { render [:admins, :edit]}
+        format.html { render edit_admins_administrative_path(@administrative)}
         format.json { render json: @administrative.errors, status: :unprocessable_entity }
       end
     end
@@ -46,7 +46,7 @@ class Admins::AdministrativesController < ApplicationController
   def destroy
     @administrative.destroy
     respond_to do |format|
-      format.html { redirect_to admins_administrative_path, notice: 'Administrative was successfully destroyed.' }
+      format.html { redirect_to admins_administrative_path(@administrative), notice: 'Administrative was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -54,7 +54,7 @@ class Admins::AdministrativesController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_administratives
+  def set_administrative
     @administrative = Admin.where(id: params[:id], admin_role: "administrative").first
   end
 

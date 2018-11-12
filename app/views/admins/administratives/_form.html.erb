@@ -1,9 +1,11 @@
-<%= form_with(model: [:admins, admin], local: true) do |form| %>
-	<% if admin.errors.any? %>
+<%= form_with(model: [:admins, administrative],
+			url: administrative.new_record? ? admins_administratives_path : admins_administrative_path,
+			local: true) do |form| %>
+	<% if administrative.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(admin.errors.count, "error") %> contacts error:</h2>
+      <h2><%= pluralize(administrative.errors.count, "error") %> contacts error:</h2>
       <ul>
-      <% admin.errors.full_messages.each do |message| %>
+      <% administrative.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
