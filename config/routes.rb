@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   
   namespace :admins do
     resources :admins
+    resources :administratives
   end
+  
   get 'students/home', to: 'students#home'
 
   # Importante para usar las rutas de rails debes crear los siguiente: resources :'tumodelo'

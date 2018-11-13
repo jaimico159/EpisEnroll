@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Role</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% admins.each do |admin| %>
+      <tr>
+        <td><%= admin.full_name %></td>
+        <td><%= admin.status %></td>
+        <td><%= admin.admin_role %></td>
+        <td>Show  Edit  Delete</td>
+      </tr>    
+    <% end %>
+  </tbody>
+</table>
