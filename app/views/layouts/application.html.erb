@@ -10,22 +10,18 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
-    <div>
-     <% if current_student %>
-
-    Signed in as <strong><%= current_student.first_name %></strong>!
-    <%= link_to "Sign out", destroy_student_session_path, method: :delete, class: 'logout' %>
+    <% if current_student %>
+      <%= render('layouts/student_nav') %>
+    <% elsif current_teacher %>
+      <%= render('layouts/teacher_nav') %>
+    <% elsif current_admin %>
+      <%= render('layouts/admin_nav') %>
     <% else %>
-    <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
+      <%= render('layouts/general_nav') %>   
     <% end %>
 
-    <div>
-      <% current_student %>
-    </div>
-  </div>
-    <%= yield %>
+    <%= yield %> 
+
   </body>
 </html>
