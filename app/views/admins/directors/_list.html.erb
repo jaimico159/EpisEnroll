@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% directors.each do |director| %>
+      <tr>
+        <td><%= director.full_name %></td>
+        <td><%= director.status %></td>
+        <td>Show  Edit  Delete</td>
+      </tr>    
+    <% end %>
+  </tbody>
+</table>

@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-	before_action :authenticate_admin!
+	#before_action :authenticate_admin!
   before_action :set_admin, only: %i[show edit update destroy]
   
   def index
@@ -60,4 +60,6 @@ class AdminsController < ApplicationController
   def admin_params
     params.fetch(:admin, {}).permit(:first_name, :last_name, :email, :admin_role)
   end
+  
+
 end

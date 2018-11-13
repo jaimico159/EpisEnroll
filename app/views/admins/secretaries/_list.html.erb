@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% secretaries.each do |secretary| %>
+      <tr>
+        <td><%= secretary.full_name %></td>
+        <td><%= secretary.status %></td>
+        <td>Show  Edit  Delete</td>
+      </tr>    
+    <% end %>
+  </tbody>
+</table>
