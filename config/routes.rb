@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   devise_for :students
     
   get 'students/home', to: 'students#home'
-
+  get 'students/validate', to: 'students#validate_pdf'
+  
   # Importante para usar las rutas de rails debes crear los siguiente: resources :'tumodelo'
   resources :admins
   resources :students

@@ -1,9 +1,16 @@
 class StudentsController < ApplicationController
-  before_action :authenticate_student!
+  # before_action :authenticate_student!
   before_action :set_user, only: %i[show edit update destroy]
 
   def home
     @student = current_student
+  end
+
+  def validate_pdf
+    print "validando studiante!!"
+    @student = current_student
+    require 'pdf-reader'
+    @constancia = PDF::Reader.new("constancia.pdf")
   end
 
   def index
