@@ -1,11 +1,19 @@
 <h1>Students#index</h1>
 <p>Find me in app/views/students/index.html.erb</p>
 
+<%@constancia.pages.each do |page|
+	cui = /C.U.I./.match(page.text)
+	nombre = /NOMBRE/.match(page.text)
+	if not cui.nil?%><h3>CUI VALIDADO</h3><%end
+	if not nombre.nil?%><h3>NOMBRE VALIDADO</h3><%end
+	aux = page.text =~ /Observaciones/
 
+	# %><%=aux%><%
+	%><%=page.text[aux+20, 5]%><%
+	# for i in page.text
 
-<%i = 0%>
-<%=puts @constancia.objects.inspect%>
-<%@constancia.pages.each do |page|%>
-	<%=i+=1%>
-	<%=page.text%>
-<%end%>
+	# end
+	%><%=page.text%><%
+
+end%>
+

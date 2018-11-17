@@ -10,7 +10,7 @@ class StudentsController < ApplicationController
     print "validando studiante!!"
     @student = current_student
     require 'pdf-reader'
-    @constancia = PDF::Reader.new("constancia.pdf")
+    @constancia = PDF::Reader.new("../constancia.pdf")
   end
 
   def index
