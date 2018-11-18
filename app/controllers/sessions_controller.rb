@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
-
+  include Accessible
+  skip_before_action :check_user, only: :destroy
+  
   def google_oauth2
     
     info = request.env['omniauth.auth'].info
@@ -32,7 +34,16 @@ class SessionsController < ApplicationController
         redirect_to teachers_home_path
       elsif user.is_a?(Admin)
         sign_in user, event: :authentication
-        redirect_to admins_home_path
+        case user.admin_role
+        when "admin"
+          redirect_to admins_admins_home_path
+        when "director"
+          redirect_to admins_directors_home_path
+        when "secretary"
+          redirect_to admins_secretaries_home_path
+        when "administrative"
+         redirect_to admins_administratives_home_path
+        end
       end
     else
       session['devise.google_data'] = request.env['omniauth.auth'].except(:extra) # Removing extra as it can overflow some session stores
