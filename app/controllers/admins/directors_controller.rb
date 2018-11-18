@@ -2,6 +2,10 @@ class Admins::DirectorsController < ApplicationController
   #before_action :authenticate_admin!
   before_action :set_admin, only: %i[show edit update destroy]
 
+  def home
+    @director = current_admin
+  end
+
   def index
     @directors = Admin.where(admin_role: :director)
   end
