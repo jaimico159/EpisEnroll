@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
-
+  include Accessible
+  skip_before_action :check_user, only: :destroy
+  
   def google_oauth2
     
     info = request.env['omniauth.auth'].info
