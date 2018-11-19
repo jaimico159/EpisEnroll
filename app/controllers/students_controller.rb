@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :authenticate_student!
+  #before_action :authenticate_student!
   before_action :set_user, only: %i[show edit update destroy]
 
   def home
