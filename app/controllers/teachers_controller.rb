@@ -1,5 +1,5 @@
 class TeachersController < ApplicationController
-  before_action :authenticate_teacher!
+  #before_action :authenticate_teacher!
   before_action :set_user, only: %i[show edit update destroy]
 
   def home

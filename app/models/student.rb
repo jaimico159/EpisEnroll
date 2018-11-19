@@ -17,7 +17,7 @@ class Student < ApplicationRecord
   validates :cui, uniqueness: {message: "ya existe"}, length: {is: 8, message: "debe tener 8 digitos"}
   validates :first_name, presence: {message: "necesario"}
   validates :last_name, presence: {message: "necesario"}
-  validates :email, uniqueness: {message: "ya existe"}, presence: {message: "necesario"}
+  validates :email, presence: {message: "necesario"}, uniqueness: {message: "ya existe"}
 
   def full_name
     "#{first_name} #{last_name}"
