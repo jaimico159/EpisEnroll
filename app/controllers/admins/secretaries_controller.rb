@@ -29,7 +29,7 @@ class Admins::SecretariesController < ApplicationController
         format.html { redirect_to admins_secretaries_path(@secretary), notice: 'secretary was succesfully created' }
         format.json { render :show, status: :created, location: admins_secretaries_path(@secretary) }
       else
-        format.html { render admins_secretaries_path }
+        format.html { render :new }
         format.json { render json: @secretary.errors, status: :unprocessable_entity }
       end
     end

@@ -29,7 +29,7 @@ class Admins::AdministrativesController < ApplicationController
         format.html { redirect_to admins_administrative_path(@administrative), notice: 'Administrative was succesfully created' }
         format.json { render :show, status: :created, location: admins_administrative_path(@administrative) }
       else
-        format.html { render admins_administrative_path }
+        format.html { render :new }
         format.json { render json: @administrative.errors, status: :unprocessable_entity }
       end
     end
