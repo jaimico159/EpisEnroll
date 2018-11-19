@@ -1,36 +1,23 @@
-<%= form_with(model: student, local: true) do |form| %>
-	<% if student.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(student.errors.count, "error") %> contacts error:</h2>
-      <ul>
-      <% student.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="dropdown-divider"></div>
 
-  <div class="actions">
-    <div class="field">
-			<%= form.label :cui %>
-			<%= form.text_field :cui %>
-		</div>
-		<div class="field">
-			<%= form.label :first_name %>
-			<%= form.text_field :first_name %>
-		</div>
-		<div class="field">
-			<%= form.label :last_name %>
-			<%= form.text_field :last_name %>
-  	</div>
-		<div class="field">
-			<%= form.label :email %>
-			<%= form.text_field :email %>
-		</div>
-    <div>
-      <%= form.label :tercio %>
-			<%= form.collection_select(:clasification_id, Clasification.all, :id, :name) %>
-    </div>
-    <%= form.submit :class => 'btn btn-primary' %>
-  </div>
-<% end %>
+<div class="container-fluid">
+		<%= bootstrap_form_for(@student, model: student, local: true, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |form| %>
+			<% if student.errors.any? %>
+    		<div id="error_explanation">
+      		<h2><%= pluralize(student.errors.count, "error") %> contacts error:</h2>
+      		<ul>
+      			<% student.errors.full_messages.each do |message| %>
+        			<li><%= message %></li>
+      			<% end %>
+      		</ul>
+    		</div>
+  		<% end %>
+			
+			<%= form.text_field :cui, label: "CUI:" %>
+			<%= form.text_field :first_name, label: "First Name:" %>
+			<%= form.text_field :last_name, label: "Last Name:" %>
+			<%= form.text_field :email, label: "Email:" %>
+			<%= form.collection_select :clasification_id, Clasification.all, :id, :name, label: "Tercio:" %>
+			<%= form.submit :class => 'btn btn-primary' %>
+    <% end %>
+</div>

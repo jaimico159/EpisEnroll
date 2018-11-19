@@ -1,4 +1,9 @@
-<table class="table">
+<div class="dropdown-divider"></div>
+
+<div class="container-fluid">
+  <%= link_to 'New Student', new_student_path, {:class => "btn btn-dark"} %>
+  <br>
+  <table class="table table-bordered table-hover table-striped table-sm">
   <thead>
     <tr>
       <th scope="col">CUI</th>
@@ -13,8 +18,18 @@
         <th scope="row"><%= student.cui %></th>
         <td><%= student.full_name %></td>
         <td><%= student.clasification.value %></td>
-        <td>Show  Edit  Delete</td>
+        <td>
+            <div class="dropdown">
+                <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">Acciones</button>
+                <div class="dropdown-menu">
+                    <%= link_to "Mostrar", student, :class => "dropdown-item" %>
+                    <%= link_to "Editar", edit_student_path(student), :class => "dropdown-item" %>
+                    <%= link_to "Eliminar", student, method: :delete, data: { confirm: "¿Deseas eliminar al alumno?" }, :class => "dropdown-item" %>
+                </div>
+            </div>
+        </td>
       </tr>    
     <% end %>
   </tbody>
-</table>
+  </table>
+</div>

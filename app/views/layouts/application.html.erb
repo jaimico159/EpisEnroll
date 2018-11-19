@@ -10,7 +10,10 @@
   </head>
 
   <body>
-
+    <nav class="navbar navbar-dark bg-dark justify-content-between">
+      <a class="navbar-brand" href="#">Matrículas para Laboratorio</a>
+    </nav>
+    
     <% if current_student %>
       <%= render('layouts/student_nav') %>
     <% elsif current_teacher %>
