@@ -1,5 +1,7 @@
-<h1>Teachers#new</h1>
-<p>Find me in app/views/teachers/new.html.erb</p>
+<h1>Teachers</h1>
+<p>New Teacher</p>
 
 
 <%= render('form', teacher: @teacher)%>
+
+<%= link_to 'Back', teacher_path, :class => 'btn btn-primary' %>

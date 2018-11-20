@@ -1,5 +1,8 @@
-<h1>Teachers#edit</h1>
-<p>Find me in app/views/teachers/edit.html.erb</p>
+<h1>Teachers</h1>
+<p>Edit Student</p>
 
 
 <%= render('form', teacher: @teacher) %>
+
+<%= link_to 'Show', @teacher, :class => "btn btn-secondary" %> |
+<%= link_to 'Back', teachers_path, :class => "btn btn-secondary" %>
