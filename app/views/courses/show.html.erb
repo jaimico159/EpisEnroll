@@ -1,10 +1,35 @@
-<h1>Courses#show</h1>
-<p>Find me in app/views/courses/show.html.erb</p>
- <h2><%= @course.name %><h2>
- <ul>
-  <li><strong>Code: </strong><%= @course.code %></li>
-  <li><strong>Name: </strong><%= @course.name %></li>
-  <li><strong>Laboratory: </strong><%= @course.has_laboratory %></li>
-  <li><strong>Status: </strong><%= @course.status %></li>
-  <li><strong>Description: </strong><%= @course.description %></li>
-</ul> 
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+  <h3>Showing Course</h3>
+</div>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10" ><h4 class="text-info" ><%= @course.name %><h4></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2" > <strong>Code:</strong> </div>
+    <div class="col-sm-10"> <%= @course.code %> </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2" > <strong>Name:</strong> </div>
+    <div class="col-sm-10"> <%= @course.name %> </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2" > <strong>Laboratory:</strong> </div>
+    <div class="col-sm-10"> <%= @course.has_laboratory %> </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2" > <strong>Status:</strong> </div>
+    <div class="col-sm-10"> <%= @course.status %> </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2" > <strong>Description:</strong> </div>
+    <div class="col-sm-10"> <%= @course.description %> </div>
+  </div>
+</div>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+  <%= link_to 'Back', courses_path, :class => "btn btn-info" %>
+  <%= link_to 'Editar', edit_course_path(@course), :class => "btn btn-secondary" %>
+</div>

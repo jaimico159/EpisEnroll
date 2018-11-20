@@ -1,20 +1,31 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Code</th>
-      <th scope="col">Name</th>
-      <th scope="col">Laboratory</th>
-      <th scope="col">Options</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% courses.each do |course| %>
+<div class="container-fluid">
+  <table class="table table-bordered table-hover table-striped table-sm">
+    <thead class="thead-dark">
       <tr>
-        <th scope="row"><%= course.code %></th>
-        <td><%= course.name %></td>
-        <td><%= course.has_laboratory %></td>
-        <td>Show  Edit  Delete</td>
-      </tr>    
-    <% end %>
-  </tbody>
-</table> 
+        <th scope="col">code</th>
+        <th scope="col">name</th>
+        <th scope="col">laboratory</th>
+        <th scope="col">options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% courses.each do |course| %>
+        <tr>
+          <th scope="row"><%= course.code %></th>
+          <td><%= course.name %></td>
+          <td><%= course.has_laboratory %></td>
+          <td>
+            <div class="dropdown">
+              <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">actions</button>
+              <div class="dropdown-menu">
+                <%= link_to "Show", course, :class => "dropdown-item" %>
+                <%= link_to "Edit", edit_course_path(course), :class => "dropdown-item" %>
+                <%= link_to "Delete", course, method: :delete, data: { confirm: "Do you want to delete this course?" }, :class => "dropdown-item" %>
+              </div>
+            </div>
+          </td>
+        </tr>    
+      <% end %>
+    </tbody>
+  </table>
+</div>
