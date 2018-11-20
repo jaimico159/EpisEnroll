@@ -58,7 +58,7 @@ class AdminsController < ApplicationController
   end
 
   def admin_params
-    params.fetch(:admin, {}).permit(:first_name, :last_name, :email, :admin_role)
+    params.fetch(:admin, {}).permit(:first_name, :last_name, :email, :admin_role, :description)
   end
   
 

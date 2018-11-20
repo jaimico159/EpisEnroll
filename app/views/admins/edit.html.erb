@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="dropdown-divider"></div>
 <div class="container-fluid">
     <h3>Edit Admins</h3>
@@ -8,3 +9,15 @@
 <div class="container-fluid">
     <%= link_to 'Back', admins_path, :class => "btn btn-info" %>
 </div>
+=======
+<br>
+<div class="row">
+  <div class="col-lg-11">
+    <h1>Admins</h1>
+  </div>
+  <div class="col-lg-1">
+    <%= link_to 'Back', admins_path, {:class => "btn btn-dark"} %>
+  </div>
+</div>
+<%= render('form', admin: @admin) %>
+>>>>>>> 9a40603ab987cebbd4106d96f24305e837a6eb33
