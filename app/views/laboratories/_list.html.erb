@@ -1,24 +1,35 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">quota</th>
-      <th scope="col">description</th>
-      <th scope="col">course</th>
-      <th scope="col">group</th>
-      <th scope="col">teacher</th>
-      <th scope="col">options</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% laboratories.each do |laboratory| %>
+<div class="container-fluid">
+  <table class="table table-bordered table-hover table-striped table-sm">
+    <thead class="thead-dark">
       <tr>
-        <td><%= laboratory.quota %></td>
-        <td><%= laboratory.description %></td>
-        <td><%= laboratory.course.name %></td>
-        <td><%= laboratory.group.name %></td>
-        <td><%= laboratory.teacher.full_name %></td>
-        <td>Show  Edit  Delete</td>
-      </tr>    
-    <% end %>
-  </tbody>
-</table>
+        <th scope="col">quota</th>
+        <th scope="col">description</th>
+        <th scope="col">course</th>
+        <th scope="col">group</th>
+        <th scope="col">teacher</th>
+        <th scope="col">options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% laboratories.each do |laboratory| %>
+        <tr>
+          <td><%= laboratory.quota %></td>
+          <td><%= laboratory.description %></td>
+          <td><%= laboratory.course.name %></td>
+          <td><%= laboratory.group.name %></td>
+          <td><%= laboratory.teacher.full_name %></td>
+          <td>
+            <div class="dropdown">
+              <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">actions</button>
+              <div class="dropdown-menu">
+                <%= link_to "Show", laboratory, :class => "dropdown-item" %>
+                <%= link_to "Edit", edit_laboratory_path(laboratory), :class => "dropdown-item" %>
+                <%= link_to "Delete", laboratory, method: :delete, data: { confirm: "Do you want to delete this laboratory?" }, :class => "dropdown-item" %>
+              </div>
+            </div>
+          </td>
+        </tr>    
+      <% end %>
+    </tbody>
+  </table>
+</div>
