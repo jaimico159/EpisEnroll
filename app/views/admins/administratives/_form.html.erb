@@ -11,21 +11,56 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="actions">
-		<div class="field">
-			<%= form.label :first_name %>
-			<%= form.text_field :first_name %>
-		</div>
-		<div class="field">
-			<%= form.label :last_name %>
-			<%= form.text_field :last_name %>
-  	</div>
-		<div class="field">
-			<%= form.label :email %>
-			<%= form.text_field :email %>
-		</div>
+<div class="row">
 		
-    <%= form.submit :class => 'btn btn-primary' %>
-  </div>
+	<div class="col-lg-2">
+		<h5><%= form.label :first_name %></h5>
+	</div>
+	<div class="col-lg-10">
+		<%= form.text_field :first_name %>
+	</div>
+</div>
+<div class="row">
+
+	<div class="col-lg-2">
+		<h5><%= form.label :last_name %></h5>
+	</div>
+	<div class="col-lg-10">
+		<%= form.text_field :last_name %>
+	</div>
+</div>
+
+<div class="row">
+	
+	<div class="col-lg-2">
+		<h5><%= form.label :role %></h5>
+	</div>
+	<div class="col-lg-10">
+		<div class="custom-control custom-radio">
+			<input type="radio" class="custom-control-input" id="Administrative" name="defaultExampleRadios" disabled>
+			<label class="custom-control-label" for="Administrative">Administrative</label>
+		</div>
+	</div>
+</div>
+<div class="row">
+
+	<div class="col-lg-2">
+		<h5><%= form.label :description %></h5>
+	</div>
+	<div class="col-lg-10">
+		<%= form.text_field :description %>
+	</div>
+</div>
+<div class="row">
+
+	<div class="col-lg-2">
+		<h5><%= form.label :email %></h5>
+	</div>
+	<div class="col-lg-10">
+		<%= form.text_field :email %>
+	</div>
+</div>
+
+<%= form.submit :class => 'btn btn-primary' %>
+
 <% end %>
