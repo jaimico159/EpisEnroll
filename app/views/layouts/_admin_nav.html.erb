@@ -1,13 +1,18 @@
-<ul class="nav">
-  <li class="nav-item">
-    <%= link_to 'HOME', root_path, class: "nav-link" %>
-  </li>
-  <li class="nav-item">
+<li class="nav-item">
     <%= link_to 'MY INFO',   students_home_path, class: "nav-link" %>
   </li>
-
-  <li class="nav-item dropdown">
+<% case current_admin.admin_role%>
+<% when "admin" %>
+   <li class="nav-item dropdown">
     <%= link_to "ADMINS", '#',
+      class: "nav-link dropdown-toggle",
+@@ -95,230 +94,9 @@
+  <li class="nav-item">
+    <%= link_to 'FINISH SEMESTER', '/', class: "nav-link" %>
+  </li>
+<% when "director" %>
+  <li class="nav-item dropdown">
+    <%= link_to "SECRETARIES", '#',
       class: "nav-link dropdown-toggle",
       'data-toggle' => "dropdown",
       role: "button",
@@ -22,7 +27,168 @@
       <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
     </div>
   </li>
-  
+   <li class="nav-item dropdown">
+    <%= link_to "ADMINISTRATIVES", '#',
+      class: "nav-link dropdown-toggle",
+      'data-toggle' => "dropdown",
+      role: "button",
+      'aria-haspopup' => "true",
+      'aria-expanded' => "false" 
+    %>
+    <div class="dropdown-menu">
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <%= link_to "ADD", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <div class="dropdown-divider"></div>
+      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+    </div>
+  </li>
+   <li class="nav-item dropdown">
+    <%= link_to "TEACHERS", '#',
+      class: "nav-link dropdown-toggle",
+      'data-toggle' => "dropdown",
+      role: "button",
+      'aria-haspopup' => "true",
+      'aria-expanded' => "false" 
+    %>
+    <div class="dropdown-menu">
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <%= link_to "ADD", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <div class="dropdown-divider"></div>
+      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+    </div>
+  </li>
+   <li class="nav-item dropdown">
+    <%= link_to "STUDENTS", '#',
+      class: "nav-link dropdown-toggle",
+      'data-toggle' => "dropdown",
+      role: "button",
+      'aria-haspopup' => "true",
+      'aria-expanded' => "false" 
+    %>
+    <div class="dropdown-menu">
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <%= link_to "ADD", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <div class="dropdown-divider"></div>
+      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+    </div>
+  </li>
+   <li class="nav-item dropdown">
+    <%= link_to "COURSES", '#',
+      class: "nav-link dropdown-toggle",
+      'data-toggle' => "dropdown",
+      role: "button",
+      'aria-haspopup' => "true",
+      'aria-expanded' => "false" 
+    %>
+    <div class="dropdown-menu">
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <%= link_to "ADD", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <div class="dropdown-divider"></div>
+      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+    </div>
+  </li>
+   <li class="nav-item dropdown">
+    <%= link_to "LABORATORIES", '#',
+      class: "nav-link dropdown-toggle",
+      'data-toggle' => "dropdown",
+      role: "button",
+      'aria-haspopup' => "true",
+      'aria-expanded' => "false" 
+    %>
+    <div class="dropdown-menu">
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <%= link_to "ADD", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <div class="dropdown-divider"></div>
+      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+    </div>
+  </li>
+ <% when "secretary" %>
+  <li class="nav-item dropdown">
+    <%= link_to "ADMINISTRATIVES", '#',
+      class: "nav-link dropdown-toggle",
+      'data-toggle' => "dropdown",
+      role: "button",
+      'aria-haspopup' => "true",
+      'aria-expanded' => "false" 
+    %>
+    <div class="dropdown-menu">
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <%= link_to "ADD", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <div class="dropdown-divider"></div>
+      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+    </div>
+  </li>
+   <li class="nav-item dropdown">
+    <%= link_to "TEACHERS", '#',
+      class: "nav-link dropdown-toggle",
+      'data-toggle' => "dropdown",
+      role: "button",
+      'aria-haspopup' => "true",
+      'aria-expanded' => "false" 
+    %>
+    <div class="dropdown-menu">
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <%= link_to "ADD", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <div class="dropdown-divider"></div>
+      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+    </div>
+  </li>
+   <li class="nav-item dropdown">
+    <%= link_to "STUDENTS", '#',
+      class: "nav-link dropdown-toggle",
+      'data-toggle' => "dropdown",
+      role: "button",
+      'aria-haspopup' => "true",
+      'aria-expanded' => "false" 
+    %>
+    <div class="dropdown-menu">
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <%= link_to "ADD", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <div class="dropdown-divider"></div>
+      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+    </div>
+  </li>
+   <li class="nav-item dropdown">
+    <%= link_to "COURSES", '#',
+      class: "nav-link dropdown-toggle",
+      'data-toggle' => "dropdown",
+      role: "button",
+      'aria-haspopup' => "true",
+      'aria-expanded' => "false" 
+    %>
+    <div class="dropdown-menu">
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <%= link_to "ADD", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <div class="dropdown-divider"></div>
+      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+    </div>
+  </li>
+   <li class="nav-item dropdown">
+    <%= link_to "LABORATORIES", '#',
+      class: "nav-link dropdown-toggle",
+      'data-toggle' => "dropdown",
+      role: "button",
+      'aria-haspopup' => "true",
+      'aria-expanded' => "false" 
+    %>
+    <div class="dropdown-menu">
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <%= link_to "ADD", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", "/", class: "dropdown-item" %>
+      <div class="dropdown-divider"></div>
+      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+    </div>
+  </li>
+<% when "administrative" %>
   <li class="nav-item dropdown">
     <%= link_to "STUDENTS", '#',
       class: "nav-link dropdown-toggle",
@@ -39,42 +205,8 @@
       <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
     </div>
   </li>
-
-  <li class="nav-item dropdown">
-    <%= link_to "TEACHERS", '#',
-      class: "nav-link dropdown-toggle",
-      'data-toggle' => "dropdown",
-      role: "button",
-      'aria-haspopup' => "true",
-      'aria-expanded' => "false" 
-    %>
-    <div class="dropdown-menu">
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <%= link_to "ADD", "/", class: "dropdown-item" %>
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <div class="dropdown-divider"></div>
-      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
-    </div>
-  </li>
-
-  <li class="nav-item dropdown">
-    <%= link_to "COURSES", '#',
-      class: "nav-link dropdown-toggle",
-      'data-toggle' => "dropdown",
-      role: "button",
-      'aria-haspopup' => "true",
-      'aria-expanded' => "false" 
-    %>
-    <div class="dropdown-menu">
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <%= link_to "ADD", "/", class: "dropdown-item" %>
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <div class="dropdown-divider"></div>
-      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
-    </div>
-  </li>
-
-  <li class="nav-item dropdown">
+ 
+   <li class="nav-item dropdown">
     <%= link_to "LABORATORIES", '#',
       class: "nav-link dropdown-toggle",
       'data-toggle' => "dropdown",
@@ -90,17 +222,7 @@
       <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
     </div>
   </li>
-
-  <li class="nav-item">
-    <%= link_to 'FINISH SEMESTER', '/', class: "nav-link" %>
-  </li>
- 
-
-
+ <% end %>
   <li>
     <%= link_to "SIGN OUT", destroy_student_session_path, method: :delete, class: 'nav-link' %>
   </li>
-</ul>
-
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
