@@ -1,5 +1,17 @@
-<h1>Students#index</h1>
-<p>Find me in app/views/students/index.html.erb</p>
+<h1>Validating PDF</h1>
+<% unless @student.certificate_uploaded %>
+  <%= form_with url: students_validate_path do |form|%>
+    <%= form.label :Constancia%>
+    <%= form.file_field :pdf %>
+    <br>
+    <%= form.label :dni %>
+    <%= form.number_field :dni, min: "0000000", max: "99999999"%>
+
+    <%= form.submit 'VALIDAR', :class => 'btn btn-primary' %>
+  <% end %>
+<% else %>
+  <h2>No deberias entrar aquí, tu certificado es válido<h2>
+<% end %>
 
 <%
 if @student.certificate_uploaded = false 
