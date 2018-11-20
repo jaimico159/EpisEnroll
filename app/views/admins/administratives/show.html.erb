@@ -1,11 +1,34 @@
-<h1>Admin tipo Administrative#show</h1>
-<p>Find me in app/views/admins/administratives/new.html.erb</p>
 
-<h2><%= @administrative.full_name %><h2>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+  <h3>Showing Administrative</h3>
+</div>
 
-<ul>
-  <li><strong>First Name: </strong><%= @administrative.first_name %></li>
-  <li><strong>Last Name: </strong><%= @administrative.last_name %></li>
-  <li><strong>Status: </strong><%= @administrative.status %></li>
-  <li><strong>Role: </strong><%= @administrative.admin_role %></li>
-</ul>
+<div class="dropdown-divider"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-10" ><h4 class="text-info" ><%= @administratives.first_name %><h4></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2" > <strong>First Name: </strong> </div>
+        <div class="col-sm-10"> <%= @administrative.first_name %></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2" > <strong>Last Name: </strong> </div>
+        <div class="col-sm-10"> <%= @administrative.last_name %></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2" > <strong>Status: </strong> </div>
+        <div class="col-sm-10"> <%= @administrative.status %></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2" > <strong>Description: </strong> </div>
+        <div class="col-sm-10"> <%= @administrative.admin_role %></div>
+    </div>
+</div>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+<%= link_to 'Edit', edit_administrative_path(@administrative), :class => "btn btn-secondary" %> |
+<%= link_to 'Back', administratives_path, :class => "btn btn-info" %>
+</div>
