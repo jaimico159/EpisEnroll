@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_admin!
+  # before_action :authenticate_admin!
   before_action :set_course, only: %i[show edit update destroy]
 
   def index
@@ -39,7 +39,7 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to course_url, notice: 'Course was successfully destroyed.' }
+      format.html { redirect_to courses_url, notice: 'Course was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -48,7 +48,7 @@ class CoursesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_course
-    @course = course.find(params[:id])
+    @course = Course.find(params[:id])
   end
 
   def course_params

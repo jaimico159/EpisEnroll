@@ -1,4 +1,12 @@
-<h1>Admins::Secretaries#new</h1>
-<p>Find me in app/views/admins/secretaries/new.html.erb</p>
-
+<br>
+<div class="row">
+  <div class="col-lg-11">
+    <h1>Secretary</h1>
+  </div>
+  <div class="col-lg-1">
+    <%= link_to 'Back', admins_secretaries_path, {:class => "btn btn-dark"} %>
+  </div>
+</div>
+<div class="dropdown-divider"></div>
+<h3>Registration of a new secretary</h3>
 <%= render('form', secretary: @secretary)%>
