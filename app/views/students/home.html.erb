@@ -1,6 +1,7 @@
 <html>
 
 	<div class="card">
+		<div class="card-header">COMUNICADOS</div>
 		<ul class="list-group">
 		  <li class="list-group-item">Perteneces al SEGUNDO TERCIO, no puedes matricularte aun.</li>
 		  <li class="list-group-item">Aun no has subido tu constancia de matricula.</li>
@@ -8,7 +9,33 @@
 		  <li class="list-group-item">Mensaje 4.</li>
 		</ul>
 	</div>
-	
+	<br/>
+	<div class="card">
+		<div class="card-header">CRONOGRAMA DE MATRICULAS</div>
+		<table>
+			<thead> 
+				<tr>
+					<th>GRUPO</th>
+					<th>A PARTIR DE:</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Grupo 1</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Grupo 2</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Grupo 3</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
 	<input type="submit" id="cargar-constancia" class="btn btn-primary" value="Cargar constancia de Matricula" >
 	<h1>Bienvenido(a), <%= @student.full_name %></h1>
 	<p>CUI: <%= @student.cui %></p>
