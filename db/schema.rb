@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_06_150113) do
+ActiveRecord::Schema.define(version: 2018_11_22_231528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2018_11_06_150113) do
     t.bigint "group_id", null: false
     t.bigint "teacher_id"
     t.integer "status", limit: 2, default: 1
+    t.integer "current_students", limit: 2, default: 0
     t.index ["course_id"], name: "index_laboratories_on_course_id"
     t.index ["group_id"], name: "index_laboratories_on_group_id"
     t.index ["teacher_id"], name: "index_laboratories_on_teacher_id"
