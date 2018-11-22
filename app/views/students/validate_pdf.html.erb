@@ -12,38 +12,3 @@
 <% else %>
   <h2>No deberias entrar aquí, tu certificado es válido<h2>
 <% end %>
-
-<%
-if @student.certificate_uploaded = false 
-	@constancia.pages.each do |page|
-		student_cui = @student.cui
-		student_first_name =  @student.first_name.upcase
-		student_last_name = @student.last_name.upcase
-		cui = /#{student_cui}/.match(page.text)
-		names = /#{student_last_name}, #{student_first_name}/.match(page.text)
-		if not cui.nil? and  not names.nil?
-			%><h3>DATOS VALIDOS</h3><%
-			courses = []
-			limMin = page.text =~ /Observaciones/
-			limMax = page.text =~ /Total de Creditos/
-			i = limMin
-			page.text[limMin..limMax].each_char do |caracter|
-				if caracter == "\n" and page.text[i+6] != " "
-					courses << page.text[i+6, 5].to_i
-				end
-				i+=1
-			end
-			@student.course_codes = courses
-			@student.certificate_uploaded = true
-
-			%><h4>CUI: <%=cui%></h4><%
-			%><h4>NOMBRE: <%=names%></h4><%
-			%><h4>CURSOS: <%=courses%></h4><%
-		else
-			%><h3>DATOS NO VALIDOS</h3><%
-		end
-	end
-else
-	%><h4>YA VALIDO SU CONSTANCIA</h4><%
-end
-%>
