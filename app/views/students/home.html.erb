@@ -1,5 +1,7 @@
 <html>
-
+	<input type="submit" id="cargar-constancia" class="btn btn-primary" value="Cargar constancia de Matricula" >
+	<h1>Bienvenido(a), <%= @student.full_name %></h1>
+		
 	<div class="card">
 		<div class="card-header">COMUNICADOS</div>
 		<ul class="list-group">
@@ -10,7 +12,7 @@
 		</ul>
 	</div>
 	<br/>
-	<div class="card">
+	<div class="card text-center" >
 		<div class="card-header">CRONOGRAMA DE MATRICULAS</div>
 		<table>
 			<thead> 
@@ -35,9 +37,8 @@
 			</tbody>
 		</table>
 	</div>
+	<br/>
 
-	<input type="submit" id="cargar-constancia" class="btn btn-primary" value="Cargar constancia de Matricula" >
-	<h1>Bienvenido(a), <%= @student.full_name %></h1>
 	<p>CUI: <%= @student.cui %></p>
 	<p>E-MAIL: <%= @student.email %></p>
 	<input type="submit" id="matricular" class="btn btn-primary" value="Matricular" >
