@@ -23,4 +23,7 @@ class Student < ApplicationRecord
     "#{first_name} #{last_name}"
   end
   
+  def unsa_full_name
+    "#{last_name}, #{first_name}"
+  end
 end
