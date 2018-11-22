@@ -1,5 +1,5 @@
 class LaboratoriesController < ApplicationController
-  #before_action :authenticate_student!
+  before_action :authenticate_student!
   before_action :set_laboratory, only: %i[show edit update destroy]
 
   def index

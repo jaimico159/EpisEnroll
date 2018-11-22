@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   get 'admins/administratives/home', to: 'admins/administratives#home'
   get 'students/home', to: 'students#home'
   get 'teachers/home', to: 'teachers#home'
-
+  
+  get 'students/validate_pdf', to: 'students#validate_pdf'
+  post 'students/validate', to: 'students#validate'
+  
   # Importante para usar las rutas de rails debes crear los siguiente: resources :'tumodelo'
 
   namespace :admins do

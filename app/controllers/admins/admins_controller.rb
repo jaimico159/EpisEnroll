@@ -1,5 +1,5 @@
 class Admins::AdminsController < ApplicationController
-  #before_action :authenticate_admin!
+  before_action :authenticate_admin!
   before_action :set_admin, only: %i[show edit update destroy]
 
   def home
@@ -29,7 +29,7 @@ class Admins::AdminsController < ApplicationController
         format.html { redirect_to [:admins, @admin], notice: 'Admin was succesfully created' }
         format.json { render :show, status: :created, location: [:admins, @admin] }
       else
-        format.html { render [:admins, :new] }
+        format.html { render :new }
         format.json { render json: @admin.errors, status: :unprocessable_entity }
       end
     end
