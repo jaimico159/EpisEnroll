@@ -1,5 +1,5 @@
 class Admins::DirectorsController < ApplicationController
-  #before_action :authenticate_admin!
+  before_action :authenticate_admin!
   before_action :set_admin, only: %i[show edit update destroy]
 
   def home
@@ -29,7 +29,7 @@ class Admins::DirectorsController < ApplicationController
         format.html { redirect_to admins_directors_path(@director), notice: 'director was succesfully created' }
         format.json { render :show, status: :created, location: admins_directors_path(@director) }
       else
-        format.html { render admins_directors_path }
+        format.html { render :new }
         format.json { render json: @director.errors, status: :unprocessable_entity }
       end
     end
