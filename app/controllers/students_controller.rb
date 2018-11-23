@@ -6,6 +6,54 @@ class StudentsController < ApplicationController
     @student = current_student
   end
 
+  def index
+    @students = Student.all
+  end
+
+  def new
+    @student = Student.new
+  end
+
+  def show
+  end
+
+  def edit
+  end
+
+  def create
+    @student = Student.new(student_params)
+
+    respond_to do |format|
+      if @student.save
+        format.html { redirect_to @student, notice: 'Student was succesfully created' }
+        format.json { render :show, status: :created, location: @student }
+      else
+        format.html { render :new }
+        format.json { render json: @student.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @student.update(student_params)
+        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+        format.json { render :show, status: :ok, location: @student }
+      else
+        format.html { render :edit }
+        format.json { render json: @student.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @student.destroy
+    respond_to do |format|
+      format.html { redirect_to student_url, notice: 'Student was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   def validate_pdf
     @student = current_student
   end
@@ -53,52 +101,14 @@ class StudentsController < ApplicationController
     end
   end
 
-  def index
-    @students = Student.all
+  def enrollment
+    @student = current_student
+    @courses = Course.where(code: @student.course_codes).select {|course| course.has_laboratory }
   end
 
-  def new
-    @student = Student.new
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def create
-    @student = Student.new(student_params)
-
-    respond_to do |format|
-      if @student.save
-        format.html { redirect_to @student, notice: 'Student was succesfully created' }
-        format.json { render :show, status: :created, location: @student }
-      else
-        format.html { render :new }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
-        format.json { render :show, status: :ok, location: @student }
-      else
-        format.html { render :edit }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy
-    @student.destroy
-    respond_to do |format|
-      format.html { redirect_to student_url, notice: 'Student was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+  def enroll_student
+    puts "COMENZANDO MATRICULA"
+    
   end
 
   private

@@ -1,0 +1,31 @@
+<%= @student.unsa_full_name %>
+
+
+<% @courses.each do |course| %>
+
+  <h3><%= course.name %></h3>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Code</th>
+      <th scope="col">Name</th>
+      <th scope="col">Group</th>
+      <th scope="col">Enrolled</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+      <%= form_with url: students_enroll_student_path do |form|%>
+      <tr>
+        <%= form.hidden_field :course_id, value: course.id, required: true %>
+        <th scope="row"><%= course.code %></th>
+        <td><%= course.name %></td>
+        <td><%= form.collection_select(:group_id, course.available_laboratories, :first, :second) %></td>
+        <td><%= form.submit 'ENROLL', class: 'btn btn-primary' %></td>
+      </tr>
+      <% end %>    
+    <% end %>
+  </tbody>
+</table>
