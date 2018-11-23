@@ -12,7 +12,7 @@
     </div>
     <div class="row">
         <div class="col-sm-2" > <strong>Last Name: </strong> </div>
-        <div class="col-sm-10" > <%= @student.last_name %> </div>
+        <div class="col-sm-10" > <%= @teacher.last_name %> </div>
     </div>
     <div class="row">
         <div class="col-sm-2" > <strong>Status: </strong> </div>
@@ -25,4 +25,4 @@
 </div>
 
 <%= link_to 'Edit', edit_teacher_path(@teacher), :class => "btn btn-secondary" %> |
-<%= link_to 'Back', teacher_path, :class => "btn btn-secondary" %>
+<%= link_to 'Back', teachers_path, :class => "btn btn-secondary" %>

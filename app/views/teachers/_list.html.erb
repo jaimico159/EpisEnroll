@@ -1,7 +1,7 @@
 <div class="dropdown-divider"></div>
 
 <div class="container-fluid">
-  <%= link_to 'New Student', new_teacher_path, {:class => "btn btn-dark"} %>
+  <%= link_to 'New Teacher', new_teacher_path, {:class => "btn btn-dark"} %>
   <br>
   <table class="table table-bordered table-hover table-striped table-sm">
   <thead>
@@ -18,7 +18,6 @@
         <th scope="row"><%= teacher.full_name %></th>
         <td><%= teacher.email %></td>
         <td><%= teacher.status %></td>
-        <td>Show  Edit  Delete</td>
 	<td>
             <div class="dropdown">
                 <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">Acciones</button>
