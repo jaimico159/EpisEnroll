@@ -2,20 +2,10 @@
 
 
 
-<!--
-<button id="display-bio">Lovely Bio </button>
 
-<div id="bio" style='display:none'>
-    <%= render 'lab'%>
-</div>
-<script>
-$('#display-bio').click(function(){
-    $('#bio').show();
-});
 
-</script>
--->
-<%= render 'lab'%>
+
+
 <table class="table">
   <thead>
     <tr>
@@ -35,8 +25,27 @@ $('#display-bio').click(function(){
         <td><%= laboratory.course.name %></td>
         <td><%= laboratory.group.name %></td>
         <td><%= laboratory.teacher.full_name %></td>
-        <td>Show  Edit  Delete</td>
-      </tr>    
+        <td>Show  Edit  Delete 
+
+        <button id='<%= "btn#{laboratory.course_id}-#{laboratory.group_id}"%>'>Detalles </button>
+
+        
+        <script>
+        $('#<%= "btn#{laboratory.course_id}-#{laboratory.group_id}"%>').click(function(){
+            $('#<%= "#{laboratory.course_id}-#{laboratory.group_id}"%>').show();
+        });
+
+        </script>
+
+        </td>
+      </tr>   
+      <tr >
+      <td colspan="6" id='<%= "#{laboratory.course_id}-#{laboratory.group_id}"%>' style='display:none'>
+      <div >
+      <%= render('lab', laboratory: laboratory) %> 
+    </div>
+      </td>
+      </tr> 
     <% end %>
   </tbody>
 </table>
