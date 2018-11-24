@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'admins/administratives/home', to: 'admins/administratives#home'
   get 'students/home', to: 'students#home'
   get 'teachers/home', to: 'teachers#home'
+  get 'teachers/my_labs', to: 'teachers#my_labs'
   
   get 'students/validate_pdf', to: 'students#validate_pdf'
   post 'students/validate', to: 'students#validate'
