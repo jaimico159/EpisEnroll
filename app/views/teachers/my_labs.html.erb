@@ -1,4 +1,21 @@
 <h1>Tus laboratorios <%= @teacher.first_name%></h1>
+
+
+
+<!--
+<button id="display-bio">Lovely Bio </button>
+
+<div id="bio" style='display:none'>
+    <%= render 'lab'%>
+</div>
+<script>
+$('#display-bio').click(function(){
+    $('#bio').show();
+});
+
+</script>
+-->
+<%= render 'lab'%>
 <table class="table">
   <thead>
     <tr>
