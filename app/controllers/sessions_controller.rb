@@ -8,6 +8,11 @@ class SessionsController < ApplicationController
     credentials = request.env['omniauth.auth'].credentials
     id_info = request.env['omniauth.auth'].extra.id_info
 
+    # puts "<<<<<<<<<<info"
+    # puts info
+    # puts "<<<<<<<<<<credentials"
+    # puts credentials
+
     user = nil
 
     if Admin.where(email: info['email']).first

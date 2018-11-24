@@ -22,9 +22,12 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(student_params)
+    @enrollment_header = EnrollmentHeader.new
+    @enrollment_header.student = @student
+    @enrollment_header.semester = Semester.last
 
     respond_to do |format|
-      if @student.save
+      if @student.save && @enrollment_header.save
         format.html { redirect_to @student, notice: 'Student was succesfully created' }
         format.json { render :show, status: :created, location: @student }
       else
@@ -59,9 +62,8 @@ class StudentsController < ApplicationController
   end
 
   def validate
-    student_courses = []
     @student = current_student
-    
+    student_courses = []
     #File.open(params[:pdf].tempfile,"rb") do |file|
     reader = PDF::Reader.new(params[:pdf].tempfile)
     if reader.metadata.include?(reader.info[:Creator]) && reader.metadata.include?(reader.info[:Title])
@@ -83,12 +85,17 @@ class StudentsController < ApplicationController
               student_courses.push(course_cod.to_i)
             end
           end
-
         else
           puts "NO SE QUE PASO"
         end
       end
+    else
+      respond_to do |format|
+        format.html { redirect_to students_validate_pdf_path, alert: "Hubo un error o no es un documento válido" }
+      end
     end
+
+    student_courses = student_courses.select {|course| Course.exists?(code: course, has_laboratory: true)}
 
     if @student.update(course_codes: student_courses, certificate_uploaded: true)
       respond_to do |format|
@@ -103,19 +110,43 @@ class StudentsController < ApplicationController
 
   def enrollment
     @student = current_student
-    @courses = Course.where(code: @student.course_codes).select {|course| course.has_laboratory }
+    if @student.authorized && @student.certificate_uploaded
+      @chosen_labs = @student.enrollment_details
+      @courses = Course.
+        where(code: @student.course_codes).
+        where.not(id: @chosen_labs.pluck(:course_id)).
+        select {|course| 
+          course.has_laboratory
+        }
+    end
   end
 
   def enroll_student
-    puts "COMENZANDO MATRICULA"
-    
+    @student = current_student
+    if !@student.enrolled && @student.authorized && @student.certificate_uploaded && 
+      @enrollment_detail = EnrollmentDetail.new
+      @enrollment_detail.enrollment_header = @student.enrollment_header
+      @enrollment_detail.laboratory = Laboratory.find([params[:course_id], params[:group_id]])
+      if @enrollment_detail.save!
+        if @student.course_codes.length == @student.enrollment_header.enrollment_details.size
+          @student.update(enrolled: true)
+        end
+        respond_to do |format|
+          format.html { redirect_to students_enrollment_path, notice: "Matricula registrada correctamente" }
+        end
+      else
+        respond_to do |format|
+          format.html { redirect_to students_enrollment_path, alert: "Hubo un error intentalo otra vez" }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to students_enrollment_path, alert: "No estás autorizado a matricularte" }
+      end
+    end
   end
 
   private
-
-  def check_pdf(pdf)
-    pdf.Title == "Constancia de Matricula"
-  end
 
   def set_user
     @student = Student.find(params[:id])
