@@ -1,2 +1,13 @@
+<ul class="nav">
+  <li class="nav-item">
+    <%= link_to 'HOME', root_path, class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+	<%= link_to 'MY INFO',  teachers_home_path, class: "nav-link" %>
+  </li>
+  <li>
+    <%= link_to "SIGN OUT", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
+  </li>
+</ul>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>

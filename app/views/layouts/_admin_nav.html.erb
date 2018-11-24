@@ -1,9 +1,9 @@
 <ul class="nav">
   <li class="nav-item">
-    <%= link_to 'HOME', root_path, class: "nav-link" %>
+    <%= link_to 'HOME', laboratories_path, class: "nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to 'MY INFO',   students_home_path, class: "nav-link" %>
+    <%= link_to 'MY INFO',   "/admins/#{current_admin.admin_role}s/home", class: "nav-link" %>
   </li>
 <% case current_admin.admin_role%>
 <% when "admin" %>
@@ -302,7 +302,7 @@
 
 <% end %>
   <li>
-    <%= link_to "SIGN OUT", destroy_student_session_path, method: :delete, class: 'nav-link' %>
+    <%= link_to "SIGN OUT", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
   </li>
 </ul>
 
