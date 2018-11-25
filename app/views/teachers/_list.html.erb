@@ -1,4 +1,9 @@
-<table class="table">
+<div class="dropdown-divider"></div>
+
+<div class="container-fluid">
+  <%= link_to 'New Teacher', new_teacher_path, {:class => "btn btn-dark"} %>
+  <br>
+  <table class="table table-bordered table-hover table-striped table-sm">
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -10,10 +15,19 @@
   <tbody>
     <% teachers.each do |teacher| %>
       <tr>
-        <td><%= teacher.full_name %></td>
+        <th scope="row"><%= teacher.full_name %></th>
         <td><%= teacher.email %></td>
         <td><%= teacher.status %></td>
-        <td>Show  Edit  Delete</td>
+	<td>
+            <div class="dropdown">
+                <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">Acciones</button>
+                <div class="dropdown-menu">
+                    <%= link_to "Mostrar", teacher, :class => "dropdown-item" %>
+                    <%= link_to "Editar", edit_teacher_path(teacher), :class => "dropdown-item" %>
+                    <%= link_to "Eliminar", teacher, method: :delete, data: { confirm: "¿Deseas eliminar al profesor?" }, :class => "dropdown-item" %>
+                </div>
+            </div>
+        </td>
       </tr>    
     <% end %>
   </tbody>
