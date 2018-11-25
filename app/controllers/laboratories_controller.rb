@@ -1,5 +1,6 @@
 class LaboratoriesController < ApplicationController
-  before_action :authenticate_student!
+  before_action :authenticate_admin!, only: %i[edit update destroy]
+  before_action :authenticate_teacher!, only: %i[show]
   before_action :set_laboratory, only: %i[show edit update destroy]
 
   def index
@@ -8,6 +9,10 @@ class LaboratoriesController < ApplicationController
 
   def new
     @laboratory = Laboratory.new
+  end
+
+  def show
+    @enrollmentDetails = @laboratory.enrollment_details
   end
 
   def create

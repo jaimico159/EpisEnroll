@@ -6,6 +6,11 @@ class TeachersController < ApplicationController
   def home
     @teacher = current_teacher
   end
+  
+  def my_labs
+	@laboratories = current_teacher.laboratories
+	@teacher = current_teacher
+  end
 
 	def index
 		@teachers = Teacher.all
