@@ -9,3 +9,8 @@
   <li><strong>teacher_id: </strong><%= @laboratory.teacher_id %></li>
 
 </ul>
+
+<div class="page-actions">
+  <%= link_to 'Edit', edit_laboratory_path(@laboratory), class: "btn btn-sm btn-outline-primary" %>
+  <%= link_to 'Back', laboratories_path, class: "btn btn-sm btn-outline-primary" %>
+</div>

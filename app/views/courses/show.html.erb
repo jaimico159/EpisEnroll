@@ -8,3 +8,8 @@
   <li><strong>Status: </strong><%= @course.status %></li>
   <li><strong>Description: </strong><%= @course.description %></li>
 </ul> 
+
+<div class="page-actions">
+  <%= link_to 'Edit', edit_course_path(@course), class: "btn btn-sm btn-outline-primary" %>
+  <%= link_to 'Back', courses_path, class: "btn btn-sm btn-outline-primary" %>
+</div>

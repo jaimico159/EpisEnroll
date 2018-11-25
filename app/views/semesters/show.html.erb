@@ -7,3 +7,8 @@
   <li><strong>fecha_final: </strong><%= @semester.finish_date %></li>
   <li><strong>descripcion: </strong><%= @semester.backup %></li>
 </ul>
+
+<div class="page-actions">
+  <%= link_to 'Edit', edit_semester_path(@semester), class: "btn btn-sm btn-outline-primary" %>
+  <%= link_to 'Back', semesters_path, class: "btn btn-sm btn-outline-primary" %>
+</div>

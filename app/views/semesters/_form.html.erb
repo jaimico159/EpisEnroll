@@ -12,10 +12,13 @@
 
   <div class="actions">
     <div class="field">
-			<%= form.label :Numero_de_semestre_par_0_o_impar_1 %>
-			<%= form.check_box :is_even %>
+			<%= form.label :is_even %>
+			<%= form.label :is_even, "Yes", :value => "true"  %>
+			<%= form.radio_button :is_even, true %>
+			<%= form.label :is_even, "No", :value => "false" %>
+			<%= form.radio_button :is_even, false %>
 		</div>
-		<div class="">
+		<div class="field">
 			<%= form.label :fecha_inicio_dd_mm_aaaa %>
 			<%= form.date_field :start_date %>
 		</div>
@@ -31,3 +34,7 @@
     <%= form.submit :class => 'btn btn-primary' %>
   </div>
 <% end %>
+
+<div class="page-actions">
+  <%= link_to 'Back', semesters_path, class: "btn btn-sm btn-outline-primary" %>
+</div>

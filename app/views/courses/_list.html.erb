@@ -11,10 +11,11 @@
     <% courses.each do |course| %>
       <tr>
         <th scope="row"><%= course.code %></th>
-        <td><%= course.name %></td>
+        <td><%= link_to course.name, course %></td>
         <td><%= course.has_laboratory %></td>
         <td>Show  Edit  Delete</td>
       </tr>    
     <% end %>
   </tbody>
 </table> 
+
