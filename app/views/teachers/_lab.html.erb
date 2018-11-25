@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">course</th>
+      <th scope="col">description</th>
+      <th scope="col">group</th>
+      <th scope="col">teacher</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @laboratories.each do |laboratory| %>    
+      <tr>
+        <td><%= link_to "#{laboratory.course.name}", laboratory_path(laboratory) %></td>
+        <td><%= link_to "#{laboratory.description}", laboratory_path(laboratory) %></td>        
+        <td><%= laboratory.group.name %></td>
+        <td><%= laboratory.teacher.full_name %></td>
+      </tr>   
+    <% end %>
+  </tbody>
+</table>
