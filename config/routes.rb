@@ -31,7 +31,10 @@ Rails.application.routes.draw do
   resources :teachers
   resources :semesters
   resources :courses
-  resources :laboratories
+  resources :laboratories do
+    post 'share'
+    get 'unused_groups' => 'laboratories#unused_groups'
+  end
   
 
   
