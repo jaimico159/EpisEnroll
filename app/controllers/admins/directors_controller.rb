@@ -3,14 +3,17 @@ class Admins::DirectorsController < ApplicationController
   before_action :set_admin, only: %i[show edit update destroy]
 
   def home
+    authorize current_admin, policy_class: Admin::DirectorPolicy
     @director = current_admin
   end
 
   def index
+    authorize current_admin, policy_class: Admin::DirectorPolicy
     @directors = Admin.where(admin_role: :director)
   end
 
   def new
+    authorize current_admin, policy_class: Admin::DirectorPolicy
     @director = Admin.new
   end
 
@@ -21,6 +24,7 @@ class Admins::DirectorsController < ApplicationController
   end
 
   def create
+    authorize current_admin, policy_class: Admin::DirectorPolicy
     @director = Admin.new(admin_params)
     @director.admin_role = :director
 
@@ -57,8 +61,14 @@ class Admins::DirectorsController < ApplicationController
 
   private
 
+  def user_not_authorized
+    flash[:alert] = "You are not allowed to perform this action"
+    redirect_to(request.referrer || root_path)
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_admin
+    authorize current_admin, policy_class: Admin::DirectorPolicy
     @director = Admin.where(id: params[:id], admin_role: :director).first
   end
 

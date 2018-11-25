@@ -3,10 +3,12 @@ class AdminsController < ApplicationController
   before_action :set_admin, only: %i[show edit update destroy]
   
   def index
+    authorize current_admin
     @admins = Admin.all
   end
 
   def new
+    authorize current_admin
     @admin = Admin.new
   end
 
@@ -17,6 +19,7 @@ class AdminsController < ApplicationController
   end
 
   def create
+    authorize current_admin
     @admin = Admin.new(admin_params)
 
     respond_to do |format|
@@ -52,14 +55,19 @@ class AdminsController < ApplicationController
 
   private
 
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_to(request.referrer || root_path)
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_admin
+    authorize current_admin
     @admin = Admin.find(params[:id])
   end
 
   def admin_params
     params.fetch(:admin, {}).permit(:first_name, :last_name, :email, :admin_role, :description)
-  end
-  
+  end 
 
 end
