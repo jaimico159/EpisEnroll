@@ -6,7 +6,10 @@
     <%= link_to 'MY INFO',   students_home_path, class: "nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to 'ENROLLMENT', laboratories_path, class: "nav-link" %>
+    <%= link_to 'VALIDATE PDF', students_validate_pdf_path, class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'ENROLLMENT', students_enrollment_path, class: "nav-link" %>
   </li>
   <li>
     <%= link_to "SIGN OUT", destroy_student_session_path, method: :delete, class: 'nav-link' %>
