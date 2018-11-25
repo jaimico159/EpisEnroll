@@ -4,6 +4,8 @@ class StudentsController < ApplicationController
 
   def home
     @student = current_student
+    @courses = Course.where(code: @student.course_codes).select {|course| course.has_laboratory }
+    @clasification = Clasification.
   end
 
   def index
