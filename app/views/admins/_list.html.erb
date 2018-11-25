@@ -1,4 +1,6 @@
-<table class="table">
+<div class="container-fluid">
+  <br>
+  <table class="table table-bordered table-hover table-striped table-sm">
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -11,8 +13,18 @@
       <tr>
         <td><%= link_to admin.full_name, admin %></td>
         <td><%= admin.status %></td>
-        <td>Show  Edit  Delete</td>
+        <td>
+            <div class="dropdown">
+                <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">Actions</button>
+                <div class="dropdown-menu">
+                    <%= link_to "View", admin, :class => "dropdown-item" %>
+                    <%= link_to "Edit", edit_admin_path(admin), :class => "dropdown-item" %>
+                    <%= link_to "Delete", admin, method: :delete, data: { confirm: "¿Deseas eliminar al administrador?" }, :class => "dropdown-item" %>
+                </div>
+            </div>
+        </td>
       </tr>    
     <% end %>
   </tbody>
-</table>
+  </table>
+</div>

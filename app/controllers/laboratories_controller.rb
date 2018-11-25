@@ -44,7 +44,7 @@ class LaboratoriesController < ApplicationController
   def destroy
     @laboratory.destroy
     respond_to do |format|
-      format.html { redirect_to laboratory_url, notice: 'Laboratory was successfully destroyed.' }
+      format.html { redirect_to laboratories_url, notice: 'Laboratory was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

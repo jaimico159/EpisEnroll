@@ -1,4 +1,10 @@
-<h1>Admins tipo Admin#edit</h1>
-<p>Find me in app/views/admins/admin_views/edit.html.erb</p>
-
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <h3>Edit Admin</h3>
+</div>
+<div class="dropdown-divider"></div>
 <%= render('form', admin: @admin) %>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <%= link_to 'Back', admins_path, :class => "btn btn-info" %>
+</div>

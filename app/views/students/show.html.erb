@@ -1,22 +1,52 @@
-<h1>Students#show</h1>
-<p>Find me in app/views/students/show.html.erb</p>
+<h1>Students</h1>
+<p>Show Student</p>
 
 <h2><%= @student.full_name %><h2>
 
-<ul>
-  <li><strong>CUI: </strong><%= @student.cui %></li>
-  <li><strong>First Name: </strong><%= @student.first_name %></li>
-  <li><strong>Last Name: </strong><%= @student.last_name %></li>
-  <li><strong>Authorized: </strong><%= @student.authorized %></li>
-  <li><strong>Certificate Uploaded: </strong><%= @student.certificate_uploaded %></li>
-  <li><strong>Enrolled: </strong><%= @student.enrolled %></li>
-  <li><strong>Courses: </strong><%= @student.course_codes %></li>
-  <li><strong>Status: </strong><%= @student.status %></li>
-  <li><strong>Description: </strong><%= @student.description %></li>
-  <li><strong>Clasification: </strong><%= @student.clasification.name %></li>
-</ul>
+<div class="dropdown-divider"></div>
 
-<div class="page-actions">
-  <%= link_to 'Edit', edit_students_path(@student), class: "btn btn-sm btn-outline-primary" %>
-  <%= link_to 'Back', students_path, class: "btn btn-sm btn-outline-primary" %>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2" > <strong>CUI: </strong> </div>
+        <div class="col-sm-10"> <%= @student.cui %></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2" > <strong>First Name: </strong> </div>
+        <div class="col-sm-10" > <%= @student.first_name %> </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2" > <strong>Last Name: </strong> </div>
+        <div class="col-sm-10"> <%= @student.last_name %> </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2" > <strong>Authorized: </strong> </div>
+        <div class="col-sm-10" > <%= @student.authorized %> </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2" > <strong>Certificate Uploaded: </strong> </div>
+        <div class="col-sm-10"> <%= @student.certificate_uploaded %> </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2" > <strong>Enrolled: </strong> </div>
+        <div class="col-sm-10" > <%= @student.enrolled %> </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2" > <strong>Courses: </strong> </div>
+        <div class="col-sm-10" > <%= @student.course_codes %> </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2" > <strong>Status: </strong> </div>
+        <div class="col-sm-10" > <%= @student.status %> </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2" > <strong>Description: </strong> </div>
+        <div class="col-sm-10" > <%= @student.description %> </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2" > <strong>Clasification: </strong> </div>
+        <div class="col-sm-10" > <%= @student.clasification.name %> </div>
+    </div>
 </div>
+
+<%= link_to 'Edit', edit_student_path(@student), :class => "btn btn-secondary" %> |
+<%= link_to 'Back', students_path, :class => "btn btn-secondary" %>

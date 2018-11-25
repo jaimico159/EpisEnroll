@@ -36,8 +36,7 @@
       <%= link_to "ADD", "/students/new", class: "dropdown-item" %>
     </div>
   </li>
-
-  <li class="nav-item dropdown">
+   <li class="nav-item dropdown">
     <%= link_to "TEACHERS", '#',
       class: "nav-link dropdown-toggle",
       'data-toggle' => "dropdown",
@@ -50,8 +49,7 @@
       <%= link_to "ADD", new_teacher_path, class: "dropdown-item" %>
     </div>
   </li>
-
-  <li class="nav-item dropdown">
+   <li class="nav-item dropdown">
     <%= link_to "COURSES", '#',
       class: "nav-link dropdown-toggle",
       'data-toggle' => "dropdown",
@@ -64,8 +62,7 @@
       <%= link_to "ADD", new_course_path, class: "dropdown-item" %>
     </div>
   </li>
-
-  <li class="nav-item dropdown">
+   <li class="nav-item dropdown">
     <%= link_to "LABORATORIES", '#',
       class: "nav-link dropdown-toggle",
       'data-toggle' => "dropdown",
@@ -78,8 +75,7 @@
       <%= link_to "ADD", new_laboratory_path, class: "dropdown-item" %>
     </div>
   </li>
-
-  <li class="nav-item">
+   <li class="nav-item">
     <%= link_to 'FINISH SEMESTER', '/', class: "nav-link" %>
   </li>
 <% when "director" %>
@@ -99,8 +95,7 @@
       <%= link_to "ADD", new_admins_secretary_path, class: "dropdown-item" %>
     </div>
   </li>
-
-  <li class="nav-item dropdown">
+   <li class="nav-item dropdown">
     <%= link_to "ADMINISTRATIVES", '#',
       class: "nav-link dropdown-toggle",
       'data-toggle' => "dropdown",
@@ -113,8 +108,7 @@
       <%= link_to "ADD", new_admins_administrative_path, class: "dropdown-item" %>
     </div>
   </li>
-
-  <li class="nav-item dropdown">
+   <li class="nav-item dropdown">
     <%= link_to "TEACHERS", '#',
       class: "nav-link dropdown-toggle",
       'data-toggle' => "dropdown",
@@ -127,8 +121,7 @@
       <%= link_to "ADD", new_teacher_path, class: "dropdown-item" %>
     </div>
   </li>
-
-  <li class="nav-item dropdown">
+   <li class="nav-item dropdown">
     <%= link_to "STUDENTS", '#',
       class: "nav-link dropdown-toggle",
       'data-toggle' => "dropdown",
@@ -141,8 +134,7 @@
       <%= link_to "ADD", new_student_path, class: "dropdown-item" %>
     </div>
   </li>
-
-  <li class="nav-item dropdown">
+   <li class="nav-item dropdown">
     <%= link_to "COURSES", '#',
       class: "nav-link dropdown-toggle",
       'data-toggle' => "dropdown",
@@ -155,8 +147,7 @@
       <%= link_to "ADD", new_course_path, class: "dropdown-item" %>
     </div>
   </li>
-
-  <li class="nav-item dropdown">
+   <li class="nav-item dropdown">
     <%= link_to "LABORATORIES", '#',
       class: "nav-link dropdown-toggle",
       'data-toggle' => "dropdown",
@@ -187,8 +178,7 @@
       <%= link_to "ADD", new_admins_administrative_path, class: "dropdown-item" %>
     </div>
   </li>
-
-  <li class="nav-item dropdown">
+   <li class="nav-item dropdown">
     <%= link_to "TEACHERS", '#',
       class: "nav-link dropdown-toggle",
       'data-toggle' => "dropdown",
@@ -201,8 +191,7 @@
       <%= link_to "ADD", new_teacher_path, class: "dropdown-item" %>
     </div>
   </li>
-
-  <li class="nav-item dropdown">
+   <li class="nav-item dropdown">
     <%= link_to "STUDENTS", '#',
       class: "nav-link dropdown-toggle",
       'data-toggle' => "dropdown",
@@ -215,8 +204,7 @@
       <%= link_to "ADD", new_student_path, class: "dropdown-item" %>
     </div>
   </li>
-
-  <li class="nav-item dropdown">
+   <li class="nav-item dropdown">
     <%= link_to "COURSES", '#',
       class: "nav-link dropdown-toggle",
       'data-toggle' => "dropdown",
@@ -229,8 +217,7 @@
       <%= link_to "ADD", new_course_path, class: "dropdown-item" %>
     </div>
   </li>
-
-  <li class="nav-item dropdown">
+   <li class="nav-item dropdown">
     <%= link_to "LABORATORIES", '#',
       class: "nav-link dropdown-toggle",
       'data-toggle' => "dropdown",
@@ -260,8 +247,7 @@
       <%= link_to "ADD", new_student_path, class: "dropdown-item" %>
     </div>
   </li>
-
-  <li class="nav-item dropdown">
+   <li class="nav-item dropdown">
     <%= link_to "LABORATORIES", '#',
       class: "nav-link dropdown-toggle",
       'data-toggle' => "dropdown",
@@ -274,12 +260,10 @@
       <%= link_to "ADD", new_laboratory_path, class: "dropdown-item" %>
     </div>
   </li>
-
-<% end %>
+ <% end %>
   <li>
     <%= link_to "SIGN OUT", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
   </li>
 </ul>
-
-<p class="notice"><%= notice %></p>
+ <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
