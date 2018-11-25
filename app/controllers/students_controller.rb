@@ -145,6 +145,17 @@ class StudentsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to students_enrollment_path, alert: "No estás autorizado a matricularte" }
       end
+<<<<<<< HEAD
+=======
+    end
+  end
+
+  def destroy
+    @student.destroy
+    respond_to do |format|
+      format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
+      format.json { head :no_content }
+>>>>>>> 0b4a4a655fa71e09c08a33806d02eadf1c379cc0
     end
   end
 

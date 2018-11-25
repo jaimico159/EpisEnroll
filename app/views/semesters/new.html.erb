@@ -1,5 +1,13 @@
-<h1>Semester#new</h1>
-<p>Find me in app/views/semester/new.html.erb</p>
-
-
+<br>
+<div class="row">
+  <div class="col-lg-11">
+    <h1>Semester</h1>
+  </div>
+  <div class="col-lg-1">
+    <%= link_to 'Back', semesters_path, {:class => "btn btn-dark"} %>
+  </div>
+</div>
+<div class="dropdown-divider"></div>
+<h3>Registration of a new semester</h3>
+<br>
 <%= render('form', semester: @semester)%>
