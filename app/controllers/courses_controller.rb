@@ -3,12 +3,12 @@ class CoursesController < ApplicationController
   before_action :set_course, only: %i[show edit update destroy]
 
   def index
-    authorize current_admin
+    authorize current_admin, policy_class: CoursePolicy
     @courses = Course.all
   end
 
   def new
-    authorize current_admin
+    authorize current_admin, policy_class: CoursePolicy
     @course = Course.new
   end
 
@@ -19,7 +19,7 @@ class CoursesController < ApplicationController
   end
   
   def create
-    authorize current_admin
+    authorize current_admin, policy_class: CoursePolicy
     @course = Course.new(course_params)
     respond_to do |format|
       if @course.save
@@ -61,7 +61,7 @@ class CoursesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_course
-    authorize current_admin
+    authorize current_admin, policy_class: CoursePolicy
     @course = Course.find(params[:id])
   end
 
