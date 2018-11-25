@@ -10,6 +10,12 @@ class CoursesController < ApplicationController
     @course = Course.new
   end
 
+  def show
+	end
+
+	def edit
+  end
+  
   def create
     @course = Course.new(course_params)
 
@@ -48,7 +54,7 @@ class CoursesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_course
-    @course = course.find(params[:id])
+    @course = Course.find(params[:id])
   end
 
   def course_params

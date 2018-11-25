@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   
   get 'students/validate_pdf', to: 'students#validate_pdf'
   post 'students/validate', to: 'students#validate'
-  
+  get 'students/enrollment', to: 'students#enrollment'
+  post 'students/enroll_student', to: 'students#enroll_student'
   # Importante para usar las rutas de rails debes crear los siguiente: resources :'tumodelo'
 
   namespace :admins do
