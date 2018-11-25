@@ -1,6 +1,8 @@
 class StudentsController < ApplicationController
-  before_action :authenticate_student!
-  before_action :set_user, only: %i[show edit update destroy]
+    
+  before_action :authenticate_student!, only: %i[home enrollment validate_pdf]
+  before_action :authenticate_admin!, only: %i[new edit show update destroy]
+  before_action :set_user, only: %i[edit show update destroy]
 
   def home
     @student = current_student

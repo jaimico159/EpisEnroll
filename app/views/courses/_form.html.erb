@@ -20,7 +20,10 @@
 		</div>
 		<div class="field">
 			<%= form.label :has_laboratory %>
-			<%= form.text_field :has_laboratory %>
+			<%= form.label :has_laboratory, "Yes", :value => "true"  %>
+			<%= form.radio_button :has_laboratory, true %>
+			<%= form.label :has_laboratory, "No", :value => "false" %>
+			<%= form.radio_button :has_laboratory, false %>
   	</div>
 		<div class="field">
 			<%= form.label :description %>
