@@ -8,7 +8,7 @@ class LaboratoryPolicy
 
   def index?
     if user.is_a?(Admin)
-      user.admin? || user.director? || user.secretary?
+      true
     else
       false
     end
