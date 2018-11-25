@@ -1,8 +1,8 @@
 class StudentsController < ApplicationController
     
   before_action :authenticate_student!, only: %i[home enrollment validate_pdf]
-  before_action :authenticate_admin!, only: %i[new edit show update destroy]
-  before_action :set_user, only: %i[edit show update destroy]
+  before_action :authenticate_admin!, only: %i[new create edit show update destroy]
+  before_action :set_user, only: %i[index edit show update destroy]
 
   def home
     @student = current_student
@@ -10,16 +10,20 @@ class StudentsController < ApplicationController
 
   def index
     @students = Student.all
+    authorize @students
   end
 
   def new
     @student = Student.new
+    authorize @student
   end
 
   def show
+    authorize @student
   end
 
   def edit
+    authorize @student
   end
 
   def create
@@ -27,6 +31,9 @@ class StudentsController < ApplicationController
     @enrollment_header = EnrollmentHeader.new
     @enrollment_header.student = @student
     @enrollment_header.semester = Semester.last
+
+    authorize @student
+    authorize@enrollment_header 
 
     respond_to do |format|
       if @student.save && @enrollment_header.save
