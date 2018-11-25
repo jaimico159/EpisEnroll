@@ -9,6 +9,7 @@ class LaboratoriesController < ApplicationController
 
   def new
     @laboratory = Laboratory.new
+    @courses_with_lab = Course.where(has_laboratory: true)
   end
 
   def show

@@ -1,4 +1,7 @@
 $(document).ready(function() {
+    $('select#laboratory_course_id').select2();
+    $('select#laboratory_group_id').select2();
+    
     $("#laboratory_course_id").on('change', function() {
         var course_id = $("#laboratory_course_id").val();
         var groups = [];
@@ -8,9 +11,9 @@ $(document).ready(function() {
             });
             let input = $("#laboratory_group_id");
             console.log(groups);
-            input.select({
+            input.select2({
                data: groups,
-            })
+            });
 
             var observer = new MutationObserver(function (mutations) {
                 if (mutations[0].type === 'chilList') {
