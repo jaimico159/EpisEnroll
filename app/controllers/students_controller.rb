@@ -1,39 +1,35 @@
 class StudentsController < ApplicationController
     
-  before_action :authenticate_student!, only: %i[home enrollment validate_pdf]
-  before_action :authenticate_admin!, only: %i[new create edit show update destroy]
-  before_action :set_user, only: %i[index edit show update destroy]
+  before_action :authenticate_student!, only: %i[home enrollment enroll_student validate_pdf validate]
+  before_action :authenticate_admin!, only: %i[index new create edit show update destroy]
+  before_action :set_user, only: %i[edit show update destroy]
 
   def home
     @student = current_student
   end
 
   def index
+    authorize current_admin, policy_class: StudentPolicy
     @students = Student.all
-    authorize @students
   end
 
   def new
+    authorize current_admin, policy_class: StudentPolicy
     @student = Student.new
-    authorize @student
   end
 
   def show
-    authorize @student
   end
 
   def edit
-    authorize @student
   end
 
   def create
+    authorize current_admin, policy_class: StudentPolicy
     @student = Student.new(student_params)
     @enrollment_header = EnrollmentHeader.new
     @enrollment_header.student = @student
     @enrollment_header.semester = Semester.last
-
-    authorize @student
-    authorize@enrollment_header 
 
     respond_to do |format|
       if @student.save && @enrollment_header.save
@@ -156,8 +152,14 @@ class StudentsController < ApplicationController
   end
 
   private
+  
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_to(request.referrer || root_path)
+  end
 
   def set_user
+    authorize current_admin, policy_class: StudentPolicy
     @student = Student.find(params[:id])
   end
 

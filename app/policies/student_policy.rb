@@ -6,6 +6,14 @@ class StudentPolicy
     @record = record
   end
 
+  def index?
+    if user.is_a?(Admin)
+      true
+    else
+      false
+    end
+  end
+
   def new?
     if user.is_a?(Admin)
       user.admin? || user.director? || user.secretary?
