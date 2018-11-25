@@ -3,22 +3,24 @@ class CoursesController < ApplicationController
   before_action :set_course, only: %i[show edit update destroy]
 
   def index
+    authorize current_admin
     @courses = Course.all
   end
 
   def new
+    authorize current_admin
     @course = Course.new
   end
 
   def show
 	end
 
-	def edit
+  def edit
   end
   
   def create
+    authorize current_admin
     @course = Course.new(course_params)
-
     respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice: 'Course was succesfully created' }
@@ -52,8 +54,14 @@ class CoursesController < ApplicationController
 
   private
 
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_to(request.referrer || root_path)
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_course
+    authorize current_admin
     @course = Course.find(params[:id])
   end
 
