@@ -9,3 +9,8 @@
   <li><strong>Status: </strong><%= @director.status %></li>
   <li><strong>Description: </strong><%= @director.description %></li>
 </ul>
+
+<div class="page-actions">
+  <%= link_to 'Edit', edit_admins_director_path(@director), class: "btn btn-sm btn-outline-primary" %>
+  <%= link_to 'Back', admins_directors_path, class: "btn btn-sm btn-outline-primary" %>
+</div>
