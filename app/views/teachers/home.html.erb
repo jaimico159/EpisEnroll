@@ -1,4 +1,3 @@
-<p>hola profesor <%= @teacher.first_name %></p>
 <% if @teacher.active? %>
     <%= form_tag("my_labs", method: "get") do %>    
         <%= submit_tag("Mis laboratorios") %>

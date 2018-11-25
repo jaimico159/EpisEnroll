@@ -1,5 +1,5 @@
 class LaboratoriesController < ApplicationController
-  #before_action :authenticate_student!
+  before_action :authenticate_student!
   before_action :set_laboratory, only: %i[show edit update destroy]
 
   def index
@@ -8,6 +8,10 @@ class LaboratoriesController < ApplicationController
 
   def new
     @laboratory = Laboratory.new
+  end
+
+  def show
+    @enrollmentDetails = EnrollmentDetail.where(course_id: @laboratory.course_id, group_id: @laboratory.group_id)
   end
 
   def create

@@ -3,6 +3,7 @@
     <tr>
       <th scope="col">CUI</th>
       <th scope="col">Name</th>
+      <th scope="col">Email</th>
       <th scope="col">Clasification</th>
       <th scope="col">Options</th>
     </tr>
@@ -12,7 +13,8 @@
       <tr>
         <th scope="row"><%= student.cui %></th>
         <td><%= student.full_name %></td>
-        <td><%= student.clasification.value %></td>
+        <td><%= student.email %></td>
+        <td><%= student.clasification.name %></td>
         <td>Show  Edit  Delete</td>
       </tr>    
     <% end %>

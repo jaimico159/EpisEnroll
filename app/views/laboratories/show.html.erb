@@ -2,10 +2,35 @@
 <p>Find me in app/views/laboratories/show.html.erb</p>
 
 <ul>
-  <li><strong>quota:</strong><%= @laboratory.quota %></li>
+  <li><strong>course: </strong><%= @laboratory.course.name %></li>
+  <li><strong>group: </strong><%= @laboratory.group.name%></li>
   <li><strong>description: </strong><%= @laboratory.description %></li>
-  <li><strong>course_id: </strong><%= @laboratory.course_id %></li>
-  <li><strong>group_id: </strong><%= @laboratory.group_id %></li>
-  <li><strong>teacher_id: </strong><%= @laboratory.teacher_id %></li>
-
+  <li><strong>teacher: </strong><%= @laboratory.teacher.full_name %></li>
+  <li><strong>quota:</strong><%= @laboratory.quota %></li>
 </ul>
+
+<h2>Estudiantes matriculados en este laboratorio</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">CUI</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Clasification</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @enrollmentDetails.each do |enrollmentDetail| %>
+      <% student = enrollmentDetail.student %>
+      <tr>
+        <th scope="row"><%= student.cui %></th>
+        <td><%= student.full_name %></td>
+        <td><%= student.email %></td>
+        <td><%= student.clasification.name %></td>
+        <td>Show  Edit  Delete</td>
+      </tr>    
+    <% end %>
+  </tbody>
+</table>
