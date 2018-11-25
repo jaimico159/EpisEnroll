@@ -14,6 +14,13 @@
 		<%= form.text_field :code %>
 		<%= form.text_field :name %>
 		<%= form.text_field :has_laboratory %>
+		<div class="field">
+			<%= form.label :has_laboratory %>
+			<%= form.label :has_laboratory, "Yes", :value => "true"  %>
+			<%= form.radio_button :has_laboratory, true %>
+			<%= form.label :has_laboratory, "No", :value => "false" %>
+			<%= form.radio_button :has_laboratory, false %>
+		</div>
 		<%= form.text_field :description %>
 		<%= form.form_group do %>
 			<%= form.submit :class => "btn btn-dark" %>  
