@@ -1,6 +1,17 @@
 class LaboratoriesController < ApplicationController
-  before_action :authenticate_student!
+  before_action :authenticate_users!
+  
+  
   before_action :set_laboratory, only: %i[show edit update destroy]
+  #before_action :authenticate
+  
+  def authenticate_users!
+      if teacher_signed_in?
+          true
+      else
+          authenticate_student!
+      end
+  end
 
   def index
     @laboratories = Laboratory.all
