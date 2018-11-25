@@ -1,17 +1,7 @@
 class LaboratoriesController < ApplicationController
-  before_action :authenticate_users!
-  
-  
+  before_action :authenticate_admin!, only: %i[edit update destroy]
+  before_action :authenticate_teacher!, only: %i[show]
   before_action :set_laboratory, only: %i[show edit update destroy]
-  #before_action :authenticate
-  
-  def authenticate_users!
-      if teacher_signed_in?
-          true
-      else
-          authenticate_student!
-      end
-  end
 
   def index
     @laboratories = Laboratory.all
@@ -22,7 +12,7 @@ class LaboratoriesController < ApplicationController
   end
 
   def show
-    @enrollmentDetails = EnrollmentDetail.where(course_id: @laboratory.course_id, group_id: @laboratory.group_id)
+    @enrollmentDetails = @laboratory.enrollment_details
   end
 
   def create
