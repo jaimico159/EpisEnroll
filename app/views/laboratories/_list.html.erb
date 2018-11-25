@@ -2,10 +2,9 @@
   <thead>
     <tr>
       <th scope="col">quota</th>
-      <th scope="col">description</th>
-      <th scope="col">course</th>
-      <th scope="col">group</th>
+      <th scope="col">laboratory</th>
       <th scope="col">teacher</th>
+      <th scope="col">description</th>
       <th scope="col">options</th>
     </tr>
   </thead>
@@ -13,10 +12,9 @@
     <% laboratories.each do |laboratory| %>
       <tr>
         <td><%= laboratory.quota %></td>
-        <td><%= laboratory.description %></td>
-        <td><%= laboratory.course.name %></td>
-        <td><%= laboratory.group.name %></td>
+        <td><%= link_to "#{laboratory.course.name} - #{laboratory.group.name}", laboratory %></td>
         <td><%= laboratory.teacher.full_name %></td>
+        <td><%= laboratory.description %></td>
         <td>Show  Edit  Delete</td>
       </tr>    
     <% end %>

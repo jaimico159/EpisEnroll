@@ -9,3 +9,8 @@
   <li><strong>Status: </strong><%= @admin.status %></li>
   <li><strong>Description: </strong><%= @admin.admin_role %></li>
 </ul>
+
+<div class="page-actions">
+  <%= link_to 'Edit', edit_admins_admin_path(@admin), class: "btn btn-sm btn-outline-primary" %>
+  <%= link_to 'Back', admins_admins_path, class: "btn btn-sm btn-outline-primary" %>
+</div>

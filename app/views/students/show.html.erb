@@ -15,3 +15,8 @@
   <li><strong>Description: </strong><%= @student.description %></li>
   <li><strong>Clasification: </strong><%= @student.clasification.name %></li>
 </ul>
+
+<div class="page-actions">
+  <%= link_to 'Edit', edit_students_path(@student), class: "btn btn-sm btn-outline-primary" %>
+  <%= link_to 'Back', students_path, class: "btn btn-sm btn-outline-primary" %>
+</div>
