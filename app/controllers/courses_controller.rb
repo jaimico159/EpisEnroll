@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_admin!
+  #before_action :authenticate_admin!
   before_action :set_course, only: %i[show edit update destroy]
 
   def index
@@ -50,7 +50,15 @@ class CoursesController < ApplicationController
     end
   end
 
-  private
+  def unused_groups
+    group_lab_ids = Laboratory.where(course_id: params[:course_id]).pluck(:group_id)
+    @unused = Group.where.not(id: group_lab_ids)
+    puts "<<<<<<<<< #{group_lab_ids}"
+    puts "<<<<<<<<< #{@unused}"
+    respond_to do |format|
+      format.json { render json: @unused }
+    end
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_course

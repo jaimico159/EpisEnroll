@@ -2,12 +2,12 @@ $(document).ready(function() {
     $("#laboratory_course_id").on('change', function() {
         var course_id = $("#laboratory_course_id").val();
         var groups = [];
-        $.getJSON("/laboratories/" + course_id + "/unused_groups.json", (data) => {
+        $.getJSON("/courses/" + course_id + "/unused_groups.json", (data) => {
             groups = data.map((group, i) => {
                 return {id: group.id, name: group.name};
             });
             let input = $("#laboratory_group_id");
-
+            console.log(groups);
             input.select({
                data: groups,
             })
@@ -23,6 +23,5 @@ $(document).ready(function() {
                 characterData: true
             };
         });
-        console.log("hola");
     });
 });

@@ -49,14 +49,6 @@ class LaboratoriesController < ApplicationController
     end
   end
 
-  def unused_groups
-    group_lab_ids = Laboratory.where(course_id: params[course_id]).pluck(:group_id)
-    @unused = Group.where.not(id: group_lab_ids)
-    respond_to do |format|
-      format.json { render json: @unused }
-    end
-  end
-
   # Use callbacks to share common setup or constraints between actions.
   def set_laboratory
     @laboratory = Laboratory.find(params[:id])
