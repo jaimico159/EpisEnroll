@@ -1,3 +1,12 @@
+<script>
+    $(document).ready(function() {
+        unused_groups_for_edit_lab();
+        $("#laboratory_course_id").on('change', function() {
+            unused_groups_for_edit_lab(); 
+        });
+    });
+</script>
+
 <div class="dropdown-divider"></div>
 <div class="container-fluid">
     <h3>Edit Laboratory</h3>

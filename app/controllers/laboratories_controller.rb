@@ -11,8 +11,9 @@ class LaboratoriesController < ApplicationController
   def new
     authorize current_admin, policy_class: LaboratoryPolicy
     @laboratory = Laboratory.new
-    @courses_with_lab = Course.where(has_laboratory: true)
   end
+
+  @courses_with_lab = Course.where(has_laboratory: true)
 
   def show
     @enrollmentDetails = @laboratory.enrollment_details

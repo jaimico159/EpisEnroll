@@ -55,10 +55,19 @@ class CoursesController < ApplicationController
   def unused_groups
     group_lab_ids = Laboratory.where(course_id: params[:course_id]).pluck(:group_id)
     @unused = Group.where.not(id: group_lab_ids)
-    puts "<<<<<<<<< #{group_lab_ids}"
-    puts "<<<<<<<<< #{@unused}"
+
     respond_to do |format|
       format.json { render json: @unused }
+    end
+  end
+
+  def unused_groups_for_edit_lab
+    group_lab_ids = Laboratory.where(course_id: params[:course_id]).pluck(:group_id)
+    group_last = Group.last.id
+    @unused_edit_lab = Group.where.not(id: group_lab_ids).where.not(id: group_last)
+
+    respond_to do |format|
+      format.json { render json: @unused_edit_lab }
     end
   end
 
