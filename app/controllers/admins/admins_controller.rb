@@ -3,10 +3,12 @@ class Admins::AdminsController < ApplicationController
   before_action :set_admin, only: %i[show edit update destroy]
 
   def home
+    authorize [:admin, current_admin]
     @admin = current_admin
   end
 
   def index
+    authorize [:admin, current_admin]
     @admins = Admin.where(admin_role: "admin")
   end
 
@@ -17,10 +19,12 @@ class Admins::AdminsController < ApplicationController
   end
 
   def new
+    authorize [:admin, current_admin]
     @admin = Admin.new
   end
 
   def create
+    authorize [:admin, current_admin]
     @admin = Admin.new(admin_params)
     @admin.admin_role = "admin"
 
@@ -57,8 +61,14 @@ class Admins::AdminsController < ApplicationController
 
   private
 
+  def user_not_authorized
+    flash[:alert] = "You are not allowed to perform this action"
+    redirect_to(request.referrer || root_path)
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_admin
+    authorize [:admin, current_admin]
     @admin = Admin.where(id: params[:id], admin_role: "admin").first
   end
 
