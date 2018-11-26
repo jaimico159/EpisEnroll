@@ -1,13 +1,15 @@
 class LaboratoriesController < ApplicationController
-  before_action :authenticate_admin!, only: %i[edit update destroy]
+  before_action :authenticate_admin!, except: %i[show]
   before_action :authenticate_teacher!, only: %i[show]
   before_action :set_laboratory, only: %i[show edit update destroy]
 
   def index
+    authorize current_admin, policy_class: LaboratoryPolicy
     @laboratories = Laboratory.all
   end
 
   def new
+    authorize current_admin, policy_class: LaboratoryPolicy
     @laboratory = Laboratory.new
     @courses_with_lab = Course.where(has_laboratory: true)
   end
@@ -17,8 +19,9 @@ class LaboratoriesController < ApplicationController
   end
 
   def create
+    authorize current_admin, policy_class: LaboratoryPolicy
     @laboratory = Laboratory.new(laboratory_params)
-
+    
     respond_to do |format|
       if @laboratory.save
         format.html { redirect_to @laboratory, notice: 'Laboratory was succesfully created' }
@@ -50,8 +53,16 @@ class LaboratoriesController < ApplicationController
     end
   end
 
+  private
+
+  def user_not_authorized
+    flash[:alert] = "You are not allowed to perform this action"
+    redirect_to(request.referrer || root_path)
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_laboratory
+    authorize current_admin, policy_class: LaboratoryPolicy
     @laboratory = Laboratory.find(params[:id])
   end
 
