@@ -8,6 +8,10 @@
     <tr>
       <th scope="col">CUI</th>
       <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Authorized</th>
+      <th scope="col">With Constance</th>
+      <th scope="col">Totally Enrolled</th>
       <th scope="col">Clasification</th>
       <th scope="col">Options</th>
     </tr>
@@ -16,7 +20,11 @@
     <% students.each do |student| %>
       <tr>
         <th scope="row"><%= student.cui %></th>
-        <td><%= student.full_name %></td>
+        <td><%= link_to student.full_name, student %></td>
+        <td><%= student.email %></td>
+        <td><%= student.authorized %></td>
+        <td><%= student.certificate_uploaded %></td>
+        <td><%= student.enrolled %></td>
         <td><%= student.clasification.value %></td>
         <td>
             <div class="dropdown">

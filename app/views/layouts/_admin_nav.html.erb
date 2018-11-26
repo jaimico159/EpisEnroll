@@ -1,16 +1,87 @@
-<li class="nav-item">
-    <%= link_to 'MY INFO',   students_home_path, class: "nav-link" %>
+<ul class="nav">
+  <li class="nav-item">
+    <%= link_to 'HOME', root_path, class: "nav-link" %>
   </li>
+
 <% case current_admin.admin_role%>
 <% when "admin" %>
-   <li class="nav-item dropdown">
+  <li class="nav-item">
+    <%= link_to 'MY INFO', admins_admins_home_path , class: "nav-link" %>
+  </li>
+
+  <li class="nav-item dropdown">
     <%= link_to "ADMINS", '#',
       class: "nav-link dropdown-toggle",
-@@ -95,230 +94,9 @@
-  <li class="nav-item">
+      'data-toggle' => "dropdown",
+      role: "button",
+      'aria-haspopup' => "true",
+      'aria-expanded' => "false" 
+    %>
+    <div class="dropdown-menu">
+      <%= link_to "LIST", admins_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_admin_path, class: "dropdown-item" %>
+    </div>
+  </li>
+  
+  <li class="nav-item dropdown">
+    <%= link_to "STUDENTS", '#',
+      class: "nav-link dropdown-toggle",
+      'data-toggle' => "dropdown",
+      role: "button",
+      'aria-haspopup' => "true",
+      'aria-expanded' => "false" 
+    %>
+    <div class="dropdown-menu">
+      <%= link_to "LIST", "/students", class: "dropdown-item" %>
+      <%= link_to "ADD", "/students/new", class: "dropdown-item" %>
+    </div>
+  </li>
+   <li class="nav-item dropdown">
+    <%= link_to "TEACHERS", '#',
+      class: "nav-link dropdown-toggle",
+      'data-toggle' => "dropdown",
+      role: "button",
+      'aria-haspopup' => "true",
+      'aria-expanded' => "false" 
+    %>
+    <div class="dropdown-menu">
+      <%= link_to "LIST", teachers_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_teacher_path, class: "dropdown-item" %>
+    </div>
+  </li>
+   <li class="nav-item dropdown">
+    <%= link_to "COURSES", '#',
+      class: "nav-link dropdown-toggle",
+      'data-toggle' => "dropdown",
+      role: "button",
+      'aria-haspopup' => "true",
+      'aria-expanded' => "false" 
+    %>
+    <div class="dropdown-menu">
+      <%= link_to "LIST", courses_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_course_path, class: "dropdown-item" %>
+    </div>
+  </li>
+   <li class="nav-item dropdown">
+    <%= link_to "LABORATORIES", '#',
+      class: "nav-link dropdown-toggle",
+      'data-toggle' => "dropdown",
+      role: "button",
+      'aria-haspopup' => "true",
+      'aria-expanded' => "false" 
+    %>
+    <div class="dropdown-menu">
+      <%= link_to "LIST", laboratories_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_laboratory_path, class: "dropdown-item" %>
+    </div>
+  </li>
+   <li class="nav-item">
     <%= link_to 'FINISH SEMESTER', '/', class: "nav-link" %>
   </li>
 <% when "director" %>
+  <li class="nav-item">
+    <%= link_to 'MY INFO', admins_directors_home_path, class: "nav-link" %>
+  </li>
   <li class="nav-item dropdown">
     <%= link_to "SECRETARIES", '#',
       class: "nav-link dropdown-toggle",
@@ -20,11 +91,8 @@
       'aria-expanded' => "false" 
     %>
     <div class="dropdown-menu">
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <%= link_to "ADD", "/", class: "dropdown-item" %>
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <div class="dropdown-divider"></div>
-      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", admins_secretaries_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_admins_secretary_path, class: "dropdown-item" %>
     </div>
   </li>
    <li class="nav-item dropdown">
@@ -36,11 +104,8 @@
       'aria-expanded' => "false" 
     %>
     <div class="dropdown-menu">
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <%= link_to "ADD", "/", class: "dropdown-item" %>
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <div class="dropdown-divider"></div>
-      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", admins_administratives_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_admins_administrative_path, class: "dropdown-item" %>
     </div>
   </li>
    <li class="nav-item dropdown">
@@ -52,11 +117,8 @@
       'aria-expanded' => "false" 
     %>
     <div class="dropdown-menu">
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <%= link_to "ADD", "/", class: "dropdown-item" %>
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <div class="dropdown-divider"></div>
-      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", teachers_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_teacher_path, class: "dropdown-item" %>
     </div>
   </li>
    <li class="nav-item dropdown">
@@ -68,11 +130,8 @@
       'aria-expanded' => "false" 
     %>
     <div class="dropdown-menu">
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <%= link_to "ADD", "/", class: "dropdown-item" %>
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <div class="dropdown-divider"></div>
-      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", students_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_student_path, class: "dropdown-item" %>
     </div>
   </li>
    <li class="nav-item dropdown">
@@ -84,11 +143,8 @@
       'aria-expanded' => "false" 
     %>
     <div class="dropdown-menu">
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <%= link_to "ADD", "/", class: "dropdown-item" %>
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <div class="dropdown-divider"></div>
-      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", courses_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_course_path, class: "dropdown-item" %>
     </div>
   </li>
    <li class="nav-item dropdown">
@@ -100,14 +156,15 @@
       'aria-expanded' => "false" 
     %>
     <div class="dropdown-menu">
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <%= link_to "ADD", "/", class: "dropdown-item" %>
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <div class="dropdown-divider"></div>
-      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", laboratories_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_laboratory_path, class: "dropdown-item" %>
     </div>
   </li>
- <% when "secretary" %>
+
+<% when "secretary" %>
+  <li class="nav-item">
+    <%= link_to 'MY INFO',   admins_secretaries_home_path, class: "nav-link" %>
+  </li>
   <li class="nav-item dropdown">
     <%= link_to "ADMINISTRATIVES", '#',
       class: "nav-link dropdown-toggle",
@@ -117,11 +174,8 @@
       'aria-expanded' => "false" 
     %>
     <div class="dropdown-menu">
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <%= link_to "ADD", "/", class: "dropdown-item" %>
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <div class="dropdown-divider"></div>
-      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", admins_administratives_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_admins_administrative_path, class: "dropdown-item" %>
     </div>
   </li>
    <li class="nav-item dropdown">
@@ -133,11 +187,8 @@
       'aria-expanded' => "false" 
     %>
     <div class="dropdown-menu">
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <%= link_to "ADD", "/", class: "dropdown-item" %>
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <div class="dropdown-divider"></div>
-      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", teachers_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_teacher_path, class: "dropdown-item" %>
     </div>
   </li>
    <li class="nav-item dropdown">
@@ -149,11 +200,8 @@
       'aria-expanded' => "false" 
     %>
     <div class="dropdown-menu">
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <%= link_to "ADD", "/", class: "dropdown-item" %>
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <div class="dropdown-divider"></div>
-      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", students_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_student_path, class: "dropdown-item" %>
     </div>
   </li>
    <li class="nav-item dropdown">
@@ -165,11 +213,8 @@
       'aria-expanded' => "false" 
     %>
     <div class="dropdown-menu">
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <%= link_to "ADD", "/", class: "dropdown-item" %>
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <div class="dropdown-divider"></div>
-      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", courses_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_course_path, class: "dropdown-item" %>
     </div>
   </li>
    <li class="nav-item dropdown">
@@ -181,14 +226,14 @@
       'aria-expanded' => "false" 
     %>
     <div class="dropdown-menu">
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <%= link_to "ADD", "/", class: "dropdown-item" %>
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <div class="dropdown-divider"></div>
-      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", laboratories_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_laboratory_path, class: "dropdown-item" %>
     </div>
   </li>
 <% when "administrative" %>
+  <li class="nav-item">
+    <%= link_to 'MY INFO',   admins_administratives_home_path, class: "nav-link" %>
+  </li>
   <li class="nav-item dropdown">
     <%= link_to "STUDENTS", '#',
       class: "nav-link dropdown-toggle",
@@ -198,14 +243,10 @@
       'aria-expanded' => "false" 
     %>
     <div class="dropdown-menu">
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <%= link_to "ADD", "/", class: "dropdown-item" %>
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <div class="dropdown-divider"></div>
-      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", students_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_student_path, class: "dropdown-item" %>
     </div>
   </li>
- 
    <li class="nav-item dropdown">
     <%= link_to "LABORATORIES", '#',
       class: "nav-link dropdown-toggle",
@@ -215,14 +256,14 @@
       'aria-expanded' => "false" 
     %>
     <div class="dropdown-menu">
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <%= link_to "ADD", "/", class: "dropdown-item" %>
-      <%= link_to "LIST", "/", class: "dropdown-item" %>
-      <div class="dropdown-divider"></div>
-      <%= link_to "SOMETHING", "/", class: "dropdown-item" %>
+      <%= link_to "LIST", laboratories_path, class: "dropdown-item" %>
+      <%= link_to "ADD", new_laboratory_path, class: "dropdown-item" %>
     </div>
   </li>
  <% end %>
   <li>
-    <%= link_to "SIGN OUT", destroy_student_session_path, method: :delete, class: 'nav-link' %>
+    <%= link_to "SIGN OUT", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
   </li>
+</ul>
+ <p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>

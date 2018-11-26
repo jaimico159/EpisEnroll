@@ -4,6 +4,19 @@
   <h3>Showing Admins</h3>
 </div>
 
+<<<<<<< HEAD
+<ul>
+  <li><strong>First Name: </strong><%= @admin.first_name %></li>
+  <li><strong>Last Name: </strong><%= @admin.last_name %></li>
+  <li><strong>Status: </strong><%= @admin.status %></li>
+  <li><strong>Description: </strong><%= @admin.description %></li>
+</ul>
+
+<div class="page-actions">
+  <%= link_to 'Edit', edit_admin_path(@admin), class: "btn btn-sm btn-outline-primary" %>
+  <%= link_to 'Back', admins_path, class: "btn btn-sm btn-outline-primary" %>
+</div>
+=======
 
 <div class="dropdown-divider"></div>
 
@@ -37,3 +50,4 @@
 <%= link_to 'Edit', edit_admin_path(@admin), :class => "btn btn-secondary" %> |
 <%= link_to 'Back', admins_path, :class => "btn btn-info" %>
 </div>
+>>>>>>> 0b4a4a655fa71e09c08a33806d02eadf1c379cc0

@@ -1,9 +1,15 @@
 class TeachersController < ApplicationController
-  before_action :authenticate_teacher!
+	before_action :authenticate_teacher!, only: %i[home]
+	before_action :authenticate_admin!, only: %i[new edit show update destroy]
   before_action :set_user, only: %i[show edit update destroy]
 
   def home
     @teacher = current_teacher
+  end
+  
+  def my_labs
+	@laboratories = current_teacher.laboratories
+	@teacher = current_teacher
   end
 
 	def index

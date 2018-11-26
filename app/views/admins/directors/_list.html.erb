@@ -12,7 +12,7 @@
   <tbody>
     <% directors.each do |director| %>
       <tr>
-        <td><%= director.full_name %></td>
+        <td><%= link_to director.full_name, admins_director_path(director) %></td>
         <td><%= director.status %></td>
         <td>
             <div class="dropdown">

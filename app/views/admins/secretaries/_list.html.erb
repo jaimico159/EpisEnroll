@@ -11,7 +11,7 @@
   <tbody>
     <% secretaries.each do |secretary| %>
       <tr>
-        <td><%= secretary.full_name %></td>
+        <td><%= link_to secretary.full_name, admins_secretary_path(secretary) %></td>
         <td><%= secretary.status %></td>
         <td>
             <div class="dropdown">
