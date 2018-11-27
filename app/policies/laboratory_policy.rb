@@ -61,4 +61,12 @@ class LaboratoryPolicy
       false
     end
   end
+
+  def lab_dash?
+    if user.is_a?(Admin)
+      user.admin? || user.director? || user.secretary?
+    else
+      false
+    end
+  end
 end
