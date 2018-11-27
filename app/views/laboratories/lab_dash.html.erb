@@ -14,7 +14,11 @@
   <li><strong>status: </strong><%= @laboratory.status %></li>
 
 </ul>
-
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+  <%= link_to 'Back', laboratories_path, :class => "btn btn-info" %>
+  <%= link_to 'Editar', edit_laboratory_path(@laboratory), :class => "btn btn-secondary" %>
+</div>
 <h2>Estudiantes matriculados en este laboratorio</h2>
 
 <div class="dropdown-divider"></div>
