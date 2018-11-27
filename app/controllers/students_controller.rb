@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
     
   before_action :authenticate_student!, only: %i[home enrollment enroll_student validate_pdf validate]
-  before_action :authenticate_admin!, only: %i[index new create edit show update destroy disenroll]
+  before_action :authenticate_admin!, only: %i[index new create edit show update destroy]
   before_action :set_user, only: %i[edit show update destroy]
 
   def home
@@ -22,12 +22,6 @@ class StudentsController < ApplicationController
   end
 
   def edit
-  end
-
-  def disenroll
-    @student = Student.find(params[:id])
-    
-    
   end
 
   def create
