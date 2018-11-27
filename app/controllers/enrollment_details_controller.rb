@@ -3,6 +3,9 @@ class EnrollmentDetailsController < ApplicationController
   before_action :set_enrollment_detail, only: %i[destroy]
   def destroy
     laboratory = @enrollment_detail.laboratory
+    student = @enrollment_detail.student
+    student.enrolled = false
+    student.save
     @enrollment_detail.destroy
     respond_to do |format|
       format.html { redirect_to laboratories_lab_dash_path	(laboratory), notice: 'Student was successfully destroyed.' }
