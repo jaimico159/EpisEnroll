@@ -49,8 +49,7 @@
                 <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">Acciones</button>
                 <div class="dropdown-menu">
                     <%= link_to "Mostrar", student, :class => "dropdown-item" %>
-                    <%= link_to "Retirar alumno", disenroll_student_path(student), method: :post, data: { confirm: "¿Deseas retirar al alumno de este laboratorio?" }, :class => "dropdown-item" %>
-                    
+                    <%= link_to "desmatricular", enrollmentDetail, method: :delete, data: { confirm: "¿Deseas eliminar al alumno?" }, :class => "dropdown-item" %>
                 </div>
             </div>
         </td>

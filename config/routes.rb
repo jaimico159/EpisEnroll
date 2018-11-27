@@ -18,17 +18,8 @@ Rails.application.routes.draw do
   post 'students/validate', to: 'students#validate'
   get 'students/enrollment', to: 'students#enrollment'
   post 'students/enroll_student', to: 'students#enroll_student'
-  
   # Importante para usar las rutas de rails debes crear los siguiente: resources :'tumodelo'
   
-  # path para methodo post disenroll de students controller, lo puse asi
-  # post 'students/enroll_student', to: 'students#enroll_student'
-  # no me proporcionaba un url para el envio de datos como students_disenroll_path
-  resources :students do
-    member do 
-      post 'disenroll'
-     end
-  end
   namespace :admins do
     resources :admins
     resources :administratives
@@ -42,6 +33,7 @@ Rails.application.routes.draw do
   resources :semesters
   resources :courses
   resources :laboratories
+  resources :enrollment_details
   
 
   
