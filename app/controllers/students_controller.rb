@@ -164,6 +164,6 @@ class StudentsController < ApplicationController
   end
 
   def student_params
-    params.fetch(:student, {}).permit(:first_name, :last_name, :email, :cui, :description, :clasification_id)
+    params.fetch(:student, {}).permit(:first_name, :last_name, :email, :cui, :description, :clasification_id, :authorized)
   end
 end

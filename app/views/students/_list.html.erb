@@ -22,7 +22,12 @@
         <th scope="row"><%= student.cui %></th>
         <td><%= link_to student.full_name, student %></td>
         <td><%= student.email %></td>
-        <td><%= student.authorized %></td>
+        <% case student.authorized%>
+          <% when true %>
+          <td><%= link_to (check_box_tag '',student.authorized,checked = student.authorized), student_path(student, student:{authorized: false}), method: :put%></td>
+          <% when false %>
+          <td><%= link_to (check_box_tag '',student.authorized,checked = student.authorized), student_path(student, student:{authorized: true}), method: :put%></td>
+        <%end%>  
         <td><%= student.certificate_uploaded %></td>
         <td><%= student.enrolled %></td>
         <td><%= student.clasification.value %></td>
