@@ -45,6 +45,15 @@ class LaboratoriesController < ApplicationController
   end
 
   def destroy
+    # @laboratory.current_students = @laboratory.current_students - 1
+    # @laboratory.current_students.save
+    enrollment_details = @laboratory.enrollment_details
+    enrollment_details.each do |enrollment_detail|
+      student = enrollment_detail.student
+      student.enrolled = false
+      student.save
+      enrollment_detail.destroy
+    end
     @laboratory.destroy
     respond_to do |format|
       format.html { redirect_to laboratories_url, notice: 'Laboratory was successfully destroyed.' }
