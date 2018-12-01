@@ -1,7 +1,7 @@
 class LaboratoriesController < ApplicationController
   before_action :authenticate_admin!, except: %i[show]
   before_action :authenticate_teacher!, only: %i[show]
-  before_action :set_laboratory, only: %i[show edit update destroy]
+  before_action :set_laboratory, only: %i[show edit update destroy lab_dash]
 
   def index
     authorize current_admin, policy_class: LaboratoryPolicy
@@ -14,6 +14,10 @@ class LaboratoriesController < ApplicationController
   end
 
   def show
+    @enrollmentDetails = @laboratory.enrollment_details
+  end
+
+  def lab_dash 
     @enrollmentDetails = @laboratory.enrollment_details
   end
 

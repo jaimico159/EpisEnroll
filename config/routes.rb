@@ -12,13 +12,16 @@ Rails.application.routes.draw do
   get 'students/home', to: 'students#home'
   get 'teachers/home', to: 'teachers#home'
   get 'teachers/my_labs', to: 'teachers#my_labs'
+
+  get 'laboratories/lab_dash/:id', to: 'laboratories#lab_dash', as: 'laboratories_lab_dash'
+  
   
   get 'students/validate_pdf', to: 'students#validate_pdf'
   post 'students/validate', to: 'students#validate'
   get 'students/enrollment', to: 'students#enrollment'
   post 'students/enroll_student', to: 'students#enroll_student'
   # Importante para usar las rutas de rails debes crear los siguiente: resources :'tumodelo'
-
+  
   namespace :admins do
     resources :admins
     resources :administratives
@@ -32,6 +35,7 @@ Rails.application.routes.draw do
   resources :semesters
   resources :courses
   resources :laboratories
+  resources :enrollment_details
   
 
   

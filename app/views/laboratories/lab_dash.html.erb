@@ -1,0 +1,66 @@
+<h1>Laboratory#show</h1>
+<p>Find me in app/views/laboratories/show.html.erb</p>
+
+<ul>
+  <li><strong>course: </strong><%= @laboratory.course.name %></li>
+  <li><strong>group: </strong><%= @laboratory.group.name%></li>
+  <li><strong>description: </strong><%= @laboratory.description %></li>
+  <li><strong>teacher: </strong><%= @laboratory.teacher.full_name %></li>
+  <li><strong>quota: </strong><%= @laboratory.quota %></li>
+
+  <li><strong>created_at: </strong><%= @laboratory.created_at %></li>
+  <li><strong>updated_at: </strong><%= @laboratory.updated_at %></li>
+  <li><strong>current_students: </strong><%= @laboratory.current_students %></li>
+  <li><strong>status: </strong><%= @laboratory.status %></li>
+
+</ul>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+  <%= link_to 'Back', laboratories_path, :class => "btn btn-info" %>
+  <%= link_to 'Editar', edit_laboratory_path(@laboratory), :class => "btn btn-secondary" %>
+</div>
+<h2>Estudiantes matriculados en este laboratorio</h2>
+
+<div class="dropdown-divider"></div>
+
+<div class="container-fluid">
+  <table class="table table-bordered table-hover table-striped table-sm">
+  <thead>
+    <tr>
+      <th scope="col">CUI</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Authorized</th>
+      <th scope="col">With Constance</th>
+      <th scope="col">Totally Enrolled</th>
+      <th scope="col">Clasification</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @enrollmentDetails.each do |enrollmentDetail| %>
+      <% student = enrollmentDetail.student %>
+      <tr>
+        <th scope="row"><%= student.cui %></th>
+        <td><%= link_to student.full_name, student %></td>
+        <td><%= student.email %></td>
+        <td><%= student.authorized %></td>
+        <td><%= student.certificate_uploaded %></td>
+        <td><%= student.enrolled %></td>
+        <td><%= student.clasification.name %></td>
+        <td>
+            <div class="dropdown">
+                <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">Acciones</button>
+                <div class="dropdown-menu">
+                    <%= link_to "Mostrar", student, :class => "dropdown-item" %>
+                    <%= link_to "desmatricular", enrollmentDetail, method: :delete, data: { confirm: "¿Deseas desmatricular al alumno de este laboratorio?" }, :class => "dropdown-item" %>
+                </div>
+            </div>
+        </td>
+      </tr>    
+    <% end %>
+  </tbody>
+  </table>
+</div>
+
+
