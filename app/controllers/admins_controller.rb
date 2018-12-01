@@ -21,6 +21,8 @@ class AdminsController < ApplicationController
   def create
     authorize current_admin
     @admin = Admin.new(admin_params)
+    @admin.first_name =  @admin.first_name.upcase
+    @admin.last_name =  @admin.last_name.upcase
 
     respond_to do |format|
       if @admin.save
