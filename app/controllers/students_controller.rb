@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-    
+  
   before_action :authenticate_student!, only: %i[home enrollment enroll_student validate_pdf validate]
   before_action :authenticate_admin!, only: %i[index new create edit show update destroy]
   before_action :set_user, only: %i[edit show update destroy]
@@ -27,6 +27,8 @@ class StudentsController < ApplicationController
   def create
     authorize current_admin, policy_class: StudentPolicy
     @student = Student.new(student_params)
+    @student.first_name =  @student.first_name.upcase
+    @student.last_name =  @student.last_name.upcase
     @enrollment_header = EnrollmentHeader.new
     @enrollment_header.student = @student
     @enrollment_header.semester = Semester.last
@@ -76,10 +78,10 @@ class StudentsController < ApplicationController
       if reader.pages.length == 1
         pdf_array = reader.pages.first.text.split("\n")
         if pdf_array[5].gsub(/[[:space:]]+/, " ").split(" ")[1][1..8].eql?(@student.cui.to_s) &&
-            pdf_array[5].include?(@student.unsa_full_name) &&
-            pdf_array[7].gsub(/[[:space:]]+/, " ").split(" ")[12].eql?(params[:dni]) &&
-            pdf_array[7].gsub(/[[:space:]]+/, " ").split(" ").last.to_date.year == Date.today.year &&
-            pdf_array[12].include?("INGENIERIA DE SISTEMAS")
+          pdf_array[5].include?(@student.unsa_full_name) &&
+          pdf_array[7].gsub(/[[:space:]]+/, " ").split(" ")[12].eql?(params[:dni]) &&
+          pdf_array[7].gsub(/[[:space:]]+/, " ").split(" ").last.to_date.year == Date.today.year &&
+          pdf_array[12].include?("INGENIERIA DE SISTEMAS")
 
           for i in 20..30
             splited_line = pdf_array[i].gsub(/[[:space]]+/, " ").split(" ")
@@ -118,11 +120,11 @@ class StudentsController < ApplicationController
     if @student.authorized && @student.certificate_uploaded
       @chosen_labs = @student.enrollment_details
       @courses = Course.
-        where(code: @student.course_codes).
-        where.not(id: @chosen_labs.pluck(:course_id)).
-        select {|course| 
-          course.has_laboratory
-        }
+      where(code: @student.course_codes).
+      where.not(id: @chosen_labs.pluck(:course_id)).
+      select {|course| 
+        course.has_laboratory
+      }
     end
   end
 
