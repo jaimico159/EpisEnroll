@@ -1,43 +1,39 @@
-<div class="dropdown-divider"></div>
-
 <div class="container-fluid">
-  <%= link_to 'New Student', new_student_path, {:class => "btn btn-dark"} %>
-  <br>
   <table class="table table-bordered table-hover table-striped table-sm">
-  <thead>
-    <tr>
+    <thead class="thead-dark">
+      <tr>
       <th scope="col">CUI</th>
-      <th scope="col">Name</th>
+      <th scope="col">Nombre</th>
       <th scope="col">Email</th>
-      <th scope="col">Authorized</th>
-      <th scope="col">With Constance</th>
-      <th scope="col">Totally Enrolled</th>
-      <th scope="col">Clasification</th>
-      <th scope="col">Options</th>
+      <th scope="col">Autorizado</th>
+      <th scope="col">Con constancia</th>
+      <th scope="col">Totalmente matriculado</th>
+      <th scope="col">Tercio</th>
+      <th scope="col">Opciones</th>
     </tr>
   </thead>
   <tbody>
-    <% students.each do |student| %>
-      <tr>
-        <th scope="row"><%= student.cui %></th>
-        <td><%= link_to student.full_name, student %></td>
-        <td><%= student.email %></td>
-        <td><%= student.authorized %></td>
-        <td><%= student.certificate_uploaded %></td>
-        <td><%= student.enrolled %></td>
-        <td><%= student.clasification.value %></td>
-        <td>
-            <div class="dropdown">
-                <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">Acciones</button>
-                <div class="dropdown-menu">
-                    <%= link_to "Mostrar", student, :class => "dropdown-item" %>
-                    <%= link_to "Editar", edit_student_path(student), :class => "dropdown-item" %>
-                    <%= link_to "Eliminar", student, method: :delete, data: { confirm: "¿Deseas eliminar al alumno?" }, :class => "dropdown-item" %>
-                </div>
-            </div>
-        </td>
-      </tr>    
-    <% end %>
+  <% students.each do |student| %>
+    <tr>
+      <th scope="row"><%= student.cui %></th>
+      <td><%= link_to student.full_name, student %></td>
+      <td><%= student.email %></td>
+      <td><%= student.authorized %></td>
+      <td><%= student.certificate_uploaded %></td>
+      <td><%= student.enrolled %></td>
+      <td><%= student.clasification.value %></td>
+      <td>
+          <div class="dropdown">
+              <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">Acciones</button>
+              <div class="dropdown-menu">
+                  <%= link_to "Mostrar", student, :class => "dropdown-item" %>
+                  <%= link_to "Editar", edit_student_path(student), :class => "dropdown-item" %>
+                  <%= link_to "Eliminar", student, method: :delete, data: { confirm: "¿Deseas eliminar al alumno?" }, :class => "dropdown-item" %>
+              </div>
+          </div>
+      </td>
+    </tr>    
+  <% end %>
   </tbody>
   </table>
 </div>

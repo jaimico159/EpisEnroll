@@ -11,11 +11,11 @@
 			</div>
 		<% end %>
 
-		<%= form.text_field :quota %>
-		<%= form.text_field :description %>
-		<%= form.collection_select(:course_id, Course.all, :id, :name) %>
-		<%= form.collection_select(:group_id, Group.all, :id, :name) %>
-		<%= form.collection_select(:teacher_id, Teacher.all, :id, :full_name) %>
+		<%= form.text_field :quota, label: "Cupos:" %>
+		<%= form.text_field :description, label: "Descripción:" %>
+		<%= form.collection_select :course_id, Course.all, :id, :name, label: "Curso:" %>
+		<%= form.collection_select :group_id, Group.all, :id, :name, label: "Grupo:" %>
+		<%= form.collection_select :teacher_id, Teacher.all, :id, :full_name, label: "Profesor:" %>
 		<%= form.form_group do %>
 			<%= form.submit :class => 'btn btn-dark' %>
 		<% end %>

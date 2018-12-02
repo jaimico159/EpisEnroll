@@ -11,17 +11,16 @@
 			</div>
 		<% end %>
 		
-		<%= form.text_field :code %>
-		<%= form.text_field :name %>
-		<%= form.text_field :has_laboratory %>
+		<%= form.text_field :code, label: "Código:" %>
+		<%= form.text_field :name, label: "Nombre:" %>
+		<%= form.label "Tiene laboratorio:" %>
 		<div class="field">
-			<%= form.label :has_laboratory %>
-			<%= form.label :has_laboratory, "Yes", :value => "true"  %>
+			<%= form.label :has_laboratory, "Si", :value => "true"  %>
 			<%= form.radio_button :has_laboratory, true %>
 			<%= form.label :has_laboratory, "No", :value => "false" %>
 			<%= form.radio_button :has_laboratory, false %>
 		</div>
-		<%= form.text_field :description %>
+		<%= form.text_field :description, label: "Descripción:" %>
 		<%= form.form_group do %>
 			<%= form.submit :class => "btn btn-dark" %>  
 		<% end %>

@@ -1,70 +1,41 @@
-<%= form_with(model: [:admins, secretary], url: secretary.new_record? ? admins_secretaries_path : admins_secretary_path, local: true) do |form| %>
+<div class="container-fluid">
+	<%= bootstrap_form_for(@secretary, model: [:admins, secretary], url: secretary.new_record? ? admins_secretaries_path : admins_secretary_path, local: true, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |form| %>
+		<% if secretary.errors.any? %>
+    	<div id="error_explanation">
+      	<h2><%= pluralize(secretary.errors.count, "error") %> contacts error:</h2>
+      	<ul>
+      	<% secretary.errors.full_messages.each do |message| %>
+        	<li><%= message %></li>
+      	<% end %>
+      	</ul>
+    	</div>
+  	<% end %>
 	
-	<% if secretary.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(secretary.errors.count, "error") %> contacts error:</h2>
-      <ul>
-      <% secretary.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-	<div class="row">
-		
-	<div class="col-lg-2">
-		<h5><%= form.label :first_name %></h5>
-	</div>
-	<div class="col-lg-10">
-		<%= form.text_field :first_name %>
-	</div>
-</div>
-<div class="row">
+		<%= form.text_field :first_name, label: "Nombres:" %>
+		<%= form.text_field :last_name, label: "Apellidos:" %>
 
-	<div class="col-lg-2">
-		<h5><%= form.label :last_name %></h5>
-	</div>
-	<div class="col-lg-10">
-		<%= form.text_field :last_name %>
-	</div>
-</div>
 
-<div class="row">
-	
-	<div class="col-lg-2">
-		<h5><%= form.label :role %></h5>
-	</div>
-	<div class="col-lg-10">
-		<div class="custom-control custom-radio">
-			<input type="radio" class="custom-control-input" id="Secretary" name="defaultExampleRadios" disabled>
-			<label class="custom-control-label" for="Secretary">Secretary</label>
+
+
+		<!--Modificar esta parte 
+		<div class="row">	
+			<div class="col-lg-2">
+				<h5><%= form.label :role %></h5>
+			</div>
+			<div class="col-lg-10">
+				<div class="custom-control custom-radio">
+					<input type="radio" class="custom-control-input" id="Secretary" name="defaultExampleRadios" disabled>
+					<label class="custom-control-label" for="Secretary">Secretary</label>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-<div class="row">
+		-->
+		
 
-	<div class="col-lg-2">
-		<h5><%= form.label :description %></h5>
-	</div>
-	<div class="col-lg-10">
-		<%= form.text_field :description %>
-	</div>
-</div>
-<div class="row">
-
-	<div class="col-lg-2">
-		<h5><%= form.label :email %></h5>
-	</div>
-	<div class="col-lg-10">
-		<%= form.text_field :email %>
-	</div>
-</div>
-
-<%= form.submit :class => 'btn btn-primary' %>
-
-
-<% end %>
-
-<div class="page-actions">
-  <%= link_to 'Back', admins_secretaries_path, class: "btn btn-sm btn-outline-primary" %>
+		<%= form.text_field :description, label: "Descripción:" %>
+		<%= form.text_field :email, label: "Email:" %>
+		<%= form.form_group do %>
+			<%= form.submit :class => 'btn btn-dark' %>
+		<% end %>
+	<% end %>
 </div>

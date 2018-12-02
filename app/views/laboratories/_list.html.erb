@@ -2,12 +2,12 @@
   <table class="table table-bordered table-hover table-striped table-sm">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">quota</th>
-        <th scope="col">description</th>
-        <th scope="col">course</th>
-        <th scope="col">group</th>
-        <th scope="col">teacher</th>
-        <th scope="col">options</th>
+        <th scope="col">Cupos</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Curso</th>
+        <th scope="col">Grupo</th>
+        <th scope="col">Profesor</th>
+        <th scope="col">Opciones</th>
       </tr>
     </thead>
     <tbody>
@@ -22,9 +22,9 @@
             <div class="dropdown">
               <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">actions</button>
               <div class="dropdown-menu">
-                <%= link_to "Show", laboratory, :class => "dropdown-item" %>
-                <%= link_to "Edit", edit_laboratory_path(laboratory), :class => "dropdown-item" %>
-                <%= link_to "Delete", laboratory, method: :delete, data: { confirm: "Do you want to delete this laboratory?" }, :class => "dropdown-item" %>
+                <%= link_to "Ver", laboratory, :class => "dropdown-item" %>
+                <%= link_to "Editar", edit_laboratory_path(laboratory), :class => "dropdown-item" %>
+                <%= link_to "Eliminar", laboratory, method: :delete, data: { confirm: "Do you want to delete this laboratory?" }, :class => "dropdown-item" %>
               </div>
             </div>
           </td>
