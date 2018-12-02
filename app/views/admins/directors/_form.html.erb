@@ -17,19 +17,18 @@
 
 
 
-		<!--Modificar esta parte 
 		<div class="row">	
-			<div class="col-lg-2">
-				<h5><%= form.label :role %></h5>
+			<div class="col-sm-2">
+				<%= form.label :role %>
 			</div>
-			<div class="col-lg-10">
+			<div class="col-sm-10">
 				<div class="custom-control custom-radio">
-					<input type="radio" class="custom-control-input" id="Director" name="defaultExampleRadios" disabled>
-					<label class="custom-control-label" for="Director">Director</label>
+					<input type="radio"  id="Director" name="defaultExampleRadios" checked disabled>
+					<label for="Director">Director</label>
 				</div>
 			</div>
 		</div>
-		-->
+		
 		
 
 		<%= form.text_field :description, label: "Descripción:" %>
