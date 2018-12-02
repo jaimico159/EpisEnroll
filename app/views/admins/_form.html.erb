@@ -16,30 +16,21 @@
 
 
 
-
-		<!--Modificar esta parte 
-		<div class="row">	
+		<div class="row">
+			
 			<div class="col-lg-2">
-				<h5><%= form.label :role %></h5>
+			
+				<%= form.label  "Rol:" %>
 			</div>
 			<div class="col-lg-10">
-				<div class="custom-control custom-radio">
-					<input type="radio" class="custom-control-input" id="Director" name="defaultExampleRadios">
-					<label class="custom-control-label" for="Director">Director</label>
-				</div>
+				<%= form.radio_button :admin_role, 'director' %>
+
+				<%= form.radio_button :admin_role, 'secretary' %>
 			
-				<div class="custom-control custom-radio">
-					<input type="radio" class="custom-control-input" id="Secretary" name="defaultExampleRadios" checked>
-					<label class="custom-control-label" for="Secretary">Secretary</label>
-				</div>
-	
-				<div class="custom-control custom-radio">
-					<input type="radio" class="custom-control-input" id="Technical" name="defaultExampleRadios" checked>
-					<label class="custom-control-label" for="Technical">Technical</label>
-				</div>
+				<%= form.radio_button :admin_role, 'administrative' %>
 			</div>
 		</div>
-		-->
+
 		
 
 		<%= form.text_field :description, label: "Descripción:" %>
