@@ -10,10 +10,10 @@
   <table class="table table-bordered table-hover table-striped table-sm">
     <thead class="thead-dark">
     <tr>
-      <th scope="col">Code</th>
-      <th scope="col">Name</th>
-      <th scope="col">Group</th>
-      <th scope="col">Enrolled</th>
+      <th scope="col">Código</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Grupo</th>
+      <th scope="col">Matricular</th>
     </tr>
   </thead>
   <tbody>
@@ -23,7 +23,7 @@
         <th scope="row"><%= chosen_lab.course.code %></th>
         <td><%= chosen_lab.course.name %></td>
         <td><%= chosen_lab.group.name %></td>
-        <td>Already Enrolled</td>
+        <td>Ya matriculados</td>
       </tr>    
     <% end %>
     <% end %>
@@ -35,7 +35,7 @@
         <th scope="row"><div align= 'center'><%= course.code %></div></th>
         <td><div align= 'center'><%= course.name %></div></td>
         <td><div align= 'center'><%= form.collection_select(:group_id, course.available_laboratories, :first, :second) %></div></td>
-        <td><div align= 'center'><%= form.submit 'ENROLL', class: 'btn btn-primary' %></div></td>
+        <td><div align= 'center'><%= form.submit 'MATRICULAR', class: 'btn btn-primary' %></div></td>
       </tr>
       <% end %>    
     <% end %>

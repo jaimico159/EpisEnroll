@@ -16,7 +16,11 @@
 		<%= form.text_field :description, label: "Descripción:" %>
 		<%= form.text_field :email, label: "Email:" %>
 		<%= form.form_group do %>
-			<%= form.submit :class => 'btn btn-dark' %>
+			<% if current_page?(controller: 'teachers', action: 'new') %>
+				<%= form.submit "Crear Profesor", :class => 'btn btn-dark' %>
+			<% else %>
+				<%= form.submit "Editar Profesor", :class => 'btn btn-dark' %>
+			<% end %> 
 		<% end %>
     <% end %>
 </div>

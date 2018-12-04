@@ -13,16 +13,22 @@
 		
 		<%= form.text_field :code, label: "Código:" %>
 		<%= form.text_field :name, label: "Nombre:" %>
-		<%= form.label "Tiene laboratorio:" %>
-		<div class="field">
-			<%= form.label :has_laboratory, "Si", :value => "true"  %>
-			<%= form.radio_button :has_laboratory, true %>
-			<%= form.label :has_laboratory, "No", :value => "false" %>
-			<%= form.radio_button :has_laboratory, false %>
+    <div class="row">
+			<div class="col-lg-2">
+				<%= form.label  "Tiene laboratorio:" %>
+			</div>
+			<div class="col-lg-10">
+				<%= form.radio_button :has_laboratory, 'true' %>
+				<%= form.radio_button :has_laboratory, 'false' %>
+			</div>
 		</div>
 		<%= form.text_field :description, label: "Descripción:" %>
 		<%= form.form_group do %>
-			<%= form.submit :class => "btn btn-dark" %>  
+			<% if current_page?(controller: 'courses', action: 'new') %>
+				<%= form.submit "Crear Curso", :class => 'btn btn-dark' %>
+			<% else %>
+				<%= form.submit "Editar Curso", :class => 'btn btn-dark' %>
+			<% end %>  
 		<% end %>
 	<% end %>
 </div>

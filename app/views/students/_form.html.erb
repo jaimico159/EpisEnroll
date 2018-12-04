@@ -17,7 +17,11 @@
 		<%= form.text_field :email, label: "Email:" %>
 		<%= form.collection_select :clasification_id, Clasification.all, :id, :name, label: "Tercio:" %>
 		<%= form.form_group do %>
-			<%= form.submit :class => 'btn btn-dark' %>
+			<% if current_page?(controller: 'students', action: 'new') %>
+				<%= form.submit "Crear Estudiante", :class => 'btn btn-dark' %>
+			<% else %>
+				<%= form.submit "Editar Estudiante", :class => 'btn btn-dark' %>
+			<% end %>
 		<% end %>
 	<% end %>
 </div>

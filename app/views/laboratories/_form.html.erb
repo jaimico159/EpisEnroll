@@ -17,7 +17,11 @@
 		<%= form.collection_select :group_id, Group.all, :id, :name, label: "Grupo:" %>
 		<%= form.collection_select :teacher_id, Teacher.all, :id, :full_name, label: "Profesor:" %>
 		<%= form.form_group do %>
-			<%= form.submit :class => 'btn btn-dark' %>
+			<% if current_page?(controller: 'laboratories', action: 'new') %>
+				<%= form.submit "Crear Laboratorio", :class => 'btn btn-dark' %>
+			<% else %>
+				<%= form.submit "Editar Laboratorio", :class => 'btn btn-dark' %>
+			<% end %> 
 		<% end %>
 	<% end %>
 </div>

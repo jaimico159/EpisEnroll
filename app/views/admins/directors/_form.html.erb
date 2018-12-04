@@ -34,7 +34,11 @@
 		<%= form.text_field :description, label: "Descripción:" %>
 		<%= form.text_field :email, label: "Email:" %>
 		<%= form.form_group do %>
-			<%= form.submit :class => 'btn btn-dark' %>
+			<% if current_page?(controller: 'directors', action: 'new') %>
+				<%= form.submit "Crear Director", :class => 'btn btn-dark' %>
+			<% else %>
+				<%= form.submit "Editar Director", :class => 'btn btn-dark' %>
+			<% end %>
 		<% end %>
 	<% end %>
 </div>

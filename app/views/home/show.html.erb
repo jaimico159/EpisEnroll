@@ -5,7 +5,9 @@
     <br>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/xSTwyYDT-A8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     <br><br>
-    <%= link_to "Iniciar Sesión", "/auth/google_oauth2", {:class => "btn btn-dark"}%>
+    <% if !current_user %>
+      <%= link_to "Iniciar Sesión con Google", "/auth/google_oauth2", {:class => "btn btn-dark"}%> 
+    <% end %>
     <br><br>
   </div>
 </body>

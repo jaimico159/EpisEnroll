@@ -36,7 +36,11 @@
 		<%= form.text_field :description, label: "Descripción:" %>
 		<%= form.text_field :email, label: "Email:" %>
 		<%= form.form_group do %>
-			<%= form.submit :class => 'btn btn-dark' %>
+			<% if current_page?(controller: 'administratives', action: 'new') %>
+				<%= form.submit "Crear Administrativo", :class => 'btn btn-dark' %>
+			<% else %>
+				<%= form.submit "Editar Administrativo", :class => 'btn btn-dark' %>
+			<% end %>
 		<% end %>
 	<% end %>
 </div>
