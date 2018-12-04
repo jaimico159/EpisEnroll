@@ -61,16 +61,6 @@ class CoursesController < ApplicationController
     end
   end
 
-  def unused_groups_for_edit_lab
-    group_lab_ids = Laboratory.where(course_id: params[:course_id]).pluck(:group_id)
-    group_last = Group.last.id
-    @unused_edit_lab = Group.where.not(id: group_lab_ids).where.not(id: group_last)
-
-    respond_to do |format|
-      format.json { render json: @unused_edit_lab }
-    end
-  end
-
   def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
     redirect_to(request.referrer || root_path)

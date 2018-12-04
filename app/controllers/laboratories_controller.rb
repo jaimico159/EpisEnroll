@@ -18,6 +18,12 @@ class LaboratoriesController < ApplicationController
     @enrollmentDetails = @laboratory.enrollment_details
   end
 
+  def edit
+    authorize current_admin, policy_class: LaboratoryPolicy
+    group_lab_ids = Laboratory.where(course_id: @laboratory.course_id).pluck(:group_id).select{|id| id != @laboratory.group_id}
+    @unused = Group.where.not(id: group_lab_ids)
+  end
+
   def create
     authorize current_admin, policy_class: LaboratoryPolicy
     @laboratory = Laboratory.new(laboratory_params)

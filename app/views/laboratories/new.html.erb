@@ -1,11 +1,5 @@
-<script>
-    $(document).ready(function() {
-        update_select_group();
-        $("#laboratory_course_id").on('change', function() {
-            update_select_group(); 
-        });
-    });
-</script>
+<%= javascript_include_tag "laboratory.js" %>
+<%= javascript_include_tag "laboratory_new.js" %>
 
 <div class="dropdown-divider"></div>
 <div class="container-fluid">

@@ -14,8 +14,14 @@
 		<%= form.text_field :quota %>
 		<%= form.text_field :description %>
 
-		<%= form.collection_select(:course_id, Course.all, :id, :name) %>
-		<%= form.collection_select(:group_id, Group.all, :id, :name) %>
+		<% if current_page?(controller: 'laboratories', action: 'new') %>
+			<%= form.collection_select(:course_id, Course.all, :id, :name) %>
+			<%= form.collection_select(:group_id, Group.all, :id, :name) %>
+		<% else %>
+			<%= form.collection_select(:course_id, Course.where(id: @laboratory.course_id), :id, :name) %>
+			<%= form.collection_select(:group_id, @unused, :id, :name) %>	
+		<% end %>
+		
 		<%= form.collection_select(:teacher_id, Teacher.all, :id, :full_name) %>
 		<%= form.form_group do %>
 			<%= form.submit :class => 'btn btn-dark' %>
