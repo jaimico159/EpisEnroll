@@ -1,0 +1,103 @@
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+  <h3>Mostrando  el Laboratorio</h3>
+</div>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-10" ><h4 class="text-info" ><%= Course.find(@laboratory.course_id).name %><h4></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2" > <strong>Curso:</strong> </div>
+    <div class="col-sm-10"> <%= @laboratory.course.name %> </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2" > <strong>Grupo:</strong> </div>
+    <div class="col-sm-10"> <%= @laboratory.group.name %> </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2" > <strong>Descripción:</strong> </div>
+    <div class="col-sm-10"> <%= @laboratory.description %> </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2" > <strong>Profesor:</strong> </div>
+    <div class="col-sm-10"> <%= @laboratory.teacher.full_name %> </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2" > <strong>Cupos:</strong> </div>
+    <div class="col-sm-10"> <%= @laboratory.quota %> </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2" > <strong>Creado en:</strong> </div>
+    <div class="col-sm-10"> <%= @laboratory.created_at %> </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2" > <strong>Actualizado en:</strong> </div>
+    <div class="col-sm-10"> <%= @laboratory.updated_at %> </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2" > <strong>Estudiantes actuales:</strong> </div>
+    <div class="col-sm-10"> <%= @laboratory.current_students %> </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2" > <strong>Estado:</strong> </div>
+    <div class="col-sm-10"> <%= @laboratory.status %> </div>
+  </div>
+</div>
+
+<div class="dropdown-divider"></div>
+
+<div class="container-fluid">
+  <%= link_to 'Atrás', laboratories_path, :class => "btn btn-info" %>
+  <%= link_to 'Editar', edit_laboratory_path(@laboratory), :class => "btn btn-secondary" %>
+</div>
+
+<div class="dropdown-divider"></div>
+
+<div class="container-fluid">
+  <h2>Estudiantes matriculados en este laboratorio</h2>
+</div>
+
+<div class="dropdown-divider"></div>
+
+<div class="container-fluid">
+  <table class="table table-bordered table-hover table-striped table-sm">
+    <thead>
+      <tr>
+        <th scope="col">CUI</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Email</th>
+        <th scope="col">Autorizado</th>
+        <th scope="col">Con constancia</th>
+        <th scope="col">Totalmente matriculado</th>
+        <th scope="col">Tercio</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @enrollmentDetails.each do |enrollmentDetail| %>
+        <% student = enrollmentDetail.student %>
+        <tr>
+          <th scope="row"><%= student.cui %></th>
+          <td><%= link_to student.full_name, student %></td>
+          <td><%= student.email %></td>
+          <td><%= student.authorized %></td>
+          <td><%= student.certificate_uploaded %></td>
+          <td><%= student.enrolled %></td>
+          <td><%= student.clasification.name %></td>
+          <td>
+            <div class="dropdown">
+              <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">Acciones</button>
+              <div class="dropdown-menu">
+                <%= link_to "Mostrar", student, :class => "dropdown-item" %>
+                <%= link_to "Desmatricular", enrollmentDetail, method: :delete, data: { confirm: "¿Desea desmatricular al alumno de este laboratorio?" }, :class => "dropdown-item" %>
+              </div>
+            </div>
+          </td>
+        </tr>    
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
