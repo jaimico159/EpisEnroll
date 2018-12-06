@@ -1,13 +1,12 @@
 <div class="container-fluid">
-  <br>
   <table class="table table-bordered table-hover table-striped table-sm">
-  <thead>
+  <thead class="thead-dark">
     <tr>
       <th scope="col">Semestre</th>
       <th scope="col">Inicio</th>
       <th scope="col">Fin</th>
-      <th scope="col">Description</th>
-      <th scope="col">Options</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Opciones</th>
     </tr>
   </thead>
   <tbody>
@@ -19,11 +18,11 @@
         <td><%= semester.backup %></td>
         <td>
             <div class="dropdown">
-                <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">Actions</button>
+                <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">Acciones</button>
                 <div class="dropdown-menu">
-                    <%= link_to "View", semester, :class => "dropdown-item" %>
-                    <%= link_to "Edit", edit_semester_path(semester), :class => "dropdown-item" %>
-                    <%= link_to "Delete", semester, method: :delete, data: { confirm: "¿Deseas eliminar semestre ?" }, :class => "dropdown-item" %>
+                    <%= link_to "Ver", semester, :class => "dropdown-item" %>
+                    <%= link_to "Editar", edit_semester_path(semester), :class => "dropdown-item" %>
+                    <%= link_to "Eliminar", semester, method: :delete, data: { confirm: "¿Desea eliminar este semestre?" }, :class => "dropdown-item" %>
                 </div>
             </div>
         </td>

@@ -1,17 +1,11 @@
-<br>
-<div class="row">
-  <div class="col-lg-7">
-    <h1>Semesters</h1>
-  </div>
-  <div class="col-lg-5">
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
     <div class="row">
-      <div class="col-lg-3">
-        <%= link_to 'New Semester', new_semester_path, {:class => "btn btn-dark"} %>
-      </div>
-
-      
+        <div class="col"><h3>Lista de Semestres</h3></div>
+        <div class="col"><%= link_to 'Nuevo Semestre', new_semester_path, {:class => "btn btn-success"} %></div>
+        <div class="col"></div>
     </div>
-  </div>
 </div>
 <div class="dropdown-divider"></div>
 <%= render('list', semesters: @semesters) %>
+<div class="dropdown-divider"></div>
