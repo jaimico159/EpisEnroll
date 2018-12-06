@@ -1,20 +1,22 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">course</th>
-      <th scope="col">description</th>
-      <th scope="col">group</th>
-      <th scope="col">teacher</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @laboratories.each do |laboratory| %>    
+<div class="container-fluid">
+  <table class="table table-bordered table-hover table-striped table-sm">
+    <thead class="thead-dark">
       <tr>
-        <td><%= link_to "#{laboratory.course.name}", laboratory_path(laboratory) %></td>
-        <td><%= laboratory.description%></td>        
-        <td><%= laboratory.group.name %></td>
-        <td><%= laboratory.teacher.full_name %></td>
-      </tr>   
-    <% end %>
-  </tbody>
-</table>
+        <th scope="col">Curso:</th>
+        <th scope="col">Descripción:</th>
+        <th scope="col">Grupo:</th>
+        <th scope="col">Profesor:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @laboratories.each do |laboratory| %>    
+        <tr>
+          <td><%= link_to "#{laboratory.course.name}", laboratory_path(laboratory) %></td>
+          <td><%= laboratory.description%></td>        
+          <td><%= laboratory.group.name %></td>
+          <td><%= laboratory.teacher.full_name %></td>
+        </tr>   
+      <% end %>
+    </tbody>
+  </table>
+</div>

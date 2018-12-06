@@ -13,15 +13,17 @@
 		
 		<%= form.text_field :code, label: "Código:" %>
 		<%= form.text_field :name, label: "Nombre:" %>
+
     <div class="row">
 			<div class="col-lg-2">
 				<%= form.label  "Tiene laboratorio:" %>
 			</div>
 			<div class="col-lg-10">
-				<%= form.radio_button :has_laboratory, 'true' %>
-				<%= form.radio_button :has_laboratory, 'false' %>
+				<%= form.radio_button :has_laboratory, 'true', label: "Si" %>
+				<%= form.radio_button :has_laboratory, 'false', label: "No" %>
 			</div>
 		</div>
+
 		<%= form.text_field :description, label: "Descripción:" %>
 		<%= form.form_group do %>
 			<% if current_page?(controller: 'courses', action: 'new') %>

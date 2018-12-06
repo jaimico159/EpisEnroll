@@ -14,24 +14,16 @@
 		<%= form.text_field :first_name, label: "Nombres:" %>
 		<%= form.text_field :last_name, label: "Apellidos:" %>
 
-
-
 		<div class="row">
-			
 			<div class="col-lg-2">
-			
 				<%= form.label  "Rol:" %>
 			</div>
 			<div class="col-lg-10">
-				<%= form.radio_button :admin_role, 'director' %>
-
-				<%= form.radio_button :admin_role, 'secretary' %>
-			
-				<%= form.radio_button :admin_role, 'administrative' %>
+				<%= form.radio_button :admin_role, 'director', label: "Director" %>
+				<%= form.radio_button :admin_role, 'secretary', label: "Secretaria" %>
+				<%= form.radio_button :admin_role, 'administrative', label: "Administrativo" %>
 			</div>
 		</div>
-
-		
 
 		<%= form.text_field :description, label: "Descripción:" %>
 		<%= form.text_field :email, label: "Email:" %>

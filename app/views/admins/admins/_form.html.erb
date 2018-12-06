@@ -14,33 +14,6 @@
 		<%= form.text_field :first_name, label: "Nombres:" %>
 		<%= form.text_field :last_name, label: "Apellidos:" %>
 
-
-
-
-		<!--Modificar esta parte 
-		<div class="row">	
-			<div class="col-lg-2">
-				<h5><%= form.label :role %></h5>
-			</div>
-			<div class="col-lg-10">
-				<div class="custom-control custom-radio">
-					<input type="radio" class="custom-control-input" id="Director" name="defaultExampleRadios">
-					<label class="custom-control-label" for="Director">Director</label>
-				</div>
-			
-				<div class="custom-control custom-radio">
-					<input type="radio" class="custom-control-input" id="Secretary" name="defaultExampleRadios" checked>
-					<label class="custom-control-label" for="Secretary">Secretary</label>
-				</div>
-	
-				<div class="custom-control custom-radio">
-					<input type="radio" class="custom-control-input" id="Technical" name="defaultExampleRadios" checked>
-					<label class="custom-control-label" for="Technical">Technical</label>
-				</div>
-			</div>
-		</div>
-		-->
-
 		<div class="row">
 			<div class="col-sm-2">
 				<%= form.label :role %>
@@ -48,11 +21,10 @@
 			<div class="col-sm-10">
 				<div class="custom-control custom-radio">
 					<input type="radio"  id="Admin" name="defaultExampleRadios" checked disabled>
-					<label for="Admin">Admin</label>
+					<label for="Admin">Administrador</label>
 				</div>
 			</div>
 		</div>
-		
 
 		<%= form.text_field :description, label: "Descripción:" %>
 		<%= form.text_field :email, label: "Email:" %>
