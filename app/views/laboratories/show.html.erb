@@ -30,8 +30,9 @@
 </div>
 <div class="dropdown-divider"></div>
 
-
-<h2>Estudiantes matriculados en este laboratorio</h2>
+<div class="container-fluid">
+  <h2>Estudiantes matriculados en este laboratorio</h2>
+</div>
 
 <div class="dropdown-divider"></div>
 
@@ -40,13 +41,13 @@
   <thead>
     <tr>
       <th scope="col">CUI</th>
-      <th scope="col">Name</th>
+      <th scope="col">Nombre</th>
       <th scope="col">Email</th>
-      <th scope="col">Authorized</th>
-      <th scope="col">With Constance</th>
-      <th scope="col">Totally Enrolled</th>
-      <th scope="col">Clasification</th>
-      <th scope="col">Options</th>
+      <th scope="col">Autorizado</th>
+      <th scope="col">Con constancia</th>
+      <th scope="col">Totalmente matriculado</th>
+      <th scope="col">Tercio</th>
+      <th scope="col">Opciones</th>
     </tr>
   </thead>
   <tbody>
@@ -67,6 +68,11 @@
     <% end %>
   </tbody>
   </table>
+</div>
+
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <%= link_to 'Atrás', teachers_my_labs_path, :class => "btn btn-info" %>
 </div>
 
 

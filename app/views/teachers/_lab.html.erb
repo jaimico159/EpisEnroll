@@ -6,6 +6,7 @@
         <th scope="col">Descripción</th>
         <th scope="col">Grupo</th>
         <th scope="col">Profesor</th>
+        <th scope="col">Opciones</th>
       </tr>
     </thead>
     <tbody>
@@ -15,6 +16,7 @@
           <td><%= laboratory.description%></td>        
           <td><%= laboratory.group.name %></td>
           <td><%= laboratory.teacher.full_name %></td>
+          <td><%= link_to 'Mostrar', laboratory_path(laboratory), :class => "btn btn-dark btn-sm" %></td>
         </tr>   
       <% end %>
     </tbody>
