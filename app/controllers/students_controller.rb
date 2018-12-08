@@ -27,12 +27,8 @@ class StudentsController < ApplicationController
   def create
     authorize current_admin, policy_class: StudentPolicy
     @student = Student.new(student_params)
-    @enrollment_header = EnrollmentHeader.new
-    @enrollment_header.student = @student
-    @enrollment_header.semester = Semester.last
-
     respond_to do |format|
-      if @student.save && @enrollment_header.save
+      if @student.save
         format.html { redirect_to @student, notice: 'Student was succesfully created' }
         format.json { render :show, status: :created, location: @student }
       else

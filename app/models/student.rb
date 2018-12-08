@@ -11,6 +11,10 @@ class Student < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   #devise :database_authenticatable, :registerable,
   #       :recoverable, :rememberable, :validatable
+
+  # callbacks
+  after_save :attach_enrollment_header
+
   enum status: { inactive: 0, active: 1}
   
   #validates
@@ -26,4 +30,14 @@ class Student < ApplicationRecord
   def unsa_full_name
     "#{last_name}, #{first_name}"
   end
+
+  private
+
+  def attach_enrollment_header
+    enrollment_header = EnrollmentHeader.new
+    enrollment_header.semester = Semester.last
+    enrollment_header.student = self
+    enrollment_header.save
+  end
+
 end

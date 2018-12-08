@@ -1,5 +1,5 @@
 class EnrollmentDetail < ApplicationRecord
-  belongs_to :enrollment_header, counter_cache: true
+  belongs_to :enrollment_header, counter_cache: true, dependent: :destroy
   belongs_to :laboratory, :foreign_key => [:course_id, :group_id]
   has_one :student, through: :enrollment_header
   has_one :course, through: :laboratory
