@@ -1,0 +1,32 @@
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+  <h3>Mostrando Clasification</h3>
+</div>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2"> <strong>Nombre: </strong> </div>
+        <div class="col-sm-10"> <%= @clasification.name %></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"> <strong>Valor: </strong> </div>
+        <div class="col-sm-10"> <%= @clasification.value %></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"> <strong>Fecha de inicio: </strong> </div>
+        <div class="col-sm-10"> <%= @clasification.start_date %> </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"> <strong>Fecha final: </strong> </div>
+        <div class="col-sm-10"> <%= @clasification.finish_date %> </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"> <strong>Descripción: </strong> </div>
+        <div class="col-sm-10"> <%= @clasification.description %> </div>
+    </div>
+</div>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <%= link_to 'Atrás', clasifications_path, :class => "btn btn-info" %>
+    <%= link_to 'Editar', edit_clasification_path(@clasification), :class => "btn btn-secondary" %>
+</div>

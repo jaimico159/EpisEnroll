@@ -1,0 +1,11 @@
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"><h3>Lista de Tercios</h3></div>
+        <div class="col"><%= link_to 'Nuevo Tercio', new_clasification_path, {:class => "btn btn-success"} %></div>
+        <div class="col"></div>
+    </div>
+</div>
+<div class="dropdown-divider"></div>
+<%= render('list', clasifications: @clasifications) %>
+<div class="dropdown-divider"></div>
