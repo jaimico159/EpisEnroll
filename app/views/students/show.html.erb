@@ -49,4 +49,88 @@
 <div class="container-fluid">
     <%= link_to 'Atrás', students_path, :class => "btn btn-info" %>
     <%= link_to 'Editar', edit_student_path(@student), :class => "btn btn-secondary" %>
+    <%= link_to "Eliminar Estudiante", @student, method: :delete, data: { confirm: "¿Desea eliminar al alumno?" }, :class => "btn btn-danger" %>
 </div>
+
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"><h3>Cursos del alumno en este semestre</h3></div>
+    </div>
+</div>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+  <table class="table table-bordered table-hover table-striped table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Código</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Laboratorio</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Course.where(code: @student.course_codes).each do |course| %>    
+        <tr>
+          <th scope="row"><%= course.code %></th>
+          <td><%= course.name %></td>
+          <td><%= course.has_laboratory %></td>
+          <td><%= course.status %></td>
+          <td><%= course.description %></td>
+          <td><%= link_to 'Mostrar', course_path(course), :class => "btn btn-dark btn-sm" %></td>
+        </tr>  
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="dropdown-divider"></div>
+
+
+
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"><h3>Laboratorios del alumno en este semestre</h3></div>
+    </div>
+</div>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+  <table class="table table-bordered table-hover table-striped table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Curso</th>
+        <th scope="col">Grupo</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Matriculado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @student.enrollment_details.each do |detail| %>    
+        <tr>
+          <td><%= Course.where(id: detail.course_id).pluck(:name)[0] %></td>
+          <td><%= Group.where(id: detail.group_id).pluck(:name)[0] %></td>
+          <td><%= Laboratory.where(course_id: detail.course_id, group_id: detail.group_id).pluck(:description)[0] %></td>
+          <td><%= detail.status %></td>
+          <td>Ya matriculado</td>
+        </tr>  
+      <% end %>
+      <% @cursos_no_matriculados.each do |lab| %>    
+        <tr>
+          <td><%= lab.name %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Aún no matriculado</td>
+        </tr>  
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <%= link_to 'Volver a la lista de Estudiantes', students_path, :class => "btn btn-info" %>
+</div>
+<div class="dropdown-divider"></div>

@@ -14,7 +14,7 @@
       <% laboratories.each do |laboratory| %>
         <tr>
           <td><%= laboratory.quota %></td>
-          <td><%= laboratory.description %></td>
+          <td><%= link_to laboratory.description, laboratories_lab_dash_path(laboratory) %></td>
           <td><%= laboratory.course.name %></td>
           <td><%= laboratory.group.name %></td>
           <td><%= laboratory.teacher.full_name %></td>

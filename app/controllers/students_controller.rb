@@ -19,6 +19,9 @@ class StudentsController < ApplicationController
   end
 
   def show
+    authorize current_admin, policy_class: StudentPolicy
+    cursos_alumno = Course.where(code: @student.course_codes, has_laboratory: true)
+    @cursos_no_matriculados = cursos_alumno.where.not(id: @student.enrollment_details.pluck(:course_id))
   end
 
   def edit

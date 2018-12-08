@@ -25,7 +25,45 @@
 <div class="container-fluid">
     <%= link_to 'Atrás', teachers_path, :class => "btn btn-info" %>
     <%= link_to 'Editar', edit_teacher_path(@teacher), :class => "btn btn-secondary" %>
+    <%= link_to "Eliminar Profesor", @teacher, method: :delete, data: { confirm: "¿Desea eliminar al profesor?" }, :class => "btn btn-danger" %>
 </div>
+
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"><h3>Laboratorios que tiene a cargo el Profesor</h3></div>
+    </div>
+</div>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+  <table class="table table-bordered table-hover table-striped table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Curso</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Grupo</th>
+        <th scope="col">Profesor</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Laboratory.where(teacher_id: @teacher.id).each do |laboratory| %>    
+        <tr>
+          <td><%= laboratory.course.name %></td>
+          <td><%= laboratory.description%></td>        
+          <td><%= laboratory.group.name %></td>
+          <td><%= laboratory.teacher.full_name %></td>
+          <td><%= link_to 'Mostrar', laboratories_lab_dash_path(laboratory), :class => "btn btn-dark btn-sm" %></td>
+        </tr>   
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <%= link_to 'Volver a la lista de Profesores', teachers_path, :class => "btn btn-info" %>
+</div>
+<div class="dropdown-divider"></div>
 
 
 

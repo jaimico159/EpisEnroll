@@ -50,6 +50,7 @@
 <div class="container-fluid">
   <%= link_to 'Atrás', laboratories_path, :class => "btn btn-info" %>
   <%= link_to 'Editar', edit_laboratory_path(@laboratory), :class => "btn btn-secondary" %>
+  <%= link_to "Eliminar Laboratorio", @laboratory, method: :delete, data: { confirm: "Si elimina este laboratorio desmatriculará a todos los alumnos de este laboratorio, ¿Realmente desea eliminar este laboratorio?" }, :class => "btn btn-danger" %>
 </div>
 
 <div class="dropdown-divider"></div>
@@ -62,7 +63,7 @@
 
 <div class="container-fluid">
   <table class="table table-bordered table-hover table-striped table-sm">
-    <thead>
+    <thead class="thead-dark">
       <tr>
         <th scope="col">CUI</th>
         <th scope="col">Nombre</th>
@@ -99,5 +100,9 @@
     </tbody>
   </table>
 </div>
-
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <%= link_to 'Volver a la lista de Laboratorios', laboratories_path, :class => "btn btn-info" %>
+</div>
+<div class="dropdown-divider"></div>
 

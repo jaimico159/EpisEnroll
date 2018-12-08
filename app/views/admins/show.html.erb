@@ -36,4 +36,5 @@
 <div class="container-fluid">
     <%= link_to 'Atrás', admins_path, :class => "btn btn-info" %>
     <%= link_to 'Editar', edit_admin_path(@admin), :class => "btn btn-secondary" %>
+    <%= link_to "Eliminar Administrador", @admin, method: :delete, data: { confirm: "¿Desea eliminar al administrador?" }, :class => "btn btn-danger" %>
 </div>
