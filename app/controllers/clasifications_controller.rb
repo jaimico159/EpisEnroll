@@ -48,7 +48,7 @@ class ClasificationsController < ApplicationController
   def destroy
     @clasification.destroy
     respond_to do |format|
-      format.html { redirect_to clasification_url, notice: 'Clasification was successfully destroyed.' }
+      format.html { redirect_to clasifications_url, notice: 'Clasification was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
