@@ -1,7 +1,7 @@
 class LaboratoriesController < ApplicationController
   before_action :authenticate_admin!, except: %i[show]
   before_action :authenticate_teacher!, only: %i[show]
-  before_action :set_laboratory, only: %i[show edit update destroy]
+  before_action :set_laboratory, only: %i[show edit update destroy lab_dash]
 
   def index
     authorize current_admin, policy_class: LaboratoryPolicy
@@ -22,6 +22,10 @@ class LaboratoriesController < ApplicationController
     authorize current_admin, policy_class: LaboratoryPolicy
     group_lab_ids = Laboratory.where(course_id: @laboratory.course_id).pluck(:group_id).select{|id| id != @laboratory.group_id}
     @unused = Group.where.not(id: group_lab_ids)
+  end
+  
+  def lab_dash 
+    @enrollmentDetails = @laboratory.enrollment_details
   end
 
   def create
