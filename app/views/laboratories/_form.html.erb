@@ -13,9 +13,17 @@
 
 		<%= form.text_field :quota, label: "Cupos:" %>
 		<%= form.text_field :description, label: "Descripción:" %>
-		<%= form.collection_select :course_id, Course.all, :id, :name, label: "Curso:" %>
-		<%= form.collection_select :group_id, Group.all, :id, :name, label: "Grupo:" %>
+
+		<% if current_page?(controller: 'laboratories', action: 'new') %>
+			<%= form.collection_select(:course_id, Course.all, :id, :name, label: "Curso:" ) %>
+			<%= form.collection_select(:group_id, Group.all, :id, :name, label: "Grupo:" ) %>
+		<% else %>
+			<%= form.text_field :course, disabled: true, value: @laboratory.course.name , label: "Curso:" %>
+			<%= form.collection_select(:group_id, @unused, :id, :name, label: "Grupo:" ) %>	
+		<% end %>
+		
 		<%= form.collection_select :teacher_id, Teacher.all, :id, :full_name, label: "Profesor:" %>
+    
 		<%= form.form_group do %>
 			<% if current_page?(controller: 'laboratories', action: 'new') %>
 				<%= form.submit "Crear Laboratorio", :class => 'btn btn-dark' %>

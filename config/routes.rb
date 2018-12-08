@@ -33,11 +33,12 @@ Rails.application.routes.draw do
   resources :students
   resources :teachers
   resources :semesters
-  resources :courses
+  resources :courses do
+    post 'share'
+    get 'unused_groups' => 'courses#unused_groups'
+  end
   resources :laboratories
   resources :enrollment_details
-  
-
   
   get 'auth/:provider/callback', to: 'sessions#google_oauth2'
   get 'auth/failure', to: redirect('/')

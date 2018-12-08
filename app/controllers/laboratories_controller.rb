@@ -11,12 +11,19 @@ class LaboratoriesController < ApplicationController
   def new
     authorize current_admin, policy_class: LaboratoryPolicy
     @laboratory = Laboratory.new
+    @courses_with_lab = Course.where(has_laboratory: true)
   end
 
   def show
     @enrollmentDetails = @laboratory.enrollment_details
   end
 
+  def edit
+    authorize current_admin, policy_class: LaboratoryPolicy
+    group_lab_ids = Laboratory.where(course_id: @laboratory.course_id).pluck(:group_id).select{|id| id != @laboratory.group_id}
+    @unused = Group.where.not(id: group_lab_ids)
+  end
+  
   def lab_dash 
     @enrollmentDetails = @laboratory.enrollment_details
   end
@@ -30,7 +37,7 @@ class LaboratoriesController < ApplicationController
         format.html { redirect_to @laboratory, notice: 'Laboratory was succesfully created' }
         format.json { render :show, status: :created, location: @laboratory }
       else
-        format.html { render :new }
+        format.html { redirect_to new_laboratory_path }
         format.json { render json: @laboratory.errors, status: :unprocessable_entity }
       end
     end
@@ -38,7 +45,7 @@ class LaboratoriesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @laboratory.update(laboratory_params)
+      if @laboratory.update(laboratory_params_edit)
         format.html { redirect_to @laboratory, notice: 'Laboratory was successfully updated.' }
         format.json { render :show, status: :ok, location: @laboratory }
       else
@@ -49,6 +56,8 @@ class LaboratoriesController < ApplicationController
   end
 
   def destroy
+    @enrollment_details = @laboratory.enrollment_details
+    @enrollment_details.destroy_all
     @laboratory.destroy
     respond_to do |format|
       format.html { redirect_to laboratories_url, notice: 'Laboratory was successfully destroyed.' }
@@ -71,5 +80,9 @@ class LaboratoriesController < ApplicationController
 
   def laboratory_params
     params.fetch(:laboratory, {}).permit(:quota, :description, :course_id, :group_id, :teacher_id)
+  end
+
+  def laboratory_params_edit
+    params.fetch(:laboratory, {}).permit(:quota, :description, :group_id, :teacher_id)
   end
 end

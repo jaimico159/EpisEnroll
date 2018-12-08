@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_admin!
+  #before_action :authenticate_admin!
   before_action :set_course, only: %i[show edit update destroy]
 
   def index
@@ -52,7 +52,14 @@ class CoursesController < ApplicationController
     end
   end
 
-  private
+  def unused_groups
+    group_lab_ids = Laboratory.where(course_id: params[:course_id]).pluck(:group_id)
+    @unused = Group.where.not(id: group_lab_ids)
+
+    respond_to do |format|
+      format.json { render json: @unused }
+    end
+  end
 
   def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
