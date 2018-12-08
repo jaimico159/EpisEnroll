@@ -26,6 +26,8 @@ class Admins::SecretariesController < ApplicationController
   def create
     authorize current_admin, policy_class: Admin::SecretaryPolicy
     @secretary = Admin.new(admin_params)
+    @secretary.first_name =  @secretary.first_name.upcase
+    @secretary.last_name =  @secretary.last_name.upcase
     @secretary.admin_role = :secretary
 
     respond_to do |format|

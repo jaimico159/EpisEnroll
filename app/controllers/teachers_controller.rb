@@ -31,6 +31,8 @@ class TeachersController < ApplicationController
   def create
     authorize current_admin, policy_class: TeacherPolicy
     @teacher = Teacher.new(teacher_params)
+    @teacher.first_name =  @teacher.first_name.upcase
+    @teacher.last_name =  @teacher.last_name.upcase
     respond_to do |format|
       if @teacher.save
         format.html { redirect_to @teacher, notice: 'Teacher was succesfully created' }

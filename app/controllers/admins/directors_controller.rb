@@ -26,6 +26,8 @@ class Admins::DirectorsController < ApplicationController
   def create
     authorize current_admin, policy_class: Admin::DirectorPolicy
     @director = Admin.new(admin_params)
+    @director.first_name =  @director.first_name.upcase
+    @director.last_name =  @director.last_name.upcase
     @director.admin_role = :director
 
     respond_to do |format|
