@@ -1,6 +1,6 @@
 <div class="dropdown-divider"></div>
 <div class="container-fluid">
-  <h3>Showing Laboratory</h3>
+  <h3>Mostrando  el Laboratorio</h3>
 </div>
 <div class="dropdown-divider"></div>
 <div class="container-fluid">
@@ -8,30 +8,31 @@
     <div class="col-sm-10" ><h4 class="text-info" ><%= Course.find(@laboratory.course_id).name %><h4></div>
   </div>
   <div class="row">
-    <div class="col-sm-2" > <strong>quota:</strong> </div>
+    <div class="col-sm-2" > <strong>Cupos:</strong> </div>
     <div class="col-sm-10"> <%= @laboratory.quota %> </div>
   </div>
   <div class="row">
-    <div class="col-sm-2" > <strong>description:</strong> </div>
+    <div class="col-sm-2" > <strong>Descripción:</strong> </div>
     <div class="col-sm-10"> <%= @laboratory.description %> </div>
   </div>
   <div class="row">
-    <div class="col-sm-2" > <strong>course_id:</strong> </div>
-    <div class="col-sm-10"> <%= @laboratory.course_id %> </div>
+    <div class="col-sm-2" > <strong>Curso:</strong> </div>
+    <div class="col-sm-10"> <%= @laboratory.course.name %> </div>
   </div>
   <div class="row">
-    <div class="col-sm-2" > <strong>group_id:</strong> </div>
-    <div class="col-sm-10"> <%= @laboratory.group_id %> </div>
+    <div class="col-sm-2" > <strong>Grupo:</strong> </div>
+    <div class="col-sm-10"> <%= @laboratory.group.name %> </div>
   </div>
   <div class="row">
-    <div class="col-sm-2" > <strong>teacher_id:</strong> </div>
-    <div class="col-sm-10"> <%= @laboratory.teacher_id %> </div>
+    <div class="col-sm-2" > <strong>Profesor:</strong> </div>
+    <div class="col-sm-10"> <%= @laboratory.teacher.full_name %> </div>
   </div>
 </div>
 <div class="dropdown-divider"></div>
 
-
-<h2>Estudiantes matriculados en este laboratorio</h2>
+<div class="container-fluid">
+  <h2>Estudiantes matriculados en este laboratorio</h2>
+</div>
 
 <div class="dropdown-divider"></div>
 
@@ -40,13 +41,13 @@
   <thead>
     <tr>
       <th scope="col">CUI</th>
-      <th scope="col">Name</th>
+      <th scope="col">Nombre</th>
       <th scope="col">Email</th>
-      <th scope="col">Authorized</th>
-      <th scope="col">With Constance</th>
-      <th scope="col">Totally Enrolled</th>
-      <th scope="col">Clasification</th>
-      <th scope="col">Options</th>
+      <th scope="col">Autorizado</th>
+      <th scope="col">Con constancia</th>
+      <th scope="col">Totalmente matriculado</th>
+      <th scope="col">Tercio</th>
+      <th scope="col">Opciones</th>
     </tr>
   </thead>
   <tbody>
@@ -67,6 +68,11 @@
     <% end %>
   </tbody>
   </table>
+</div>
+
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <%= link_to 'Atrás', teachers_my_labs_path, :class => "btn btn-info" %>
 </div>
 
 

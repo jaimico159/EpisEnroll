@@ -1,80 +1,38 @@
-<%= form_with(model: admin, local: true) do |form| %>
-	<% if admin.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(admin.errors.count, "error") %> contacts error:</h2>
-      <ul>
-      <% admin.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-	<div class="row">
-		
+<div class="container-fluid">
+	<%= bootstrap_form_for(@admin, model: admin, local: true, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |form| %>
+		<% if admin.errors.any? %>
+    		<div id="error_explanation">
+      			<h2><%= pluralize(admin.errors.count, "error") %> contacts error:</h2>
+      			<ul>
+      			<% admin.errors.full_messages.each do |message| %>
+        			<li><%= message %></li>
+      			<% end %>
+      			</ul>
+    		</div>
+  		<% end %>
+	
+		<%= form.text_field :first_name, label: "Nombres:" %>
+		<%= form.text_field :last_name, label: "Apellidos:" %>
+
+		<div class="row">
 			<div class="col-lg-2">
-				<h5><%= form.label :first_name %></h5>
+				<%= form.label  "Rol:" %>
 			</div>
 			<div class="col-lg-10">
-				<%= form.text_field :first_name %>
-			</div>
-	</div>
-	<div class="row">
-		
-			<div class="col-lg-2">
-				<h5><%= form.label :last_name %></h5>
-			</div>
-			<div class="col-lg-10">
-				<%= form.text_field :last_name %>
-			</div>
-	</div>
-
-	<div class="row">
-			
-		<div class="col-lg-2">
-			<h5><%= form.label :role %></h5>
-		</div>
-		<div class="col-lg-10">
-			<div class="custom-control custom-radio">
-				<input type="radio" class="custom-control-input" id="Director" name="defaultExampleRadios">
-				<label class="custom-control-label" for="Director">Director</label>
-			</div>
-			
-			<div class="custom-control custom-radio">
-				<input type="radio" class="custom-control-input" id="Secretary" name="defaultExampleRadios" checked>
-				<label class="custom-control-label" for="Secretary">Secretary</label>
-			</div>
-
-				
-			<div class="custom-control custom-radio">
-				<input type="radio" class="custom-control-input" id="Technical" name="defaultExampleRadios" checked>
-				<label class="custom-control-label" for="Technical">Technical</label>
+				<%= form.radio_button :admin_role, 'director', label: "Director" %>
+				<%= form.radio_button :admin_role, 'secretary', label: "Secretaria" %>
+				<%= form.radio_button :admin_role, 'administrative', label: "Administrativo" %>
 			</div>
 		</div>
-	</div>
 
-	<div class="row">
-		
-			<div class="col-lg-2">
-				<h5><%= form.label :description %></h5>
-			</div>
-			<div class="col-lg-10">
-				<%= form.text_field :description %>
-			</div>
-	</div>
-	<div class="row">
-		
-			<div class="col-lg-2">
-				<h5><%= form.label :email %></h5>
-			</div>
-			<div class="col-lg-10">
-				<%= form.text_field :email %>
-			</div>
-	</div>
-		
-	<%= form.submit :class => 'btn btn-primary' %>
-	</div>
-<% end %>
-
-<div class="page-actions">
-  <%= link_to 'Back', admins_path, class: "btn btn-sm btn-outline-primary" %>
+		<%= form.text_field :description, label: "Descripción:" %>
+		<%= form.text_field :email, label: "Email:" %>
+		<%= form.form_group do %>
+			<% if current_page?(controller: 'admins', action: 'new') %>
+				<%= form.submit "Crear Administrador", :class => 'btn btn-dark' %>
+			<% else %>
+				<%= form.submit "Editar Administrador", :class => 'btn btn-dark' %>
+			<% end %>
+		<% end %>
+	<% end %>
 </div>

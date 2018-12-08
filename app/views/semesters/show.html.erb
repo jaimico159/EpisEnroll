@@ -1,34 +1,28 @@
 <div class="dropdown-divider"></div>
 <div class="container-fluid">
-<div class="row">
-  
-  <div class="col-sm-10" > <h2>Showing Semester</h2></div>
-    <div class="col-sm-2">  <%= link_to 'Back', semesters_path, :class => "btn btn-info" %> </div>
+  <h3>Mostrando Semestre</h3>
 </div>
 <div class="dropdown-divider"></div>
 <div class="container-fluid">
- 
-  <div class="row">
-    <div class="col-sm-2" > <strong>par o impar:</strong> </div>
-    <div class="col-sm-10"> <%= @semester.is_even  %> </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-2" > <strong>fecha_inicio:</strong> </div>
-    <div class="col-sm-10"> <%= @semester.start_date  %> </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-2" > <strong>fecha_final:</strong> </div>
-    <div class="col-sm-10"> <%= @semester.finish_date %> </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-2" > <strong>descripcion:</strong> </div>
-    <div class="col-sm-10"> <%= @semester.backup %> </div>
-  </div>
-  
+    <div class="row">
+        <div class="col-sm-2"> <strong>Par o impar: </strong> </div>
+        <div class="col-sm-10"> <%= @semester.is_even %></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"> <strong>Fecha de inicio: </strong> </div>
+        <div class="col-sm-10"> <%= @semester.start_date %> </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"> <strong>Fecha final: </strong> </div>
+        <div class="col-sm-10"> <%= @semester.finish_date %> </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"> <strong>Descrpción: </strong> </div>
+        <div class="col-sm-10"> <%= @semester.backup %> </div>
+    </div>
 </div>
-<br>
 <div class="dropdown-divider"></div>
 <div class="container-fluid">
- 
-  <%= link_to 'Editar', edit_semester_path(@semester), :class => "btn btn-secondary" %>
+    <%= link_to 'Atrás', semesters_path, :class => "btn btn-info" %>
+    <%= link_to 'Editar', edit_semester_path(@semester), :class => "btn btn-secondary" %>
 </div>

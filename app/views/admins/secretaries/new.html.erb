@@ -1,12 +1,10 @@
-<br>
-<div class="row">
-  <div class="col-lg-11">
-    <h1>Secretary</h1>
-  </div>
-  <div class="col-lg-1">
-    <%= link_to 'Back', admins_secretaries_path, {:class => "btn btn-dark"} %>
-  </div>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <h3>Nueva Secretaria</h3>
 </div>
 <div class="dropdown-divider"></div>
-<h3>Registration of a new secretary</h3>
 <%= render('form', secretary: @secretary)%>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <%= link_to 'Atrás', admins_secretaries_path, :class => "btn btn-info" %>
+</div>

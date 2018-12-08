@@ -1,5 +1,11 @@
-<h1>Students</h1>
-<p>List of Students</p>
-
-
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"><h3>Lista de Estudiantes</h3></div>
+        <div class="col"><%= link_to "Nuevo Estudiante", new_student_path, :class => "btn btn-success " %></div>
+        <div class="col"></div>
+    </div>
+</div>
+<div class="dropdown-divider"></div>
 <%= render('list', students: @students) %>
+<div class="dropdown-divider"></div>

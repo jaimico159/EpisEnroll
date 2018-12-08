@@ -1,52 +1,52 @@
-<h1>Students</h1>
-<p>Show Student</p>
-
-<h2><%= @student.full_name %><h2>
-
 <div class="dropdown-divider"></div>
-
+<div class="container-fluid">
+  <h3>Mostrando Estudiante</h3>
+</div>
+<div class="dropdown-divider"></div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-2" > <strong>CUI: </strong> </div>
         <div class="col-sm-10"> <%= @student.cui %></div>
     </div>
     <div class="row">
-        <div class="col-sm-2" > <strong>First Name: </strong> </div>
+        <div class="col-sm-2" > <strong>Nombres: </strong> </div>
         <div class="col-sm-10" > <%= @student.first_name %> </div>
     </div>
     <div class="row">
-        <div class="col-sm-2" > <strong>Last Name: </strong> </div>
+        <div class="col-sm-2" > <strong>Apellidos: </strong> </div>
         <div class="col-sm-10"> <%= @student.last_name %> </div>
     </div>
     <div class="row">
-        <div class="col-sm-2" > <strong>Authorized: </strong> </div>
+        <div class="col-sm-2" > <strong>Autorizado: </strong> </div>
         <div class="col-sm-10" > <%= @student.authorized %> </div>
     </div>
     <div class="row">
-        <div class="col-sm-2" > <strong>Certificate Uploaded: </strong> </div>
+        <div class="col-sm-2" > <strong>Certificado subido: </strong> </div>
         <div class="col-sm-10"> <%= @student.certificate_uploaded %> </div>
     </div>
     <div class="row">
-        <div class="col-sm-2" > <strong>Enrolled: </strong> </div>
+        <div class="col-sm-2" > <strong>Matriculado: </strong> </div>
         <div class="col-sm-10" > <%= @student.enrolled %> </div>
     </div>
     <div class="row">
-        <div class="col-sm-2" > <strong>Courses: </strong> </div>
+        <div class="col-sm-2" > <strong>Cursos: </strong> </div>
         <div class="col-sm-10" > <%= @student.course_codes %> </div>
     </div>
     <div class="row">
-        <div class="col-sm-2" > <strong>Status: </strong> </div>
+        <div class="col-sm-2" > <strong>Estado: </strong> </div>
         <div class="col-sm-10" > <%= @student.status %> </div>
     </div>
     <div class="row">
-        <div class="col-sm-2" > <strong>Description: </strong> </div>
+        <div class="col-sm-2" > <strong>Descripción: </strong> </div>
         <div class="col-sm-10" > <%= @student.description %> </div>
     </div>
     <div class="row">
-        <div class="col-sm-2" > <strong>Clasification: </strong> </div>
+        <div class="col-sm-2" > <strong>Tercio: </strong> </div>
         <div class="col-sm-10" > <%= @student.clasification.name %> </div>
     </div>
 </div>
-
-<%= link_to 'Edit', edit_student_path(@student), :class => "btn btn-secondary" %> |
-<%= link_to 'Back', students_path, :class => "btn btn-secondary" %>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <%= link_to 'Atrás', students_path, :class => "btn btn-info" %>
+    <%= link_to 'Editar', edit_student_path(@student), :class => "btn btn-secondary" %>
+</div>

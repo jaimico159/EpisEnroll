@@ -1,35 +1,39 @@
-
 <div class="dropdown-divider"></div>
 <div class="container-fluid">
-  <h3>Showing Admins</h3>
+  <h3>Mostrando Administrador</h3>
 </div>
-
-
 <div class="dropdown-divider"></div>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-10" ><h4 class="text-info" ><%= @admin.full_name %><h4></div>
     </div>
     <div class="row">
-        <div class="col-sm-2" > <strong>First Namedadas: </strong> </div>
+        <div class="col-sm-2" > <strong>Nombres: </strong> </div>
         <div class="col-sm-10"> <%= @admin.first_name %></div>
     </div>
     <div class="row">
-        <div class="col-sm-2" > <strong>Last Name: </strong> </div>
+        <div class="col-sm-2" > <strong>Apellidos: </strong> </div>
         <div class="col-sm-10"> <%= @admin.last_name %></div>
     </div>
     <div class="row">
-        <div class="col-sm-2" > <strong>Status: </strong> </div>
+        <div class="col-sm-2" > <strong>Email: </strong> </div>
+        <div class="col-sm-10"> <%= @admin.email %></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2" > <strong>Estado: </strong> </div>
         <div class="col-sm-10"> <%= @admin.status %></div>
     </div>
     <div class="row">
-        <div class="col-sm-2" > <strong>Description: </strong> </div>
+        <div class="col-sm-2" > <strong> Rol: </strong> </div>
         <div class="col-sm-10"> <%= @admin.admin_role %></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2" > <strong>Descripción: </strong> </div>
+        <div class="col-sm-10"> <%= @admin.description %></div>
     </div>
 </div>
 <div class="dropdown-divider"></div>
 <div class="container-fluid">
-<%= link_to 'Edit', edit_admin_path(@admin), :class => "btn btn-secondary" %> |
-<%= link_to 'Back', admins_path, :class => "btn btn-info" %>
+    <%= link_to 'Atrás', admins_admins_path, :class => "btn btn-info" %>
+    <%= link_to 'Editar', edit_admin_path(@admin), :class => "btn btn-secondary" %>
 </div>

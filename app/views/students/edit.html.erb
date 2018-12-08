@@ -1,8 +1,10 @@
-<h1>Students</h1>
-<p>Edit Student</p>
-
-
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <h3>Editar Estudiante</h3>
+</div>
+<div class="dropdown-divider"></div>
 <%= render('form', student: @student) %>
-
-<%= link_to 'Show', @student, :class => "btn btn-secondary" %> |
-<%= link_to 'Back', students_path, :class => "btn btn-secondary" %>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <%= link_to 'Atrás', students_path, :class => "btn btn-info" %>
+</div>

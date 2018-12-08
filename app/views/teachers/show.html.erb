@@ -1,28 +1,32 @@
-<h1>Teachers</h1>
-<p>Show Teacher</p>
-
-<h2><%= @teacher.full_name %><h2>
-
 <div class="dropdown-divider"></div>
-
+<div class="container-fluid">
+  <h3>Mostrando Profesor</h3>
+</div>
+<div class="dropdown-divider"></div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2" > strong>First Name: </strong> </div>
+        <div class="col-sm-2" > <strong>Nombres: </strong> </div>
         <div class="col-sm-10"> <%= @teacher.first_name %></div>
     </div>
     <div class="row">
-        <div class="col-sm-2" > <strong>Last Name: </strong> </div>
+        <div class="col-sm-2" > <strong>Apellidos: </strong> </div>
         <div class="col-sm-10" > <%= @teacher.last_name %> </div>
     </div>
     <div class="row">
-        <div class="col-sm-2" > <strong>Status: </strong> </div>
-        <div class="col-sm-10"> <%= @teacher.status %> </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2" > <strong>Description: </strong> </div>
+        <div class="col-sm-2" > <strong>Descripción: </strong> </div>
         <div class="col-sm-10" > <%= @teacher.description %> </div>
     </div>
+    <div class="row">
+        <div class="col-sm-2" > <strong>Estado: </strong> </div>
+        <div class="col-sm-10"> <%= @teacher.status %> </div>
+    </div>
+</div>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <%= link_to 'Atrás', teachers_path, :class => "btn btn-info" %>
+    <%= link_to 'Editar', edit_teacher_path(@teacher), :class => "btn btn-secondary" %>
 </div>
 
-<%= link_to 'Edit', edit_teacher_path(@teacher), :class => "btn btn-secondary" %> |
-<%= link_to 'Back', teachers_path, :class => "btn btn-secondary" %>
+
+
+

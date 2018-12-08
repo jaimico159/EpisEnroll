@@ -1,14 +1,33 @@
-<h1>Validating PDF</h1>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+  <div class="row">
+  <div class="col-lg-9"><h1>Validando PDF</h1></div>
+  </div>
+</div>
+
+<div class="dropdown-divider"></div>
+
 <% unless @student.certificate_uploaded %>
   <%= form_with url: students_validate_path do |form|%>
-    <%= form.label :Constancia%>
-    <%= form.file_field :pdf %>
-    <br>
-    <%= form.label :dni %>
-    <%= form.number_field :dni, min: "0000000", max: "99999999"%>
 
-    <%= form.submit 'VALIDAR', :class => 'btn btn-primary' %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2"><%= form.label :Constancia%></div>
+        <div class="col-sm-10"><%= form.file_field :pdf %></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2"><%= form.label :dni %></div>
+        <div class="col-sm-10"><%= form.number_field :dni, min: "11111111", max: "99999999", :class => 'form-control' %></div>
+      </div>
+      
+    </div>
+  
+    <div class="dropdown-divider"></div>
+    <div align='center'><%= form.submit 'VALIDAR', :class => 'btn btn-dark' %></div>
+    
   <% end %>
 <% else %>
-  <h2>No deberias entrar aquí, tu certificado es válido<h2>
+  <h2>Ud. ya validó su  certificado.<h2>
 <% end %>
+<div class="dropdown-divider"></div>
+<div align='center'><%= link_to 'Atrás', :back, :class => 'btn btn-info'%></div>

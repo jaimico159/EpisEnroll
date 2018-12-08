@@ -1,11 +1,10 @@
-<br>
-<div class="row">
-  <div class="col-lg-11">
-    <h1>Semester</h1>
-  </div>
-  <div class="col-lg-1">
-    <%= link_to 'Back', semesters_path, {:class => "btn btn-dark"} %>
-  </div>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <h3>Editar Semestre</h3>
 </div>
-
+<div class="dropdown-divider"></div>
 <%= render('form', semester: @semester) %>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+    <%= link_to 'Atrás', semesters_path, {:class => "btn btn-info"} %>
+</div>

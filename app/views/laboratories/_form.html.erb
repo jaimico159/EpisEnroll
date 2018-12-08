@@ -11,20 +11,25 @@
 			</div>
 		<% end %>
 
-		<%= form.text_field :quota %>
-		<%= form.text_field :description %>
+		<%= form.text_field :quota, label: "Cupos:" %>
+		<%= form.text_field :description, label: "Descripción:" %>
 
 		<% if current_page?(controller: 'laboratories', action: 'new') %>
-			<%= form.collection_select(:course_id, Course.all, :id, :name) %>
-			<%= form.collection_select(:group_id, Group.all, :id, :name) %>
+			<%= form.collection_select(:course_id, Course.all, :id, :name, label: "Curso:" ) %>
+			<%= form.collection_select(:group_id, Group.all, :id, :name, label: "Grupo:" ) %>
 		<% else %>
-			<%= form.text_field :course, disabled: true, value: @laboratory.course.name %>
-			<%= form.collection_select(:group_id, @unused, :id, :name) %>	
+			<%= form.text_field :course, disabled: true, value: @laboratory.course.name , label: "Curso:" %>
+			<%= form.collection_select(:group_id, @unused, :id, :name, label: "Grupo:" ) %>	
 		<% end %>
 		
-		<%= form.collection_select(:teacher_id, Teacher.all, :id, :full_name) %>
+		<%= form.collection_select :teacher_id, Teacher.all, :id, :full_name, label: "Profesor:" %>
+    
 		<%= form.form_group do %>
-			<%= form.submit :class => 'btn btn-dark' %>
+			<% if current_page?(controller: 'laboratories', action: 'new') %>
+				<%= form.submit "Crear Laboratorio", :class => 'btn btn-dark' %>
+			<% else %>
+				<%= form.submit "Editar Laboratorio", :class => 'btn btn-dark' %>
+			<% end %> 
 		<% end %>
 	<% end %>
 </div>

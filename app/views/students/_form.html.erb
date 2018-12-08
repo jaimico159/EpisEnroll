@@ -1,23 +1,27 @@
-<div class="dropdown-divider"></div>
-
 <div class="container-fluid">
-		<%= bootstrap_form_for(@student, model: student, local: true, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |form| %>
-			<% if student.errors.any? %>
-    		<div id="error_explanation">
-      		<h2><%= pluralize(student.errors.count, "error") %> contacts error:</h2>
-      		<ul>
-      			<% student.errors.full_messages.each do |message| %>
-        			<li><%= message %></li>
-      			<% end %>
-      		</ul>
-    		</div>
+	<%= bootstrap_form_for(@student, model: student, local: true, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |form| %>
+		<% if student.errors.any? %>
+			<div id="error_explanation">
+	  			<h2><%= pluralize(student.errors.count, "error") %> contacts error:</h2>
+	  			<ul>
+		  		<% student.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+		  		<% end %>
+	  			</ul>
+			</div>
   		<% end %>
-			
-			<%= form.text_field :cui, label: "CUI:" %>
-			<%= form.text_field :first_name, label: "First Name:" %>
-			<%= form.text_field :last_name, label: "Last Name:" %>
-			<%= form.text_field :email, label: "Email:" %>
-			<%= form.collection_select :clasification_id, Clasification.all, :id, :name, label: "Tercio:" %>
-			<%= form.submit :class => 'btn btn-primary' %>
-    <% end %>
+	
+		<%= form.text_field :cui, label: "CUI:" %>
+		<%= form.text_field :first_name, label: "Nombres:" %>
+		<%= form.text_field :last_name, label: "Apellidos:" %>
+		<%= form.text_field :email, label: "Email:" %>
+		<%= form.collection_select :clasification_id, Clasification.all, :id, :name, label: "Tercio:" %>
+		<%= form.form_group do %>
+			<% if current_page?(controller: 'students', action: 'new') %>
+				<%= form.submit "Crear Estudiante", :class => 'btn btn-dark' %>
+			<% else %>
+				<%= form.submit "Editar Estudiante", :class => 'btn btn-dark' %>
+			<% end %>
+		<% end %>
+	<% end %>
 </div>

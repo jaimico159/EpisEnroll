@@ -1,31 +1,35 @@
-
 <div class="container-fluid">
-  <br>
   <table class="table table-bordered table-hover table-striped table-sm">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Status</th>
-      <th scope="col">Options</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% directors.each do |director| %>
+    <thead class="thead-dark">
       <tr>
-        <td><%= link_to director.full_name, admins_director_path(director) %></td>
-        <td><%= director.status %></td>
-        <td>
+      <th scope="col">Nombre</th>
+      <th scope="col">Rol</th>
+      <th scope="col">Email</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Opciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% directors.each do |admin| %>
+      <tr>
+        <td><%= link_to admin.full_name, admins_director_path(admin) %></td>
+          <td><%= admin.admin_role %></td>
+          <td><%= admin.email %></td>
+          <td><%= admin.description %></td>
+          <td><%= admin.status %></td>
+          <td>
             <div class="dropdown">
-                <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">Actions</button>
-                <div class="dropdown-menu">
-                    <%= link_to "View", director, :class => "dropdown-item" %>
-                    <%= link_to "Edit", edit_admins_director_path(director), :class => "dropdown-item" %>
-                    <%= link_to "Delete", director, method: :delete, data: { confirm: "¿Deseas eliminar al administrador?" }, :class => "dropdown-item" %>
-                </div>
+              <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">Acciones</button>
+              <div class="dropdown-menu">
+                <%= link_to "Ver", admins_director_path(admin), :class => "dropdown-item" %>
+                <%= link_to "Editar", edit_admins_director_path(admin), :class => "dropdown-item" %>
+                <%= link_to "Eliminar", admin, method: :delete, data: { confirm: "¿Desea eliminar al director?" }, :class => "dropdown-item" %>
+              </div>
             </div>
-        </td>
-      </tr>    
-    <% end %>
-  </tbody>
+          </td>
+        </tr>    
+      <% end %>
+    </tbody>
   </table>
 </div>

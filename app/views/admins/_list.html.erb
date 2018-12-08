@@ -1,25 +1,30 @@
 <div class="container-fluid">
-  <br>
   <table class="table table-bordered table-hover table-striped table-sm">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Status</th>
-      <th scope="col">Options</th>
+    <thead class="thead-dark">
+      <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Rol</th>
+      <th scope="col">Email</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Opciones</th>
     </tr>
   </thead>
   <tbody>
     <% admins.each do |admin| %>
       <tr>
         <td><%= link_to admin.full_name, admin %></td>
+        <td><%= admin.admin_role %></td>
+        <td><%= admin.email %></td>
+        <td><%= admin.description %></td>
         <td><%= admin.status %></td>
         <td>
             <div class="dropdown">
-                <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">Actions</button>
+                <button type="button" class="btn btn-dark btn-sm dropdown-toggle" data-toggle="dropdown">Acciones</button>
                 <div class="dropdown-menu">
-                    <%= link_to "View", admin, :class => "dropdown-item" %>
-                    <%= link_to "Edit", edit_admin_path(admin), :class => "dropdown-item" %>
-                    <%= link_to "Delete", admin, method: :delete, data: { confirm: "¿Deseas eliminar al administrador?" }, :class => "dropdown-item" %>
+                    <%= link_to "Ver", admin, :class => "dropdown-item" %>
+                    <%= link_to "Editar", edit_admin_path(admin), :class => "dropdown-item" %>
+                    <%= link_to "Eliminar", admin, method: :delete, data: { confirm: "¿Desea eliminar al administrador?" }, :class => "dropdown-item" %>
                 </div>
             </div>
         </td>
