@@ -61,6 +61,10 @@ gem 'bootstrap', '~> 4.1.3'
 
 #Bootstrap_form
 gem 'bootstrap_form', '~> 4.0'
+
+#Select2
+gem "select2-rails"
+
 # Jquery
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 

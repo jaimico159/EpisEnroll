@@ -1,9 +1,12 @@
+<%= javascript_include_tag "laboratory.js" %>
+<%= javascript_include_tag "laboratory_new.js" %>
+
 <div class="dropdown-divider"></div>
 <div class="container-fluid">
     <h3>New Laboratory</h3>
 </div>
 <div class="dropdown-divider"></div>
-<%= render('form', laboratory: @laboratory)%>
+<%= render('form', laboratory: @laboratory, courses_with_lab: @courses_with_lab)%>
 <div class="dropdown-divider"></div>
 <div class="container-fluid">
     <%= link_to 'Back', laboratories_path, :class => "btn btn-info" %>
