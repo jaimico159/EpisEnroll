@@ -18,7 +18,7 @@
 			<%= form.collection_select(:course_id, Course.all, :id, :name) %>
 			<%= form.collection_select(:group_id, Group.all, :id, :name) %>
 		<% else %>
-			<%= form.collection_select(:course_id, Course.where(id: @laboratory.course_id), :id, :name) %>
+			<%= form.text_field :course, disabled: true, value: @laboratory.course.name %>
 			<%= form.collection_select(:group_id, @unused, :id, :name) %>	
 		<% end %>
 		
