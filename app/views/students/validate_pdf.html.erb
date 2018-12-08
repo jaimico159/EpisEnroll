@@ -13,11 +13,11 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-2"><%= form.label :Constancia%></div>
-        <div class="col-sm-10"><%= form.file_field :pdf %></div>
+        <div class="col-sm-10"><%= form.file_field :pdf , required: true %></div>
       </div>
       <div class="row">
         <div class="col-sm-2"><%= form.label :dni %></div>
-        <div class="col-sm-10"><%= form.number_field :dni, min: "11111111", max: "99999999", :class => 'form-control' %></div>
+        <div class="col-sm-10"><%= form.number_field :dni, min: "11111111", max: "99999999", :class => 'form-control', required: true %></div>
       </div>
       
     </div>

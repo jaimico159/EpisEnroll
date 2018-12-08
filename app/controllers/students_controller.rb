@@ -65,8 +65,24 @@ class StudentsController < ApplicationController
   def validate
     @student = current_student
     student_courses = []
+    if params[:pdf].content_type != "application/pdf"
+      respond_to do |format|
+        format.html { redirect_to students_validate_pdf_path, alert: "Solo archivos pdf" }
+      end
+      return
+    end
     #File.open(params[:pdf].tempfile,"rb") do |file|
     reader = PDF::Reader.new(params[:pdf].tempfile)
+    if reader.metadata.nil? || reader.info.nil?
+      respond_to do |format|
+        format.html { redirect_to students_validate_pdf_path, alert: "No es la constancia o es una copia, no la original" }
+      end
+      return
+    end
+    puts "ACEESIING PDF"
+    puts "#{reader.metadata.nil? || reader.info.nil?}"
+    puts reader.info
+
     if reader.metadata.include?(reader.info[:Creator]) && reader.metadata.include?(reader.info[:Title])
       puts "Estas en el camino"
       if reader.pages.length == 1
@@ -94,6 +110,7 @@ class StudentsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to students_validate_pdf_path, alert: "Hubo un error o no es un documento válido" }
       end
+      return
     end
 
     student_courses = student_courses.select {|course| Course.exists?(code: course, has_laboratory: true)}
@@ -124,12 +141,12 @@ class StudentsController < ApplicationController
 
   def enroll_student
     @student = current_student
-    if !@student.enrolled && @student.authorized && @student.certificate_uploaded && 
+    if !@student.enrolled && @student.authorized && @student.certificate_uploaded
       @enrollment_detail = EnrollmentDetail.new
       @enrollment_detail.enrollment_header = @student.enrollment_header
       @enrollment_detail.laboratory = Laboratory.find([params[:course_id], params[:group_id]])
-      if @enrollment_detail.save!
-        if @student.course_codes.length == @student.enrollment_header.enrollment_details.size
+      if @enrollment_detail.save
+        if @student.course_codes.length == @student.enrollment_header.enrollment_details.length
           @student.update(enrolled: true)
         end
         respond_to do |format|

@@ -14,7 +14,7 @@ class Student < ApplicationRecord
 
   # callbacks
   after_save :attach_enrollment_header
-
+  before_destroy :delete_enrollment_information
   enum status: { inactive: 0, active: 1}
   
   #validates
@@ -38,6 +38,11 @@ class Student < ApplicationRecord
     enrollment_header.semester = Semester.last
     enrollment_header.student = self
     enrollment_header.save
+  end
+
+  def delete_enrollment_information
+    enrollment_header.enrollment_details.destroy_all
+    enrollment_header.destroy
   end
 
 end
