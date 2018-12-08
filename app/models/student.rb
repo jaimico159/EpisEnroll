@@ -31,6 +31,10 @@ class Student < ApplicationRecord
     "#{last_name}, #{first_name}"
   end
 
+  def in_authorized_date?
+    false
+  end
+
   private
 
   def attach_enrollment_header
