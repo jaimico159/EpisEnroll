@@ -12,42 +12,25 @@
       <li class="nav-item active">
         <%= link_to 'Mi información', admins_admins_home_path , class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Administradores", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", admins_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_admin_path, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Administradores', admins_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Estudiantes", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", "/students", class: "dropdown-item" %>
-          <%= link_to "Agregar", "/students/new", class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Estudiantes', students_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Profesores", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", teachers_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_teacher_path, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Profesores', teachers_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Cursos", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", courses_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_course_path, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Cursos', courses_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Laboratorios", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", laboratories_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_laboratory_path, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Laboratorios', laboratories_path, class: "nav-link" %>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
+        <%= link_to 'Clasificasiones', clasifications_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item active" >
         <%= link_to 'Finalizar Semestre', '/', class: "nav-link" %>
       </li>
 
@@ -55,116 +38,70 @@
       <% when "director" %>
 
 
-      <li class="nav-item">
+      <li class="nav-item active">
         <%= link_to 'Mi información', admins_directors_home_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Secretarias", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", admins_secretaries_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_admins_secretary_path, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Secretarias', admins_secretaries_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Administrativos", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", admins_administratives_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_admins_administrative_path, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Administrativos', admins_administratives_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Profesores", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", teachers_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_teacher_path, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Profesores', teachers_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Estudiantes", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", students_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_student_path, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Estudiantes', students_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Cursos", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", courses_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_course_path, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Cursos', courses_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Laboratorios", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", laboratories_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_laboratory_path, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Laboratorios', laboratories_path, class: "nav-link" %>
       </li>
-
+      <li class="nav-item active">
+        <%= link_to 'Clasificasiones', clasifications_path, class: "nav-link" %>
+      </li>
 
       <% when "secretary" %>
 
 
-      <li class="nav-item">
+      <li class="nav-item active">
         <%= link_to 'Mi información',   admins_secretaries_home_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Administrativos", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", admins_administratives_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_admins_administrative_path, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Administrativos',   admins_administratives_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Profesores", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", teachers_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_teacher_path, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Profesores',   teachers_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Estudiantes", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", students_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_student_path, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Estudiantes',   students_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Cursos", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", courses_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_course_path, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Cursos',   courses_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Laboratorios", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", laboratories_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_laboratory_path, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Laboratorios',   laboratories_path, class: "nav-link" %>
       </li>
+      <li class="nav-item active">
+        <%= link_to 'Clasificasiones', clasifications_path, class: "nav-link" %>
+      </li>
+
 
 
       <% when "administrative" %>
 
 
-      <li class="nav-item">
+      <li class="nav-item active">
         <%= link_to 'Mi información',   admins_administratives_home_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Estudiantes", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", students_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_student_path, class: "dropdown-item" %>
-        </div>
+      <li class="nav-item active">
+        <%= link_to 'Estudiantes',   students_path, class: "nav-link" %>
       </li>
-      <li class="nav-item dropdown">
-        <%= link_to "Laboratorios", '#', class: "nav-link dropdown-toggle", 'data-toggle' => "dropdown", role: "button", 'aria-haspopup' => "true", 'aria-expanded' => "false" %>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Lista", laboratories_path, class: "dropdown-item" %>
-          <%= link_to "Agregar", new_laboratory_path, class: "dropdown-item" %>
-        </div>
-      </li>
+      <li class="nav-item active">
+        <%= link_to 'Laboratorios',   laboratories_path, class: "nav-link" %>
+      </li> 
 
     <% end %>
     </ul>
