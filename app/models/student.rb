@@ -32,7 +32,8 @@ class Student < ApplicationRecord
   end
 
   def in_authorized_date?
-    false
+    today = Date.today
+    today >= clasification.start_date && today <= clasification.finish_date
   end
 
   private
