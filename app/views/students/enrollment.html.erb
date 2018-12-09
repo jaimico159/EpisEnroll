@@ -7,6 +7,7 @@
 </div>
 <div class="dropdown-divider"></div>
 <div class="container-fluid">
+  <% if @student.authorized && @student.certificate_uploaded && @student.in_authorized_date? %>
   <table class="table table-bordered table-hover table-striped table-sm">
     <thead class="thead-dark">
     <tr>
@@ -15,8 +16,8 @@
       <th scope="col">Grupo</th>
       <th scope="col">Matricular</th>
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     <% if @chosen_labs %>
     <% @chosen_labs.each do |chosen_lab| %>
       <tr>
@@ -45,5 +46,15 @@
       <% end %>    
     <% end %>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+  <% else %>
+    <h1>No estás autorizado a matricularte</h1>
+    <h3>Esto por una de las siguientes razones: </h3>
+    <ul>
+      <li>No validaste constancia en secretaría.</li>
+      <li>No es la fecha correspondiente.</li>
+      <li>No subiste tu constancia de matrícula.</li>
+    </ul>
+  <% end %>
+</div>

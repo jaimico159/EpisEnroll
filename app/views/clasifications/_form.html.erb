@@ -1,0 +1,29 @@
+<div class="container-fluid">
+	<%= bootstrap_form_for(@clasification, model: clasification, local: true, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10") do |form| %>
+		<% if clasification.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(clasification.errors.count, "error") %> clasification error:</h2>
+				<ul>
+				<% clasification.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+				</ul>
+			</div>
+		<% end %>	
+
+    <%= form.text_field :name, class: "input-group", label: "Nombre" %>
+    <%= form.text_field :value, class: "input-group", label: "Relevancia" %>
+    <%= form.date_field :start_date, class: "input-group date", label: "Fecha de inicio:" %>
+    <%= form.date_field :finish_date, class: "input-group date", label: "Fecha de cierre:" %>
+    <%= form.text_field :description, class: "form-control", label: "Descripción:" %>
+
+		<%= form.form_group do %>
+			<% if current_page?(controller: 'clasifications', action: 'new') %>
+				<%= form.submit "Crear Clasificación", :class => 'btn btn-dark' %>
+			<% else %>
+				<%= form.submit "Editar Clasificación", :class => 'btn btn-dark' %>
+			<% end %> 
+		<% end %>
+  <% end %>
+</div>
+

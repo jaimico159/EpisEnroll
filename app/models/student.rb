@@ -31,6 +31,11 @@ class Student < ApplicationRecord
     "#{last_name}, #{first_name}"
   end
 
+  def in_authorized_date?
+    today = Date.today
+    today >= clasification.start_date && today <= clasification.finish_date
+  end
+
   private
 
   def attach_enrollment_header
