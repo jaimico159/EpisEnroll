@@ -36,4 +36,5 @@
 <div class="container-fluid">
     <%= link_to 'Atrás', admins_directors_path, :class => "btn btn-info" %>
     <%= link_to 'Editar', edit_admin_path(@director), :class => "btn btn-secondary" %>
+    <%= link_to "Eliminar Director", @director, method: :delete, data: { confirm: "¿Desea eliminar al director?" }, :class => "btn btn-danger" %>
 </div>
