@@ -36,4 +36,5 @@
 <div class="container-fluid">
     <%= link_to 'Atrás', admins_secretaries_path, :class => "btn btn-info" %>
     <%= link_to 'Editar', edit_admin_path(@secretary), :class => "btn btn-secondary" %>
+    <%= link_to "Eliminar Secretaria", @secretary, method: :delete, data: { confirm: "¿Desea eliminar a la secretaria?" }, :class => "btn btn-danger" %>
 </div>

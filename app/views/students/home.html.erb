@@ -1,2 +1,157 @@
-<p><%= @student.email %></p>
-<p>GOL Students</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Mis comunicados</a>
+                </li>
+              </ul>
+              <div class="tab-content ml-1" id="myTabContent">
+                <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                        
+                  <div class="row">
+                  <% unless @student.certificate_uploaded %>
+                    <div class="col-sm-5">
+                      <h7 class="text-danger">Tiene que subir su constancia.<h7>
+                    </div>
+                    <div>
+                      <%= link_to 'Subir Constancia', students_validate_pdf_path, :class => 'btn btn-info'%>
+                    </div>
+                  <% else %>
+                    <div class="col-sm-5">
+                      <h7 class="text-primary">Ud. ya subió su constancia.<h7>
+                    </div>  
+                  <% end %>
+                  </div>
+                  <div class="dropdown-divider"></div>
+
+                  <div class="row">
+                  <% unless @student.authorized %>
+                    <div class="col-sm-12">
+                      <h7 class="text-danger">No estás autorizado a matricularte. Tiene que validar su matrícula en Secretaría.<h7>
+                    </div>
+                  <% else %>
+                    <div class="col-sm-5">
+                      <h7 class="text-primary">Ud. ya valido su certificado en Secretaría.<h7>
+                    </div>  
+                  <% end %>
+                  </div>
+                        
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dropdown-divider"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="card-title mb-4">
+                        <div class="d-flex justify-content-start">
+                            <div class="image-container">
+                                <img src="/assets/person.png" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                            </div>
+                            <div class="userData ml-3">
+                                <h2 class="text-dark" class="d-block" style="font-size: 1.5rem; font-weight: bold"><%= @student.full_name %></h2>
+                                <h6 class="d-block"><%= @student.email %></h6>
+                                <h6 class="d-block">Estudiante</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Informacion Básica</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content ml-1" id="myTabContent">
+                                <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                                        
+                                    <div class="row">
+                                        <div class="col-sm-3 col-md-2 col-5">
+                                            <label style="font-weight:bold;">Nombres</label>
+                                        </div>
+                                        <div class="col-md-8 col-6">
+                                            <%= @student.first_name %>
+                                        </div>
+                                    </div>
+                                    <hr />
+
+                                    <div class="row">
+                                        <div class="col-sm-3 col-md-2 col-5">
+                                            <label style="font-weight:bold;">Apellidos</label>
+                                        </div>
+                                        <div class="col-md-8 col-6">
+                                            <%= @student.last_name %>
+                                        </div>
+                                    </div>
+                                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"><h4>Mis Laboratorios</h4></div>
+    </div>
+</div>
+<div class="dropdown-divider"></div>
+<div class="container-fluid">
+  <table class="table table-bordered table-hover table-striped table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Nombre del curso</th>
+        <th scope="col">Grupo</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Matriculado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @student.enrollment_details.each do |detail| %>    
+        <tr>
+          <td><%= Course.where(id: detail.course_id).pluck(:name)[0] %></td>
+          <td><%= Group.where(id: detail.group_id).pluck(:name)[0] %></td>
+          <td><%= Laboratory.where(course_id: detail.course_id, group_id: detail.group_id).pluck(:description)[0] %></td>
+          <td><%= detail.status %></td>
+          <td>Ya matriculado</td>
+        </tr>  
+      <% end %>
+      <% @student.courses_of_labs_not_enroll.each do |course| %>    
+        <tr>
+          <td><%= course.name %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Aún no matriculado</td>
+        </tr>  
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<hr />
+<% if @student.authorized && @student.certificate_uploaded && @student.in_authorized_date? %>
+  <div align='center'><%= link_to 'Matricularme', students_enrollment_path, :class => 'btn btn-info'%></div>
+  <div class="dropdown-divider"></div>
+<% end %>

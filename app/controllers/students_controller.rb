@@ -79,9 +79,6 @@ class StudentsController < ApplicationController
       end
       return
     end
-    puts "ACEESIING PDF"
-    puts "#{reader.metadata.nil? || reader.info.nil?}"
-    puts reader.info
 
     if reader.metadata.include?(reader.info[:Creator]) && reader.metadata.include?(reader.info[:Title])
       puts "Estas en el camino"
@@ -128,7 +125,7 @@ class StudentsController < ApplicationController
 
   def enrollment
     @student = current_student
-    if @student.authorized && @student.certificate_uploaded
+    if @student.authorized && @student.certificate_uploaded && @student.in_authorized_date?
       @chosen_labs = @student.enrollment_details
       @courses = Course.
         where(code: @student.course_codes).
@@ -136,12 +133,14 @@ class StudentsController < ApplicationController
         select {|course| 
           course.has_laboratory
         }
+    else
+      @notice = "No estas autorizado a matricularte"
     end
   end
 
   def enroll_student
     @student = current_student
-    if !@student.enrolled && @student.authorized && @student.certificate_uploaded
+    if !@student.enrolled && @student.authorized && @student.certificate_uploaded && @student.in_authorized_date?
       @enrollment_detail = EnrollmentDetail.new
       @enrollment_detail.enrollment_header = @student.enrollment_header
       @enrollment_detail.laboratory = Laboratory.find([params[:course_id], params[:group_id]])

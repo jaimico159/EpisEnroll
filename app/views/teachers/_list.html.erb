@@ -12,7 +12,7 @@
     <tbody>
       <% teachers.each do |teacher| %>
         <tr>
-          <th scope="row"><%= teacher.full_name %></th>
+          <td scope="row"><%= link_to teacher.full_name, teacher %></td>
           <td><%= teacher.email %></td>
           <td><%= teacher.description %></td>
           <td><%= teacher.status %></td>
