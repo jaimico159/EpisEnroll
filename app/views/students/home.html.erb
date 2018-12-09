@@ -1,54 +1,54 @@
 <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12">
-                            <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Mis comunicados</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content ml-1" id="myTabContent">
-                                <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
-                                        
-                                    <div class="row">
-                                    <% unless @student.certificate_uploaded %>
-                                      <div class="col-sm-5">
-                                        <h7 class="text-danger">Tiene que subir su constancia.<h7>
-                                      </div>
-                                      <div>
-                                        <%= link_to 'Subir Constancia', students_validate_pdf_path, :class => 'btn btn-info'%>
-                                      </div>
-                                    <% else %>
-                                      <div class="col-sm-5">
-                                        <h7 class="text-primary">Ud. ya subió su constancia.<h7>
-                                      </div>  
-                                    <% end %>
-                                    </div>
-                                    <div class="dropdown-divider"></div>
-
-                                    <div class="row">
-                                    <% unless @student.authorized %>
-                                      <div class="col-sm-12">
-                                        <h7 class="text-danger">No estás autorizado a matricularte. Tiene que validar su matrícula en Secretaría.<h7>
-                                      </div>
-                                    <% else %>
-                                      <div class="col-sm-5">
-                                        <h7 class="text-primary">Ud. ya valido su certificado en Secretaría.<h7>
-                                      </div>  
-                                    <% end %>
-                                    </div>
-                                        
-                                </div>
-                            </div>
-                        </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Mis comunicados</a>
+                </li>
+              </ul>
+              <div class="tab-content ml-1" id="myTabContent">
+                <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                        
+                  <div class="row">
+                  <% unless @student.certificate_uploaded %>
+                    <div class="col-sm-5">
+                      <h7 class="text-danger">Tiene que subir su constancia.<h7>
                     </div>
+                    <div>
+                      <%= link_to 'Subir Constancia', students_validate_pdf_path, :class => 'btn btn-info'%>
+                    </div>
+                  <% else %>
+                    <div class="col-sm-5">
+                      <h7 class="text-primary">Ud. ya subió su constancia.<h7>
+                    </div>  
+                  <% end %>
+                  </div>
+                  <div class="dropdown-divider"></div>
+
+                  <div class="row">
+                  <% unless @student.authorized %>
+                    <div class="col-sm-12">
+                      <h7 class="text-danger">No estás autorizado a matricularte. Tiene que validar su matrícula en Secretaría.<h7>
+                    </div>
+                  <% else %>
+                    <div class="col-sm-5">
+                      <h7 class="text-primary">Ud. ya valido su certificado en Secretaría.<h7>
+                    </div>  
+                  <% end %>
+                  </div>
+                        
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="dropdown-divider"></div>
@@ -138,7 +138,7 @@
           <td>Ya matriculado</td>
         </tr>  
       <% end %>
-      <% @cursos_de_labs_no_matriculados.each do |course| %>    
+      <% @student.courses_of_labs_not_enroll.each do |course| %>    
         <tr>
           <td><%= course.name %></td>
           <td></td>
@@ -151,7 +151,7 @@
   </table>
 </div>
 <hr />
-<% if @student.authorized && @student.certificate_uploaded %>
+<% if @student.authorized && @student.certificate_uploaded && @student.in_authorized_date? %>
   <div align='center'><%= link_to 'Matricularme', students_enrollment_path, :class => 'btn btn-info'%></div>
   <div class="dropdown-divider"></div>
 <% end %>

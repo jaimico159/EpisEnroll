@@ -6,7 +6,6 @@ class StudentsController < ApplicationController
 
   def home
     @student = current_student
-    @cursos_de_labs_no_matriculados = courses_of_labs_not_enroll
   end
 
   def index
@@ -20,12 +19,7 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @cursos_de_labs_no_matriculados = courses_of_labs_not_enroll
   end
-
-  def courses_of_labs_not_enroll
-    Course.where(code: @student.course_codes, has_laboratory: true).where.not(id: @student.enrollment_details.pluck(:course_id))
-  end 
 
   def edit
   end
