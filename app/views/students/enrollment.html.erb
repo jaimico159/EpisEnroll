@@ -7,6 +7,7 @@
 </div>
 <div class="dropdown-divider"></div>
 <div class="container-fluid">
+  <% if @student.authorized && @student.certificate_uploaded && @student.in_authorized_date? %>
   <table class="table table-bordered table-hover table-striped table-sm">
     <thead class="thead-dark">
     <tr>
@@ -15,8 +16,8 @@
       <th scope="col">Grupo de laboratorio</th>
       <th scope="col">Matricular</th>
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     <% if @chosen_labs %>
       <% @chosen_labs.each do |chosen_lab| %>
         <tr>
@@ -29,16 +30,31 @@
     <% end %>
     <% if @courses %>
     <% @courses.each do |course| %>
-      <%= form_with url: students_enroll_student_path do |form|%>
+      <%= form_with url: students_enroll_student_path, local: true do |form|%>
       <tr>
         <%= form.hidden_field :course_id, value: course.id, required: true %>
-        <th scope="row"><div align= 'left'><%= course.code %></div></th>
-        <td><div align= 'left'><%= course.name %></div></td>
-        <td><div align= 'left'><%= form.collection_select(:group_id, course.available_laboratories, :first, :second) %></div></td>
-        <td><div align= 'center'><%= form.submit 'MATRICULAR', class: 'btn btn-primary' %></div></td>
+        <th scope="row"><div align= 'center'><%= course.code %></div></th>
+        <td><div align= 'center'><%= course.name %></div></td>
+        <% if course.available_laboratories.empty? %>
+          <td><div align= 'center'><%= "NO HAY LABORATORIOS DISPONIBLES" %></div></td>
+          <td><div align= 'center'><%= form.submit 'MATRICULAR', class: 'btn btn-muted', disabled: true %></div></td>
+        <% else %>
+          <td><div align= 'center'><%= form.collection_select(:group_id, course.available_laboratories, :first, :second) %></div></td>
+          <td><div align= 'center'><%= form.submit 'MATRICULAR', class: 'btn btn-primary' %></div></td>
+        <% end %>
       </tr>
       <% end %>    
     <% end %>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+  <% else %>
+    <h1>No estás autorizado a matricularte</h1>
+    <h3>Esto por una de las siguientes razones: </h3>
+    <ul>
+      <li>No validaste constancia en secretaría.</li>
+      <li>No es la fecha correspondiente.</li>
+      <li>No subiste tu constancia de matrícula.</li>
+    </ul>
+  <% end %>
+</div>

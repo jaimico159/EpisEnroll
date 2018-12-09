@@ -1,4 +1,4 @@
-class AdminPolicy
+class ClasificationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -8,7 +8,7 @@ class AdminPolicy
 
   def index?
     if user.is_a?(Admin)
-      user.admin?
+      user.admin? || user.director?
     else
       false
     end
@@ -16,7 +16,7 @@ class AdminPolicy
 
   def new?
     if user.is_a?(Admin)
-      user.admin?
+      user.admin? || user.director? || user.secretary?
     else
       false
     end
@@ -24,7 +24,7 @@ class AdminPolicy
 
   def edit?
     if user.is_a?(Admin)
-      user.admin?
+      user.admin? || user.director? || user.secretary?
     else
       false
     end
@@ -32,7 +32,7 @@ class AdminPolicy
 
   def show?
     if user.is_a?(Admin)
-      user.admin?
+      user.admin? || user.director? || user.secretary?
     else
       false
     end
@@ -40,7 +40,7 @@ class AdminPolicy
 
   def update?
     if user.is_a?(Admin)
-      user.admin?
+      user.admin? || user.director? || user.secretary?
     else
       false
     end
@@ -48,7 +48,7 @@ class AdminPolicy
 
   def destroy?
     if user.is_a?(Admin)
-      user.admin?
+      user.admin? || user.director? || user.secretary?
     else
       false
     end
@@ -56,7 +56,7 @@ class AdminPolicy
 
   def create?
     if user.is_a?(Admin)
-      user.admin?
+      user.admin? || user.director? || user.secretary?
     else
       false
     end
