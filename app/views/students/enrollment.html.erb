@@ -11,30 +11,30 @@
     <thead class="thead-dark">
     <tr>
       <th scope="col">Código</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Grupo</th>
+      <th scope="col">Nombre del curso</th>
+      <th scope="col">Grupo de laboratorio</th>
       <th scope="col">Matricular</th>
     </tr>
   </thead>
   <tbody>
     <% if @chosen_labs %>
-    <% @chosen_labs.each do |chosen_lab| %>
-      <tr>
-        <th scope="row"><%= chosen_lab.course.code %></th>
-        <td><%= chosen_lab.course.name %></td>
-        <td><%= chosen_lab.group.name %></td>
-        <td>Ya matriculados</td>
-      </tr>    
-    <% end %>
+      <% @chosen_labs.each do |chosen_lab| %>
+        <tr>
+          <th scope="row"><%= chosen_lab.course.code %></th>
+          <td><%= chosen_lab.course.name %></td>
+          <td><%= chosen_lab.group.name %></td>
+          <td><div align= 'center'>Ya matriculado</div></td>
+        </tr>    
+      <% end %>
     <% end %>
     <% if @courses %>
     <% @courses.each do |course| %>
       <%= form_with url: students_enroll_student_path do |form|%>
       <tr>
         <%= form.hidden_field :course_id, value: course.id, required: true %>
-        <th scope="row"><div align= 'center'><%= course.code %></div></th>
-        <td><div align= 'center'><%= course.name %></div></td>
-        <td><div align= 'center'><%= form.collection_select(:group_id, course.available_laboratories, :first, :second) %></div></td>
+        <th scope="row"><div align= 'left'><%= course.code %></div></th>
+        <td><div align= 'left'><%= course.name %></div></td>
+        <td><div align= 'left'><%= form.collection_select(:group_id, course.available_laboratories, :first, :second) %></div></td>
         <td><div align= 'center'><%= form.submit 'MATRICULAR', class: 'btn btn-primary' %></div></td>
       </tr>
       <% end %>    

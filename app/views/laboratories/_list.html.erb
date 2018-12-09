@@ -24,7 +24,7 @@
               <div class="dropdown-menu">
                 <%= link_to "Ver", laboratories_lab_dash_path(laboratory), :class => "dropdown-item" %>
                 <%= link_to "Editar", edit_laboratory_path(laboratory), :class => "dropdown-item" %>
-                <%= link_to "Eliminar", laboratory, method: :delete, data: { confirm: "¿Desea eliminar este laboratorio?" }, :class => "dropdown-item" %>
+                <%= link_to "Eliminar", laboratory, method: :delete, data: { confirm: "Si elimina este laboratorio desmatriculará a todos los alumnos de este laboratorio, ¿Realmente desea eliminar este laboratorio?" }, :class => "dropdown-item" %>
               </div>
             </div>
           </td>
