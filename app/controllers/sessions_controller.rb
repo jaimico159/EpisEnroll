@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  attr_reader :FOTO 
   include Accessible
   skip_before_action :check_user, only: :destroy
   
@@ -7,6 +8,7 @@ class SessionsController < ApplicationController
     info = request.env['omniauth.auth'].info
     credentials = request.env['omniauth.auth'].credentials
     id_info = request.env['omniauth.auth'].extra.id_info
+    FOTO.replace info["image"]
 
     # puts "<<<<<<<<<<info"
     # puts info
