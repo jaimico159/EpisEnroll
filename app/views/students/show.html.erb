@@ -117,7 +117,7 @@
           <td>Ya matriculado</td>
         </tr>  
       <% end %>
-      <% @cursos_de_labs_no_matriculados.each do |course| %>    
+      <% @student.courses_of_labs_not_enroll.each do |course| %>    
         <tr>
           <td><%= course.name %></td>
           <td></td>
