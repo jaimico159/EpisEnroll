@@ -172,3 +172,69 @@ Course.create(name: "PROYECTO DE INGENIERIA DE SOFTWARE 2", code: 1705272,has_la
 Course.create(name: "GESTION DE SISTEMAS Y TECNOLOGIAS DE INFORMACION (E)", code: 1705273,has_laboratory: false, status: :active, description: "")
 Course.create(name: "DESARROLLO DE SOFTWARE PARA JUEGOS (E)", code: 1705274,has_laboratory: false, status: :active, description: "")
 Course.create(name: "PLATAFORMAS EMERGENTES (E)", code: 1705275,has_laboratory: false, status: :active, description: "")
+
+
+
+
+#Aquí se hace uso de la gema Faker, usada para la generación de data aleatoria
+#Descomentar para probarla
+
+##Creating courses
+#100.times do
+#	Course.create([{
+#		name: Faker::Educator.course,
+#		code: Faker::Number.number(7),
+#		has_laboratory: Faker::Boolean.boolean,
+#		status: :active,
+#		description: Faker::Lorem.sentence
+#	}])
+#end
+#	
+##Creating clasifications
+#20.times do
+#	Clasification.create([{
+#		value: Faker::Number.between(1, 4),
+#		name: Faker::Types.rb_string,
+#		start_date: Faker::Time.between(DateTime.now - 5, DateTime.now - 1),
+#		finish_date: Faker::Time.between(DateTime.now, DateTime.now + 1),
+#		description: Faker::Lorem.sentence,
+#		status: :active
+#	}])
+#end
+#	
+##Creating groups
+#10.times do
+#	Group.create([{
+#		name: Faker::Name.initials(1),
+#		description: Faker::Lorem.sentence,
+#		status: :active
+#	}])
+#end
+#	
+##Creating students
+#200.times do
+#	Student.create([{
+#		first_name: Faker::Name.first_name,
+#		last_name: Faker::Name.last_name,
+#		cui: Faker::Number.number(8),
+#		authorized: Faker::Boolean.boolean,
+#		certificate_uploaded: Faker::Boolean.boolean,
+#		enrolled: Faker::Boolean.boolean,
+#		description: Faker::Lorem.sentence,
+#		email: Faker::Internet.email,
+#		encrypted_password: Faker::Internet.password,
+#		status: :active
+#	}])
+#end
+#	
+##Creating teachers
+#200.times do
+#	Teacher.create([{
+#		first_name: Faker::Name.first_name,
+#		last_name: Faker::Name.last_name,
+#		description: Faker::Lorem.sentence,
+#		email: Faker::Internet.email,
+#		encrypted_password: Faker::Internet.password,
+#		status: :active
+#	}])
+#end
