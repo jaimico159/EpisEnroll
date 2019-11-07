@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_24_150952) do
+ActiveRecord::Schema.define(version: 2019_11_07_052137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2018_11_24_150952) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", limit: 2, default: 1
+    t.string "google_token"
+    t.string "google_refresh_token"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -131,6 +133,8 @@ ActiveRecord::Schema.define(version: 2018_11_24_150952) do
     t.string "uid"
     t.string "oauth_token"
     t.string "oauth_expires_at"
+    t.string "google_token"
+    t.string "google_refresh_token"
     t.index ["clasification_id"], name: "index_students_on_clasification_id"
     t.index ["cui"], name: "index_students_on_cui", unique: true
     t.index ["email"], name: "index_students_on_email", unique: true
