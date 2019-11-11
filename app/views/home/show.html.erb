@@ -6,7 +6,19 @@
     <iframe width="560" height="315" src="https://www.youtube.com/embed/xSTwyYDT-A8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     <br><br>
     <% if !current_user %>
-      <%= link_to "Iniciar Sesión con Google", "/auth/google_oauth2", {:class => "btn btn-dark"}%> 
+    <div class="g-signin2 btn" data-onsuccess="onSignIn" data-theme="light"></div>
+    <%= javascript_tag do %>
+      function onSignIn(googleUser) {
+        var id_token = googleUser.getAuthResponse().id_token;
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '<%= sessions_path %>');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function(resp) {
+          window.location.replace(JSON.parse(resp.target.response).redirect_path);
+        };
+        xhr.send('idtoken=' + id_token);
+      }
+    <% end %>
     <% end %>
     <br><br>
   </div>

@@ -7,13 +7,36 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% if content_for?(:head) %>
+      <%= yield(:head) %>
+    <% end %>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content=<%="#{ENV['GOOGLE_OAUTH_CLIENT_ID']}" %>>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
   </head>
 
   <body>
     <nav class="navbar navbar-dark bg-dark justify-content-between">
       <a class="navbar-brand" href="#">Matrículas para Laboratorio</a>
     </nav>
-    
+
+    <% if current_user %>
+      <%= javascript_tag do %>
+        function onLoad() {
+            gapi.load('auth2', function() {
+            gapi.auth2.init();
+          });
+        }
+
+        function signOut() {
+          var auth2 = gapi.auth2.getAuthInstance();
+          auth2.signOut().then(function () {
+            console.log('User signed out.');
+          });
+        }
+      <% end %>
+      <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    <% end %>
     <% if current_student %>
       <%= render('layouts/student_nav') %>
     <% elsif current_teacher %>

@@ -16,9 +16,8 @@
         <%= link_to 'Matrícula', students_enrollment_path, class: "nav-link" %>
       </li>
     </ul>
-    <%= link_to "Cerrar Sesión", destroy_student_session_path, method: :delete, class: 'navbar-brand my-2 my-lg-0' %>
+    <%= link_to "Cerrar Sesión", destroy_student_session_path, method: :delete, class: 'navbar-brand my-2 my-lg-0', onclick: "signOut()" %>
   </div>
 </nav>
-
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %><p>

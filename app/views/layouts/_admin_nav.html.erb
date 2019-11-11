@@ -105,7 +105,7 @@
 
     <% end %>
     </ul>
-    <%= link_to "Cerrar Sesión", destroy_admin_session_path, method: :delete, class: 'navbar-brand my-2 my-lg-0' %>
+    <%= link_to "Cerrar Sesión", destroy_admin_session_path, method: :delete, class: 'navbar-brand my-2 my-lg-0', onclick: "signOut()" %>
   </div>
 </nav>
 
