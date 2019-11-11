@@ -41,11 +41,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Devise gem
 gem 'devise', '~> 4.2'
 
-# Omniauth
-gem 'omniauth', '~> 1.6', '>= 1.6.1'
 
-# Google Omniauth
-gem 'omniauth-google-oauth2', '~> 0.4.1'
+# Google Auth Libraries
+gem 'signet'
+gem 'google-id-token', git: 'https://github.com/google/google-id-token.git'
 
 # Pundit
 gem 'pundit'
